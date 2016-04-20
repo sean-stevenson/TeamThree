@@ -11,7 +11,7 @@
 - [ ] Sean: Signed plan and finish documentation GitHub setup 
 - [ ] Tim: Assemble Pi and relevant hardware, prototype chassis
 - [ ] Jaimar: Develop code for basic movement
-- [ ] Callum - Develop code for basic movement
-- [ ] Eli -Establish SSH and research Network commands
+- [ ] Callum: Develop code for basic movement
+- [ ] Eli: Establish SSH and research Network commands
 
 Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2YD_fXb_G-mnzb5xK0Q/edit?usp=sharing
