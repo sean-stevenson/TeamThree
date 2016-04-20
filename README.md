@@ -17,7 +17,31 @@
 Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2YD_fXb_G-mnzb5xK0Q/edit?usp=sharing
 
 ###Unformatted
+Tim - Hardware Development - Developing and building Chassis, working to integrate sensor components and testing hardware.
+Contact details: 
+Katharine Jermyn Hall
+021 276 0270
+tim.gastrell@gmail.com 
 
+Sean - Project Lead/Documentation - Organising meetings and progress reports, documenting work against goals. 
+Contact details: 
+msd.sean@clear.net.nz
+022 628 3122
+
+Eli - Software Testing - Working with Software Development people, testing cases and network implementation.
+Contact details: 
+eli.tanoi@gmail.com
+0277180697
+
+Callum - Software Development - Writing main methods code and extending code based on testing
+Contact details: 
+brigden.callum@gmail.com
+0277 724 270
+
+Jaimar - Software Development - Writing main methods code and extending code based on testing
+Contact details: 
+02108733963
+ong.jay27@yahoo.co.nz
 
 
 Week 1 Checklist
