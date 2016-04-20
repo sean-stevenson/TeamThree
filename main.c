@@ -3,7 +3,7 @@
 //these load specific methods from the ENGR101 library
 extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
-extern "C" int set_motor( int motor , int dir , int speed );
+extern "C" int set_motor( int motor , int dir , int speed ); //THIS METHOD IS PARTIAL TO CHANGE FOR NEXT WEEK, MOST LIKELY NO dir parameter.
 int main (){
    // This sets up the RPi hardware and ensures
    // everything is working correctly
