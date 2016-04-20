@@ -34,10 +34,10 @@ return 0;}
       }
       sum = sum + (i-160)*w;//Traverses the pixels along row 120, in increments, using -160_0_160 as the boundaries
      if(sum > 0){
-       turn_left();//Needs to be improved/made a method
+       turn_left();//Needs to be improved/made a method that works with the magnitude of sum to dictate how much it turns
      {
      else if(sum < 0){
-      turn_right();//Needs to be improved/made a method
+      turn_right();//Needs to be improved/made a method that works with the magnitude of sum to dictate how much it turns
      {
      else if(sum == 1)
       set_motor(1,1,255)
