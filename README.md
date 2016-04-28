@@ -20,7 +20,6 @@
 - [ ] Jaimar: 
 - [ ] Callum: 
 - [ ] Eli: 
-- 
 
 ###Week 3 Checklist:
 - [ ] Sean: 
@@ -41,7 +40,7 @@ Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2
 ###AVC Project Table
 
 | Week  | Dates | Team Objective(s)  | Items Due | Conflicting Committments | Tasks |
-| :------------ |:---------------:| ------: | ------: | ------: |
+| :------------: |:---------------:| :------: | :------: | :------: | :------: |
 | 1   | 18th April |Robot moving | AVC Plan Due | PHYS122 test | [Week 1 Checklist](#week-1-checklist) | 
 | 2   | 25th April ||  | | [Week 2 Checklist](#week-2-checklist) |
 | 3   | 2nd May |Quadrant 1 complete |  | | [Week 3 Checklist](#week-3-checklist) |
