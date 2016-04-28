@@ -8,18 +8,29 @@
 - Callum - Software Development - Writing main methods code and extending code based on testing
 
 ###Week 1 Checklist:
-- [ ] Sean: Signed plan and finish documentation GitHub setup 
-- [ ] Tim: Assemble Pi and relevant hardware, prototype chassis
-- [ ] Jaimar: Develop code for basic movement
-- [ ] Callum: Develop code for basic movement
-- [ ] Eli: Establish SSH and research Network commands
+- [x] Sean: Signed plan and finish documentation GitHub setup 
+- [x] Tim: Assemble Pi and relevant hardware, prototype chassis
+- [x] Jaimar: Develop code for basic movement
+- [x] Callum: Develop code for basic movement
+- [x] Eli: Establish SSH and research Network commands
+
+###Week 1 Review:
+- [x] Sean: Signed plan and finish documentation GitHub setup 
+- [x] Tim: Assemble Pi and relevant hardware, prototype chassis
+- [x] Jaimar: Develop code for basic movement
+- [x] Callum: Develop code for basic movement
+- [x] Eli: Establish SSH and research Network commands
+* All goals were acclompished
+* Github is set up and read for use
+* All members attended the lab
+* All members submitted their reviews
 
 ###Week 2 Checklist:
-- [ ] Sean: 
-- [ ] Tim: 
-- [ ] Jaimar: 
-- [ ] Callum: 
-- [ ] Eli: 
+- [ ] Sean: Plan next weeks and meeting, add to GitHub documentation and reviews
+- [ ] Tim: Develop chassis/Finalise
+- [ ] Jaimar: Suggest ways to develop code and begin movement code
+- [ ] Callum: Suggest ways to develop code and begin movement code
+- [ ] Eli: Test code and get gate opening
 
 ###Week 3 Checklist:
 - [ ] Sean: 
@@ -41,16 +52,15 @@ Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2
 
 | Week  | Dates | Team Objective(s)  | Items Due | Conflicting Committments | Tasks |
 | :------------: |:---------------:| :------: | :------: | :------: | :------: |
-| 1   | 18th April |Robot moving | AVC Plan Due | PHYS122 test | [Week 1 Checklist](#week-1-checklist) | 
-| 2   | 25th April ||  | | [Week 2 Checklist](#week-2-checklist) |
-| 3   | 2nd May |Quadrant 1 complete |  | | [Week 3 Checklist](#week-3-checklist) |
-| 4   | 9th May |... | ... | COMP102 test | [Week 4 Checklist](#week-4-checklist) |
-| 5   | 16th May |... | ... | ENGR121 test | [Week 5 Checklist](#week-5-checklist) |
-| 6   | 23rd May |Submit final reports | Final report due | Exams | [Week 6 Checklist](#week-6-checklist)|
-| 7   | 30th May |... | ... | ENGR101 test | [Week 7 Checklist](#week-7-checklist)|
-| 8   | 6th May |Submit final reports | Final report due | Exams | [Week 8 Checklist](#week-8-checklist)|
-| 9   | 13th June |Submit final reports | Final report due | Exams | [Week 9 Checklist](#week-9-checklist)|
-
+| 1 | 18th April |Robot moving | AVC Plan Due | PHYS122 test     |[Week 1 Checklist](#week-1-checklist)| 
+| 2 | 25th April |Robot moving | ... |                           |[Week 2 Checklist](#week-2-checklist)|
+| 3 | 2nd May | Quadrant 1 complete |  ... |                     |[Week 3 Checklist](#week-3-checklist)|
+| 4 | 9th May | | ... | COMP102 test                             |[Week 4 Checklist](#week-4-checklist)|
+| 5 | 16th May |... | ... | ENGR121 test                         |[Week 5 Checklist](#week-5-checklist)|
+| 6 | 23rd May |Submit final reports | Final report due | Exams  |[Week 6 Checklist](#week-6-checklist)|
+| 7 | 30th May |... | ... | ENGR101 test                         |[Week 7 Checklist](#week-7-checklist)|
+| 8 | 6th May |         ...         | Final report due | Exams   |[Week 8 Checklist](#week-8-checklist)|
+| 9 | 13th June |Submit final reports | Final report due | Exams |[Week 9 Checklist](#week-9-checklist)|
 
 ###Weekly Progress Checklist
 - [ ] How has each team member performed against their goal set last week?
