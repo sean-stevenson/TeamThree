@@ -55,11 +55,11 @@ Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2
 | 1 | 18th April |Robot moving | AVC Plan Due | PHYS122 test     |[Week 1 Checklist](#week-1-checklist)| 
 | 2 | 25th April |Robot moving | ... |                           |[Week 2 Checklist](#week-2-checklist)|
 | 3 | 2nd May | Quadrant 1 complete |  ... |                     |[Week 3 Checklist](#week-3-checklist)|
-| 4 | 9th May | | ... | COMP102 test                             |[Week 4 Checklist](#week-4-checklist)|
+| 4 | 9th May | ... | ... | COMP102 test                         |[Week 4 Checklist](#week-4-checklist)|
 | 5 | 16th May |... | ... | ENGR121 test                         |[Week 5 Checklist](#week-5-checklist)|
-| 6 | 23rd May |Submit final reports | Final report due | Exams  |[Week 6 Checklist](#week-6-checklist)|
+| 6 | 23rd May |... | ... | ...                                  |[Week 6 Checklist](#week-6-checklist)|
 | 7 | 30th May |... | ... | ENGR101 test                         |[Week 7 Checklist](#week-7-checklist)|
-| 8 | 6th May |         ...         | Final report due | Exams   |[Week 8 Checklist](#week-8-checklist)|
+| 8 | 6th May |         ...         | ... | ...                  |[Week 8 Checklist](#week-8-checklist)|
 | 9 | 13th June |Submit final reports | Final report due | Exams |[Week 9 Checklist](#week-9-checklist)|
 
 ###Weekly Progress Checklist
