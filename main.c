@@ -90,18 +90,17 @@ for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
 col[i] = get_pixel(320/16 * i,120,3);
 if(col[i] < 220){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
-    white_threshold[1] = 1;
+    white_threshold[i] = 1;
 }else{
-    white_threshold[1] = 0;
+    white_threshold[i] = 0;
 }
-sum = sum + (i)*col;  /**Traverses the pixels along row 120, in increments, using 0-160-320 as the boundaries*/
 
-if(sum <= 160 && sum >= 150){        /**Fine tuned points where robot travels, will need to be tested*/
+if(white_threshold[5] == 1 && white_threshold[9] == 1){        /**Fine tuned points where robot travels, will need to be tested*/
       move_forward();
-}else if(sum < 150){    /**Fine tuned points where robot travels, will need to be tested*/
-      turn_left();          /**Needs to be improved/made a method that works with the magnitude of sum to dictate how much it turns*/
+}else if(white_threshold[5]){    /**0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0 <-- pixel array taken to determine if a point is white or not, traverse to find if a section of the picture is white*/
+      turn_left();          
 }else if(sum > 160){
-      turn_right();     /**Needs to be improved/made a method that works with the magnitude of sum to dictate how much it turns*/
+      turn_right();     
 }
 }
 
