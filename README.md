@@ -26,18 +26,30 @@
 * All members submitted their reviews
 
 ###Week 2 Checklist:
-- [ ] Sean: Plan next weeks and meeting, add to GitHub documentation and reviews
-- [ ] Tim: Develop chassis/Finalise
-- [ ] Jaimar: Suggest ways to develop code and begin movement code
-- [ ] Callum: Suggest ways to develop code and begin movement code
-- [ ] Eli: Test code and get gate opening
+- [x] Sean: Plan next weeks and meeting, add to GitHub documentation and reviews
+- [x] Tim: Develop chassis/Finalise
+- [x] Jaimar: Suggest ways to develop code and begin movement code
+- [x] Callum: Suggest ways to develop code and begin movement code
+- [x] Eli: Test code and get gate opening
+
+
+###Week 2 Review:
+- [x] Sean: Signed plan and finish documentation GitHub setup 
+- [x] Tim: Assemble Pi and relevant hardware, prototype chassis
+- [x] Jaimar: Develop code for basic movement
+- [x] Callum: Develop code for basic movement
+- [x] Eli: Establish SSH and research Network commands
+* All goals were acclompished
+* All members attended the lab
+* All members that could attended the meeting
+* We got the gate open!
 
 ###Week 3 Checklist:
-- [ ] Sean: 
-- [ ] Tim: 
-- [ ] Jaimar: 
-- [ ] Callum: 
-- [ ] Eli: 
+- [ ] Sean: Update GitHub, plan meetings and reviews, help on coding
+- [ ] Tim: Printing and designing parts
+- [ ] Jaimar: Start traversing the line
+- [ ] Callum: Start traversing the line
+- [ ] Eli: Planning and developing code, future methods
 
 
 ###Week 4 Checklist:
