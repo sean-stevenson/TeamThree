@@ -3,7 +3,7 @@
 //these load specific methods from the ENGR101 library
 extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
-extern "C" int set_motor( int motor , int dir , int speed ); //THIS METHOD IS PARTIAL TO CHANGE FOR NEXT WEEK, MOST LIKELY NO dir parameter.
+extern "C" int set_motor( int motor , int speed ); //NOW FIXED
 int main (){
    // This sets up the RPi hardware and ensures
    // everything is working correctly
@@ -12,9 +12,9 @@ int main (){
    // in one direction at MAX speed .
 
    //
-   set_motor (1, 1, 255);   /** 1 = left*/
+   set_motor (1, 255);   /** 1 = left*/
 
-   set_motor(2, 1, 255);/** 2 = right wheel*/
+   set_motor(2, -255);/** 2 = right wheel*/
    Sleep(0 ,500000);
 
 return 0;}
@@ -51,19 +51,19 @@ else if(sum > 160){
 }
 
 int move_Forward(void){
-set_motor(1,1,200);
-set_motor(2,1,200);
+set_motor(1,200);
+set_motor(2, -200);
 
 }
 int turn_left(void){
 //turns right wheel but not left, hopefully turning it left.
-set_motor(2,1,100);
+set_motor(2, -100);
 Sleep(0,500000);
 }
 
 int turn_right(void){
 //turns left wheel, not right, turning it right
-set_motor(1,1,100);
+set_motor(1, -100);
 Sleep(0,500000);
 }
 
@@ -73,7 +73,7 @@ Sleep(0,500000);
 //these load specific methods from the ENGR101 library
 extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
-extern "C" int set_motor( int motor , int dir , int speed ); //THIS METHOD IS PARTIAL TO CHANGE FOR NEXT WEEK, MOST LIKELY NO dir parameter.
+extern "C" int set_motor( int motor , int speed ); //NOW FIXED 
 extern "C" char get_pixel(int row, int col, int color);
 int main (){
    // This sets up the RPi hardware and ensures
@@ -114,19 +114,19 @@ int turn_left(void){
 
 //while(sum < 160 || sum > 160){
 //if(sum != 160){
-set_motor(2,1,100);
+set_motor(2,-100);
 Sleep(0,500000);
 }
 
 int turn_right(void){
 
-set_motor(1,1,100);
+set_motor(1,100);
 Sleep(0,500000);
 }
 
 int move_forward(void){
-set_motor(1,1,200);
-set_motor(2,1,200);
+set_motor(1,200);
+set_motor(2,-200);
 
 }
 
