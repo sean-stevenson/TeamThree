@@ -1,5 +1,11 @@
 R
 IP address: 10.140.62.149
+pw pi
+
+Motor numbers:
+Left motor = motor 1 Positive speed for forwards action
+Right motor = motor 2 Negative speed for forwards action
+
 
 Dimensions: (for use in chassis design and general reference)
 rPi mainBoard x = 115mm y = 63mm
