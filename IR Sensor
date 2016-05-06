@@ -17,3 +17,6 @@ Sleep(0, 500000);
 
 return o; }
 
+// min sensor value 4
+//max sensor value ~450 but is not very consistent.
+
