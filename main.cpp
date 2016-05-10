@@ -5,6 +5,7 @@
 extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed ); //NOW FIXED
+extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
 
 extern "C" int connect_to_server(char server_addr[15],int port);
@@ -59,7 +60,7 @@ int main (){
     //while(running == 1){
     for(int time=0;time<20;time++){  
         
-    int take_picture();
+    take_picture();
     
     for(int i = 0; i < pxCount; i++){  /**Less than 320 as the image is 320 pixels across*/
 
