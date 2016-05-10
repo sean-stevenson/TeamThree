@@ -1,0 +1,24 @@
+int sum = 0;      /**the white line*/
+int white_threshold[16];
+int col[16];
+int i;
+int w;
+
+int kp = 0.5;
+int pSignal = 0;
+
+for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
+
+col[i] = get_pixel(320/16 * i,120,3);
+    if(col[i] > 220){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
+        white_threshold[i] = 1;
+    }else{
+        white_threshold[i] = 0;
+    }
+    sum = sum + (i - 7) * white_threshold[i];
+    pSignal = sum * kp;
+    
+int move_forward(void){
+set_motor(1, pSignal);
+set_motor(2,-1 * pSignal);
+}
