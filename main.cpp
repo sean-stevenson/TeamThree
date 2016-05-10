@@ -7,10 +7,11 @@ extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed ); //NOW FIXED
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
-
 extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
+
+#define PIXEL_COUNT 16
 
 int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
@@ -49,10 +50,9 @@ int main (){
     
 
 
-    int whiteThreshold = 220;
-    int pxCount = 16;               // This is the amount of pixels we will use from the photo
-    int pixelColour[pxCount];   // Holds the value of the selected pixel (white[1]/black[0])
-    int col[pxCount];
+    int whiteThreshold = 220;        // This is the amount of pixels we will use from the photo
+    int pixelColour[PIXEL_COUNT];   // Holds the value of the selected pixel (white[1]/black[0])
+    int col[PIXEL_COUNT];
     int running = 1;
 
 
@@ -62,24 +62,24 @@ int main (){
         
     take_picture();
     
-    for(int i = 0; i < pxCount; i++){  /**Less than 320 as the image is 320 pixels across*/
+    for(int i = 0; i < PIXEL_COUNT; i++){  /**Less than 320 as the image is 320 pixels across*/
 
-            col[i] = get_pixel(320/pxCount * i,120,3);
+            col[i] = get_pixel(320/PIXEL_COUNT * i,120,3);
             if(col[i] > whiteThreshold){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
                 pixelColour[i] = 1;
             }else{
                 pixelColour[i] = 0;
             }
         }
-        for(int w = 0; w < pxCount; w++){
+        for(int w = 0; w < PIXEL_COUNT; w++){
 
-            if(pixelColour[(pxCount / 2)-1] == 1 || pixelColour[(pxCount / 2)+1 == 1]){
+            if(pixelColour[(PIXEL_COUNT / 2)-1] == 1 || pixelColour[(PIXEL_COUNT / 2)+1 == 1]){
                 move_forward();
             }
-            else if(w < (pxCount / 2)-2 && pixelColour[w] == 1){
+            else if(w < (PIXEL_COUNT / 2)-2 && pixelColour[w] == 1){
                 turn_left();
             }
-            else if(w > (pxCount / 2)+2 && pixelColour[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
+            else if(w > (PIXEL_COUNT / 2)+2 && pixelColour[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
                 turn_right();
             }  
         }
