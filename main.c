@@ -56,13 +56,13 @@ int sum = 0;      /**the white line*/
 int i;
 int w;
 int kp;
-int white_threshold[1];
-int col[15];
+int white_threshold[16];
+int col[16];
 
 
 
 
-for(i = 0; i < 15; i++){  /**Less than 320 as the image is 320 pixels across*/
+for(i = 1; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
 col[i] = get_pixel(320/16 * i,120,3);
 if(col[i] < 220){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
@@ -70,7 +70,6 @@ if(col[i] < 220){     /**checks the color recieved is enough "white" so no gloss
 }else{
     white_threshold[i] = 0;
 }
-
 for(w = 0; w > 15; w++){
 
 if(w > 8 && white_threshold[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
