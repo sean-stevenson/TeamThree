@@ -45,40 +45,42 @@
 * We got the gate open!
 
 ###Week 3 Checklist:
-- [ ] Sean: Update GitHub, plan meetings and reviews, help on coding
-- [ ] Tim: Printing and designing parts
-- [ ] Jaimar: Start traversing the line
-- [ ] Callum: Start traversing the line
-- [ ] Eli: Planning and developing code, future methods
+- [x] Sean: Update GitHub, plan meetings and reviews, help on coding
+- [x] Tim: Printing and designing parts
+- [x] Jaimar: Start traversing the line
+- [x] Callum: Start traversing the line
+- [x] Eli: Planning and developing code, future methods
 
 ###Week 3 Review:
-- [ ] Sean: Update GitHub, plan meetings and reviews, help on coding
-- [ ] Tim: Printing and designing parts
+- [x] Sean: Update GitHub, plan meetings and reviews, help on coding
+- [x] Tim: Printing and designing parts
 - [ ] Jaimar: Start traversing the line
 - [ ] Callum: Start traversing the line
-- [ ] Eli: Planning and developing code, future methods
+- [x] Eli: Planning and developing code, future methods
+
+http://ecs.victoria.ac.nz/foswiki/pub/Main/ExamArchiveCOMP102/2015T1-test2-ans.pdf
 
 ###Week 4 Checklist:
-- [ ] Sean: 
-- [ ] Tim: 
-- [ ] Jaimar: 
-- [ ] Callum: 
-- [ ] Eli: 
+- [ ] Sean: Research and develop Quadrant 1 code with PID
+- [ ] Tim: 3D printing done
+- [ ] Jaimar: Complete Quadrant 1 code
+- [ ] Callum: Complete Quadrant 1 code
+- [ ] Eli: Research and develop Quadrant 1 code with PID 
 
 Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2YD_fXb_G-mnzb5xK0Q/edit?usp=sharing
 ###AVC Project Table
 
 | Week  | Dates | Team Objective(s)  | Items Due | Conflicting Committments | Tasks |
 | :------------: |:---------------:| :------: | :------: | :------: | :------: |
-| 1 | 18th April |Robot moving | AVC Plan Due | PHYS122 test     |[Week 1 Checklist](#week-1-checklist)| 
-| 2 | 25th April |Robot moving | ... |                           |[Week 2 Checklist](#week-2-checklist)|
-| 3 | 2nd May | Quadrant 1 complete |  ... |                     |[Week 3 Checklist](#week-3-checklist)|
-| 4 | 9th May | ... | ... | COMP102 test                         |[Week 4 Checklist](#week-4-checklist)|
-| 5 | 16th May |... | ... | ENGR121 test                         |[Week 5 Checklist](#week-5-checklist)|
-| 6 | 23rd May |... | ... | ...                                  |[Week 6 Checklist](#week-6-checklist)|
-| 7 | 30th May |... | ... | ENGR101 test                         |[Week 7 Checklist](#week-7-checklist)|
-| 8 | 6th May |         ...         | ... | ...                  |[Week 8 Checklist](#week-8-checklist)|
-| 9 | 13th June |Submit final reports | Final report due | Exams |[Week 9 Checklist](#week-9-checklist)|
+| 1 | 18th April |Robot moving | AVC Plan Due | PHYS122 test |[Week 1 Checklist](#week-1-checklist)| 
+| 2 | 25th April |Robot moving | ... | ... |[Week 2 Checklist](#week-2-checklist)|
+| 3 | 2nd May | Quadrant 1 complete |  ... |  ... |[Week 3 Checklist](#week-3-checklist)|
+| 4 | 9th May | Quadrant 1 complete | ... | COMP102 test |[Week 4 Checklist](#week-4-checklist)|
+| 5 | 16th May | AVC Progress report/Quadrant 2 | ... | ENGR121 test |[Week 5 Checklist](#week-5-checklist)|
+| 6 | 23rd May | Quadrant 3 | ... | ... |[Week 6 Checklist](#week-6-checklist)|
+| 7 | 30th May | Quadrant 4 | ... | ENGR101 test |[Week 7 Checklist](#week-7-checklist)|
+| 8 | 6th June | ... | ... | ... |[Week 8 Checklist](#week-8-checklist)|
+| 9 | 13th June | Submit final reports | Final report due | Exams |[Week 9 Checklist](#week-9-checklist)|
 
 ###Weekly Progress Checklist
 - [ ] How has each team member performed against their goal set last week?
@@ -117,110 +119,3 @@ Jaimar - Software Development - Writing main methods code and extending code bas
 Contact details: 
 02108733963
 ong.jay27@yahoo.co.nz
-
-
-Week 1 Checklist
-Week 1 in progress
-Name
-Task
-Conflictions 
-Progress
-Sean
-Check AVC Plan and GitHub formatting
-PHYS 122 Test
-Started GitHub formatting
-Jaimar
-Develop code to drive in a line
-PHYS 122 Test
-Got servos working
-Tim
-Assemble prototype chassis
-PHYS 122 Test
-Connected servos to Pi
-Eli
-Establish SSH and research Network commands
-PHYS 122 Test
-Got SSH working to transmit code to Pi
-Callum
-Develop code to drive in a line
-PHYS 122 Test
-Got servos working
-
-Week 1 Review 
-
-
-
-Week 2 Checklist
-Week 2 Review
-Name
-Task
-Conflictions 
-Progress
-Sean
-Organise meeting
-Check up on team
-Writing checklists and finishing formatting
-Mid trimester break
-
-
-Jaimar
-Develop code to drive in a line
-Mid trimester break
-
-
-Tim
-Develop prototype chassis further/finalise
-Mid trimester break
-
-
-Eli
-Establish SSH and research Network commands
-Mid trimester break
-
-
-Callum
-Develop code to drive in a line
-Mid trimester break
-
-
-
-
-			
-Week 2 review		
-
-Week 3 Checklist
-Week in progress
-Name
-Task
-Conflictions 
-Progress
-Sean
-Organise meeting
-Check up on team
-Writing checklists and finishing formatting
-Mid trimester break
-
-
-Jaimar
-Develop code to drive in a line
-Mid trimester break
-
-
-Tim
-Develop prototype chassis further/finalise
-Mid trimester break
-
-
-Eli
-Establish SSH and research Network commands
-Mid trimester break
-
-
-Callum
-Develop code to drive in a line
-Mid trimester break
-
-
-
-
-
