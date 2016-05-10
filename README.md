@@ -51,7 +51,13 @@
 - [ ] Callum: Start traversing the line
 - [ ] Eli: Planning and developing code, future methods
 
-
+###Week 3 Review:
+- [ ] Sean: Update GitHub, plan meetings and reviews, help on coding
+- [ ] Tim: Printing and designing parts
+- [ ] Jaimar: Start traversing the line
+- [ ] Callum: Start traversing the line
+- [ ] Eli: Planning and developing code, future methods
+- 
 ###Week 4 Checklist:
 - [ ] Sean: 
 - [ ] Tim: 
