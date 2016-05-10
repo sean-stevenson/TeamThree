@@ -72,14 +72,17 @@ if(col[i] < 220){     /**checks the color recieved is enough "white" so no gloss
 }
 for(w = 0; w > 15; w++){
 
-if(w > 8 && white_threshold[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
+if(white_threshold[7] == 1 ||(white_threshold[8] == 1){
+    move_forward();
+}
+else if(w < 6 && white_threshold[w] == 1){
+    turn_left();
+}
+else if(w > 9 && white_threshold[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
       //kp = w/5;
       turn_right();
-}else if(w < 7 && white_threshold[w] == 1){    /**0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0 <-- pixel array taken to determine if a point is white or not, traverse to find if a section of the picture is white*/
+}   /**0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0 <-- pixel array taken to determine if a point is white or not, traverse to find if a section of the picture is white*/
       //kp = w/9; some constant that changes depending on where the array is at, if it is at the lower bounds it will be a greater value
-      turn_left();
-}else if((w == 8 || w == 7) && (white_threshold[w] = 1)){
-      move_forward();
 }
 }
 return 0;
