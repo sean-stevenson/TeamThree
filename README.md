@@ -57,7 +57,7 @@
 - [ ] Jaimar: Start traversing the line
 - [ ] Callum: Start traversing the line
 - [ ] Eli: Planning and developing code, future methods
-- 
+
 ###Week 4 Checklist:
 - [ ] Sean: 
 - [ ] Tim: 
