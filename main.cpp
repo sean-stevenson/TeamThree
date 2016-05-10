@@ -56,7 +56,8 @@ int main (){
 
 
 
-    while(running == 1){
+    //while(running == 1){
+    for(int time=0;time<20;time++){  
         
     int take_picture();
     
@@ -81,6 +82,7 @@ int main (){
                 turn_right();
             }  
         }
+        Sleep(0, 500000)
     }
     return 0;
 }
