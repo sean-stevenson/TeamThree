@@ -8,39 +8,39 @@ extern "C" char get_pixel(int row, int col, int color);
 
 int main (){
 
-int take_picture();
+    int take_picture();
 
-int sum = 0;      /**the white line*/
-int i;
-int w;
-int kp;
-int white_threshold[16];
-int col[16];
-
+    int whiteThreshold = 220;
+    int pxCount = 16;               // This is the amount of pixels we will use from the photo
+    int pixelColour[pxCount];   // Holds the value of the selected pixel (white[1]/black[0])
+    int col[pxCount];
+    int running = 1;
 
 
 
-for(i = 1; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
+    while(running == 1){
+    for(int i = 0; i < pxCount; i++){  /**Less than 320 as the image is 320 pixels across*/
 
-col[i] = get_pixel(320/16 * i,120,3);
-if(col[i] < 220){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
-    white_threshold[i] = 1;
-}else{
-    white_threshold[i] = 0;
-}
-for(w = 0; w > 15; w++){
+            col[i] = get_pixel(320/pxCount * i,120,3);
+            if(col[i] > whiteThreshold){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
+                pixelColour[i] = 1;
+            }else{
+                pixelColour[i] = 0;
+            }
+        }
+        for(int w = 0; w < pxCount; w++){
 
-if(white_threshold[7] == 1){
-    move_forward();
-}
-else if(w < 6 && white_threshold[w] == 1){
-    turn_left();
-}
-else if(w > 9 && white_threshold[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
-      //kp = w/5;
-      turn_right();
-}  
-}
-return 0;
-}
+            if(pixelColour[(pxCount / 2)-1] == 1 || pixelColour[(pxCount / 2)+1 == 1]){
+                move_forward();
+            }
+            else if(w < (pxCount / 2)-2 && pixelColour[w] == 1){
+                turn_left();
+            }
+            else if(w > (pxCount / 2)+2 && pixelColour[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
+                turn_right();
+            }  
+        }
+    }
+    return 0;
+    }
 }
