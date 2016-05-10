@@ -72,7 +72,7 @@ if(col[i] < 220){     /**checks the color recieved is enough "white" so no gloss
 }
 for(w = 0; w > 15; w++){
 
-if(white_threshold[7] == 1 ||(white_threshold[8] == 1){
+if(white_threshold[7] == 1){
     move_forward();
 }
 else if(w < 6 && white_threshold[w] == 1){
