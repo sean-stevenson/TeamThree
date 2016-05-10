@@ -23,15 +23,15 @@ int openDoor(){
     }
 }
 
-void turn_left(){
+int turn_left(){
     set_motor(2,-50);
 }
 
-void turn_right(){
+int turn_right(){
     set_motor(1,50);
 }
 
-void move_forward(){
+int move_forward(){
     set_motor(1,50);
     set_motor(2,-50);
 }
