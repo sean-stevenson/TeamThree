@@ -27,15 +27,26 @@ int openDoor(){
 
 int turn_left(){
     set_motor(2,-50);
+    set_motor(1,-50);
+    Sleep(0, 100000);
+    set_motor(1, 0);
+    set_motor(2, 0);
 }
 
 int turn_right(){
     set_motor(1,50);
+    set_motor(2,50);
+    Sleep(0, 100000);
+    set_motor(1, 0);
+    set_motor(2, 0);
 }
 
 int move_forward(){
     set_motor(1,50);
     set_motor(2,-50);
+    Sleep(0, 100000);
+    set_motor(1, 0);
+    set_motor(2, 0);
 }
 
 int main (){
@@ -50,10 +61,10 @@ int main (){
     
 
 
-    int whiteThreshold = 220;        // This is the amount of pixels we will use from the photo
-    int pixelColour[PIXEL_COUNT];   // Holds the value of the selected pixel (white[1]/black[0])
-    int col[PIXEL_COUNT];
-    int running = 1;
+    int whiteThreshold = 170;        // This is the amount of pixels we will use from the photo
+    int pixelColour[PIXEL_COUNT];    // Holds the value of the selected pixel (white[1]/black[0])
+    int col[PIXEL_COUNT];            // Holds the whiteness of (PIXEL_COUNT) pixels in the picture
+    int running = 1;                 // This will be used to loop until the avc is finished
 
 
 
@@ -75,12 +86,15 @@ int main (){
 
             if(pixelColour[(PIXEL_COUNT / 2)-1] == 1 || pixelColour[(PIXEL_COUNT / 2)+1 == 1]){
                 move_forward();
+                printf("F\n");
             }
             else if(w < (PIXEL_COUNT / 2)-2 && pixelColour[w] == 1){
                 turn_left();
+                printf("L\n");
             }
             else if(w > (PIXEL_COUNT / 2)+2 && pixelColour[w] == 1){  /**Fine tuned points where robot travels, will need to be tested*/
                 turn_right();
+                printf("R\n");
             }  
         }
         Sleep(0, 500000);
@@ -90,7 +104,6 @@ int main (){
 
    /**0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0 <-- pixel array taken to determine if a point is white or not, traverse to find if a section of the picture is white*/
       //kp = w/9; some constant that changes depending on where the array is at, if it is at the lower bounds it will be a greater value
-
 
 
 
