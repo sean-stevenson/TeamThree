@@ -54,18 +54,43 @@
 ###Week 3 Review:
 - [x] Sean: Update GitHub, plan meetings and reviews, help on coding
 - [x] Tim: Printing and designing parts
-- [ ] Jaimar: Start traversing the line
-- [ ] Callum: Start traversing the line
+- [x] Jaimar: Start traversing the line
+- [x] Callum: Start traversing the line
 - [x] Eli: Planning and developing code, future methods
-
-http://ecs.victoria.ac.nz/foswiki/pub/Main/ExamArchiveCOMP102/2015T1-test2-ans.pdf
+* All goals were acclompished
+* All members attended the lab
+* All members that could attended the meeting
 
 ###Week 4 Checklist:
-- [ ] Sean: Research and develop Quadrant 1 code with PID
-- [ ] Tim: 3D printing done
-- [ ] Jaimar: Complete Quadrant 1 code
-- [ ] Callum: Complete Quadrant 1 code
-- [ ] Eli: Research and develop Quadrant 1 code with PID 
+- [x] Sean: Research and develop Quadrant 1 code with PID
+- [x] Tim: 3D printing done
+- [x] Jaimar: Complete Quadrant 1 code
+- [x] Callum: Complete Quadrant 1 code
+- [x] Eli: Research and develop Quadrant 1 code with PID 
+
+###Week 4 Review:
+- [x] Sean: Research and develop Quadrant 1 code with PID
+- [x] Tim: 3D printing done
+- [x] Jaimar: Complete Quadrant 1 code
+- [x] Callum: Complete Quadrant 1 code
+- [x] Eli: Research and develop Quadrant 1 code with PID
+
+
+
+
+###Week 5 Checklist:
+- [x] Sean:
+- [x] Tim:
+- [x] Jaimar: 
+- [x] Callum: 
+- [x] Eli: 
+
+###Week 5 Review:
+- [x] Sean: 
+- [x] Tim:
+- [x] Jaimar: 
+- [x] Callum: 
+- [x] Eli:
 
 Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2YD_fXb_G-mnzb5xK0Q/edit?usp=sharing
 ###AVC Project Table
