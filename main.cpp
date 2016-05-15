@@ -65,7 +65,7 @@ int main (){
     int pixelColour[PIXEL_COUNT];    // Holds the value of the selected pixel (white[1]/black[0])
     int col[PIXEL_COUNT];            // Holds the whiteness of (PIXEL_COUNT) pixels in the picture
     int running = 1;                 // This will be used to loop until the avc is finished
-
+    int sum = 0;
 
 
     //while(running == 1){
@@ -75,8 +75,8 @@ int main (){
     
     for(int i = 0; i < PIXEL_COUNT; i++){  /**Less than 320 as the image is 320 pixels across*/
 
-            col[i] = get_pixel(320/PIXEL_COUNT * i,120,3);
-            if(col[i] > whiteThreshold){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
+            sum = get_pixel(320/PIXEL_COUNT * i,120,3);
+            if(sum > whiteThreshold){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
                 pixelColour[i] = 1;
             }else{
                 pixelColour[i] = 0;
