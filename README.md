@@ -74,23 +74,24 @@
 - [x] Jaimar: Complete Quadrant 1 code
 - [x] Callum: Complete Quadrant 1 code
 - [x] Eli: Research and develop Quadrant 1 code with PID
-
-
-
+* All members attended the lab
+* All members that could attended the meeting
+* Sean and Eli switched with Jaimr and Calum
+* We got the robot registering the line!
 
 ###Week 5 Checklist:
-- [x] Sean:
-- [x] Tim:
-- [x] Jaimar: 
-- [x] Callum: 
-- [x] Eli: 
+- [x] Sean: Update and comment code, organise next weeks meeting
+- [x] Tim: Lowering camera/Changing wheels/IR sensors
+- [x] Jaimar: Getting Pi to turn in relation to PID
+- [x] Callum: Getting Pi to turn in relation to PID
+- [x] Eli: Debugging and formatting code, writing to Pi
 
 ###Week 5 Review:
-- [x] Sean: 
-- [x] Tim:
-- [x] Jaimar: 
-- [x] Callum: 
-- [x] Eli:
+- [] Sean: 
+- [] Tim:
+- [] Jaimar: 
+- [] Callum: 
+- [] Eli:
 
 Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2YD_fXb_G-mnzb5xK0Q/edit?usp=sharing
 ###AVC Project Table
@@ -116,7 +117,7 @@ Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2
 - [ ] Are all relevant code, bot photos and design files on the team Github?
 - [ ] Have you noted which members attended labs and team meetings?
 - [ ] Have team members shared their draft report sections (if the team decided they wanted to do that)?
-- [ ] Are there any tasks that need to be done for progress tp be made that have NOT been assigned to a team member?
+- [ ] Are there any tasks that need to be done for progress to be made that have NOT been assigned to a team member?
 
 ###Unformatted
 Tim - Hardware Development - Developing and building Chassis, working to integrate sensor components and testing hardware.
