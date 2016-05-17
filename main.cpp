@@ -9,6 +9,8 @@ extern "C" char get_pixel(int row, int col, int color);
 extern "C" int open_screen_stream();
 extern "C" int update_screen();
 
+int pSignal = 0;
+
 int turn_right(){
     set_motor(2,-1 * pSignal);//need to work out which is which motor
      printf("Right %d\n", pSignal);
@@ -19,6 +21,8 @@ int turn_left(){
          printf("Left %d\n", pSignal);
 }
 
+
+
 int main (){
 init();
 int sum = 0;      /**the white line*/
@@ -27,10 +31,8 @@ int col[16];
 int i;
 int w;
 
-
-
 int kp = 0.5;
-int pSignal = 0;
+
 while(1==1){
 take_picture();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
