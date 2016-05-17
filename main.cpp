@@ -18,7 +18,7 @@ int col[16];
 int i;
 int w;
 
-int kp = 0.02;
+int kp = 0.5;
 int pSignal = 0;
 
 while(1){
@@ -31,14 +31,21 @@ col[i] = get_pixel(320/16 * i,120,3);
     }else{
         white_threshold[i] = 0; //assigns 0 to where it is more black
     }
-    sum = sum + (i - 7) * white_threshold[i]; //will find a value that is either positive or negative, which will determine how far away from the line it is and which side of line.
+    sum = sum + (i - 7.5) * white_threshold[i]; //will find a value that is either positive or negative, which will determine how far away from the line it is and which side of line.
     pSignal = sum * kp; 
-    
-int move_forward(void){ //depending on pSignal the motors will be set to follow the line. Currently only prototype, still needs work.
-    set_motor(1, pSignal);
-    set_motor(2,-1 * pSignal);
+    if(sum < 0){//left
+        set_motor(1, pSignal);
     }
-}
-}
-return 0;
-}
+    else if(sum > 0){//right
+        set_motor(2,-1 * pSignal);
+    }
+    else{
+        set_motor(1, pSignal);
+        set_motor(2,-1 * pSignal);
+    }
+    }
+    return 0;
+    }
+//int move_forward(void){ //depending on pSignal the motors will be set to follow the line. Currently only prototype, still needs work.
+    
+    //}
