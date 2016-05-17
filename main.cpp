@@ -6,6 +6,10 @@ extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed ); //NOW FIXED
 extern "C" int take_picture();
 
+typedef int bool;
+#define true 1
+#define false 0
+
 int main (){
 init();
 int sum = 0;      /**the white line*/
@@ -17,6 +21,7 @@ int w;
 int kp = 7.5;
 int pSignal = 0;
 
+while(1){
 take_picture();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
@@ -33,6 +38,7 @@ int move_forward(void){ //depending on pSignal the motors will be set to follow 
     set_motor(1, pSignal);
     set_motor(2,-1 * pSignal);
     }
+}
 }
 return 0;
 }
