@@ -33,7 +33,7 @@ int w;
 
 int kp = 0.5;
 
-while(1==1){
+for(int time=0;time<20;time++){ 
 take_picture();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
@@ -56,15 +56,17 @@ for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
     turn_right();
         
     }
+    if(sum == 0){
         set_motor(1, pSignal);
         set_motor(2,-1 * pSignal);
     
          printf("Forward %d\n", pSignal);
     }
+    }
    
 
      printf("Running \n");//testing speed value going to wheels for means of finding way to slow it down.
-    
-    }
+    Sleep(0, 500000);
+}
     return 0;
 }
