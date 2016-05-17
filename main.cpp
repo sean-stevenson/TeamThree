@@ -18,7 +18,7 @@ int col[16];
 int i;
 int w;
 
-int kp = 7.5;
+int kp = 3.5;
 int pSignal = 0;
 
 while(1){
