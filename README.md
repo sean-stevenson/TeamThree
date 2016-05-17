@@ -80,7 +80,7 @@
 * We got the robot registering the line!
 
 ###Week 5 Checklist:
-- [x] Sean: Update and comment code, organise next weeks meeting
+- [x] Sean: Update and comment code, organise next weeks meeting/Logic behind 90* turns
 - [x] Tim: Lowering camera/Changing wheels/IR sensors
 - [x] Jaimar: Getting Pi to turn in relation to PID
 - [x] Callum: Getting Pi to turn in relation to PID
