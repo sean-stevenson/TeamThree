@@ -32,6 +32,7 @@ col[i] = get_pixel(320/16 * i,120,3);
 int move_forward(void){ //depending on pSignal the motors will be set to follow the line. Currently only prototype, still needs work.
     set_motor(1, pSignal);
     set_motor(2,-1 * pSignal);
+    }
 }
-}
+return 0;
 }
