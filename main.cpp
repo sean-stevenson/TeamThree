@@ -8,6 +8,17 @@ extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
 extern "C" int open_screen_stream();
 extern "C" int update_screen();
+
+int turn_right(){
+    set_motor(2,-1 * pSignal);//need to work out which is which motor
+     printf("Right %d\n", pSignal);
+}
+
+int turn_left(){
+     set_motor(1, pSignal);//need to work out which is which motor
+         printf("Left %d\n", pSignal);
+}
+
 int main (){
 init();
 int sum = 0;      /**the white line*/
@@ -16,14 +27,7 @@ int col[16];
 int i;
 int w;
 
-int turn_right(){
-    set_motor(2,-1 * pSignal);//need to work out which is which motor
-     printf("Right %d\n", pSignal);
-}
-int turn_left(){
-     set_motor(1, pSignal);//need to work out which is which motor
-         printf("Left %d\n", pSignal);
-}
+
 
 int kp = 0.5;
 int pSignal = 0;
@@ -31,10 +35,11 @@ while(1==1){
 take_picture();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
-sum = get_pixel(320/16 * i,120,3);
+    sum = get_pixel(320/16 * i,120,3);
     if(sum > 100){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
         white_threshold[i] = 1; //assigns 1 where line is located
-    }else{
+    }
+    else{
         white_threshold[i] = 0; //assigns 0 to where it is more black
     }
     sum = sum + ((i - 7) * white_threshold[i]); //will find a value that is either positive or negative, which will determine how far away from the line it is and which side of line.
