@@ -48,6 +48,4 @@ col[i] = get_pixel(320/16 * i,120,3);
     }
     return 0;
     }
-//int move_forward(void){ //depending on pSignal the motors will be set to follow the line. Currently only prototype, still needs work.
-    
-    //}
+}
