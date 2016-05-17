@@ -5,10 +5,7 @@ extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed ); //NOW FIXED
 extern "C" int take_picture();
-
-typedef int bool;
-#define true 1
-#define false 0
+extern "C" int get_pixel(int row, int col, int color);
 
 int main (){
 init();
@@ -21,7 +18,7 @@ int w;
 int kp = 0.5;
 int pSignal = 0;
 
-while(1){
+while(1==1){
 take_picture();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
