@@ -35,18 +35,22 @@ col[i] = get_pixel(320/16 * i,120,3);
     pSignal = sum * kp*8; 
     if(sum < 0){//left
         set_motor(1, pSignal);//need to work out which is which motor
+         printf("Left %d\n", pSignal);
     }
     else if(sum > 0){//right
     set_motor(2,-1 * pSignal);//need to work out which is which motor
+     printf("Right %d\n", pSignal);
         
     }
     else{
         set_motor(1, pSignal);
         set_motor(2,-1 * pSignal);
+    
+         printf("Forward %d\n", pSignal);
     }
    
     }
-     printf("%d", pSignal);//testing speed value going to wheels for means of finding way to slow it down.
+     printf("Running \n");//testing speed value going to wheels for means of finding way to slow it down.
     
     }
     return 0;
