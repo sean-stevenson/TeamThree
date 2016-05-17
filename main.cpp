@@ -18,7 +18,7 @@ int col[16];
 int i;
 int w;
 
-int kp = 0.5;
+int kp = 0.1;
 int pSignal = 0;
 
 while(1){
@@ -26,7 +26,7 @@ take_picture();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
 col[i] = get_pixel(320/16 * i,120,3);
-    if(col[i] > 150){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
+    if(col[i] > 190){     /**checks the color recieved is enough "white" so no glossy surfaces are detected*/
         white_threshold[i] = 1; //assigns 1 where line is located
     }else{
         white_threshold[i] = 0; //assigns 0 to where it is more black
