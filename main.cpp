@@ -5,8 +5,9 @@ extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed ); //NOW FIXED
 extern "C" int take_picture();
-extern "C" int get_pixel(int row, int col, int color);
-
+extern "C" char get_pixel(int row, int col, int color);
+extern "C" int open_screen_stream();
+extern "C" int update_screen();
 int main (){
 init();
 int sum = 0;      /**the white line*/
@@ -17,9 +18,10 @@ int w;
 
 int kp = 0.5;
 int pSignal = 0;
-
+open_screen_stream();
 while(1==1){
 take_picture();
+update_screen();
 for(i = 0; i < 16; i++){  /**Less than 320 as the image is 320 pixels across*/
 
 col[i] = get_pixel(320/16 * i,120,3);
