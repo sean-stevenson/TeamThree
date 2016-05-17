@@ -34,10 +34,11 @@ col[i] = get_pixel(320/16 * i,120,3);
     sum = sum + (i - 7.5) * white_threshold[i]; //will find a value that is either positive or negative, which will determine how far away from the line it is and which side of line.
     pSignal = sum * kp; 
     if(sum < 0){//left
-        set_motor(2,-1 * pSignal);
+        set_motor(1, pSignal);//need to work out which is which motor
     }
     else if(sum > 0){//right
-        set_motor(1, pSignal);
+    set_motor(2,-1 * pSignal);//need to work out which is which motor
+        
     }
     else{
         set_motor(1, pSignal);
