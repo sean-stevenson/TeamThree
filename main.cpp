@@ -12,19 +12,20 @@ extern "C" int update_screen();
 int main (){
 init();
 
-int sum = 0;      /**the white line*/
-int white_threshold = 100;
+int sum = 0;      
+int white_threshold = 100 //Value pixels need to be over to be considered "white"
 int i;
 int w;
-int totalSum = 0;
-int num;
+int totalSum = 0; 
+int num = 0;
 //P in PID
-int kP = 0.3;
+float kP = 0.3;
 int pSignal = 0;
 //D in PID
-int previous_error = 0;
-int current_error = 0;
-int kd = 5.0;
+//int pastError = 0;
+//int currentError = 0;
+int eValue = 0;
+//float kD = 5.0;
 
 while(1==1){
     take_picture();
@@ -37,10 +38,14 @@ while(1==1){
                 else{
                     w = 0;//white value
                 }
-            totalSum = totalSum + (i - 160) * w;
+            totalSum = totalSum + ((i - 160) * w);
         }
         eValue = totalSum/num;
         pSignal = eValue*kP
+        //currentError = abs(eValue);
+        //https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
+        //dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X
+        pError = eValue;
             if(pSignal < 0){//Prioritises left turns first
                 set_motor(1, 35);//From a few calculations 40 seems roughly right, max value is 70ish
                 set_motor(2,-1 * (35 - pSignal));//Minuses values if signal is minus it is double negative therefore positive
