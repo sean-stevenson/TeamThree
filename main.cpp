@@ -17,31 +17,28 @@ int white_threshold = 100;
 int i;
 int w;
 int totalSum = 0;
-int numfound = 0;
-
 float kP = 0.3;
+
 while(1==1){
     take_picture();
         for(i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(120,i,3);
                 if(sum > white_threshold){  
-                    w = 1;
+                    w = 1;//white value
                 }
                 else{
-                    w = 0;
+                    w = 0;//white value
                 }
             totalSum = totalSum + (i - 160) * w;
         }
-        signalE = 160 - totalSum;
-        P = kP * signalE;
         motorS = abs(totalSum);
             if(pSignal < 0){//left
                 set_motor(1, motorS);//maybe need a constant instead
-                set_motor(2,-1 * motorS + P);
+                set_motor(2,-1 * motorS);
                 Sleep(0, 100000);
             }
             else if(pSignal > 0){//right
-                set_motor(1, motorS + P);
+                set_motor(1, motorS);
                 set_motor(2,-1 * motorS);
                 Sleep(0, 100000);
             }
