@@ -18,7 +18,7 @@ int white_threshold = 60;
 int w = 0;
 int totalSum = 0; 
 int num = 0;
-float kP = 0.2;
+float kP = 0.7;
 int pSignal = 0;
 int z = 0;
 /**P in PID
@@ -59,7 +59,7 @@ while(z < 200){
                 set_motor(2, -35.5);
                 Sleep(0, 100000);
             }
-            if(pSignal < 0){/**Prioritises left turns first*/
+            else if(pSignal < 0){/**Prioritises left turns first*/
             printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
