@@ -28,7 +28,7 @@ int pastError = 0;
 int currentError = 0;*/
 int eValue = 0;
 int pError = 0;
-
+//change speed to make it go through gate, then use that as baseline
 
 while(z < 200){
     take_picture();
@@ -44,10 +44,15 @@ while(z < 200){
             totalSum = totalSum + ((i - 160) * w);
             
         }
-        
+        if(num < 18){
+                set_motor(1, -35);/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, 35.5);
+                Sleep(0, 500000);
+                continue;
+        }
+        else if(num != 0){
             eValue = totalSum/num;
-        
-        pSignal = eValue*kP;
+            pSignal = eValue*kP;
         printf("pSignal %d\n", pSignal);
         /**currentError = abs(eValue);
         https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
@@ -66,6 +71,7 @@ while(z < 200){
                 Sleep(0, 100000);
             }
             z++;
+
 }
 /**Test case formatting
  * 
