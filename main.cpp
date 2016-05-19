@@ -30,7 +30,7 @@ int eValue = 0;
 int pError = 0;
 
 
-while(z < 10){
+while(z < 200){
     take_picture();
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
