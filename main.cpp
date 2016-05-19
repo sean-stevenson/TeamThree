@@ -47,7 +47,7 @@ while(z < 100){
             eValue = totalSum/num;
         
         pSignal = eValue*kP;
-        printf("pSignal %d\n", pSignal)
+        printf("pSignal %d\n", pSignal);
         /**currentError = abs(eValue);
         https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
         dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
@@ -57,7 +57,7 @@ while(z < 100){
                 set_motor(2,-1 * 40);
                 Sleep(0, 100000);
             }
-            else if(pSignal < 0){/**Prioritises left turns first*/
+            if(pSignal < 0){/**Prioritises left turns first*/
                 set_motor(1, 40);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 set_motor(2,-1 * (40 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
