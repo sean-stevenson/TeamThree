@@ -30,7 +30,7 @@ int eValue = 0;
 int pError = 0;
 
 
-while(z < 50){
+while(z < 100){
     take_picture();
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 120, 3);
@@ -43,20 +43,22 @@ while(z < 50){
                 }
             totalSum = totalSum + ((i - 160) * w);
         }
-        eValue = totalSum/num;
+        
+            eValue = totalSum/num;
+        
         pSignal = eValue*kP;
         /**currentError = abs(eValue);
         https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
         dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
         pError = eValue;
-            if(pSignal < 0){/**Prioritises left turns first*/
-                set_motor(1, 45);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2,-1 * (45 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                Sleep(0, 100000);
-            }
-            else if(pSignal > 0){/**right*/
+            if(pSignal > 0){/**right*/
                 set_motor(1, (45 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2,-1 * 45);
+                Sleep(0, 100000);
+            }
+            else if(pSignal < 0){/**Prioritises left turns first*/
+                set_motor(1, 45);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(2,-1 * (45 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
             }
             z++;
