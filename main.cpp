@@ -49,13 +49,13 @@ while(1==1){
         dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
         pError = eValue;
             if(pSignal < 0){/**Prioritises left turns first*/
-                set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2,-1 * (35 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(1, 45);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(2,-1 * (45 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
             }
             else if(pSignal > 0){/**right*/
-                set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2,-1 * 35);
+                set_motor(1, (45 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2,-1 * 45);
                 Sleep(0, 100000);
             }
 }
