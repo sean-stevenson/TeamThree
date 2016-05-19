@@ -47,10 +47,11 @@ while(z < 100){
             eValue = totalSum/num;
         
         pSignal = eValue*kP;
+        printf("pSignal %d\n", pSignal)
         /**currentError = abs(eValue);
         https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
         dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
-        pError = eValue;
+        //pError = eValue;
             if(pSignal > 0){/**right*/
                 set_motor(1, (40 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2,-1 * 40);
