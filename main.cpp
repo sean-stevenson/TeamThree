@@ -20,6 +20,7 @@ int totalSum = 0;
 int num = 0;
 float kP = 0.3;
 int pSignal = 0;
+int z = 0;
 /**P in PID
 float kD = 5.0;
 D in PID
@@ -29,7 +30,7 @@ int eValue = 0;
 int pError = 0;
 
 
-while(1==1){
+while(z < 50){
     take_picture();
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 120, 3);
@@ -58,6 +59,7 @@ while(1==1){
                 set_motor(2,-1 * 45);
                 Sleep(0, 100000);
             }
+            z++;
 }
 /**Test case formatting
  * 
