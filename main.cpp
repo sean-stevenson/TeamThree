@@ -13,7 +13,7 @@ int main (){
 init();
 
 int sum = 0;      
-int white_threshold = 100; 
+int white_threshold = 70; 
 /**Value pixels need to be over to be considered "white"*/
 int w = 0;
 int totalSum = 0; 
