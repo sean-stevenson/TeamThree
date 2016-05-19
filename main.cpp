@@ -13,9 +13,8 @@ int main (){
 init();
 
 int sum = 0;      
-int white_threshold = 100 //Value pixels need to be over to be considered "white"
-int i;
-int w;
+int white_threshold = 100; //Value pixels need to be over to be considered "white"
+int w = 0;
 int totalSum = 0; 
 int num = 0;
 //P in PID
@@ -29,7 +28,7 @@ int eValue = 0;
 
 while(1==1){
     take_picture();
-        for(i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
+        for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(120,i,3);
                 if(sum > white_threshold){  
                     w = 1;//white value
@@ -41,7 +40,7 @@ while(1==1){
             totalSum = totalSum + ((i - 160) * w);
         }
         eValue = totalSum/num;
-        pSignal = eValue*kP
+        pSignal = eValue*kP;
         //currentError = abs(eValue);
         //https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
         //dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X
