@@ -18,7 +18,7 @@ int white_threshold = 100;
 int w = 0;
 int totalSum = 0; 
 int num = 0;
-float kP = 0.3;
+float kP = 0.6;
 int pSignal = 0;
 int z = 0;
 /**P in PID
@@ -52,13 +52,13 @@ while(z < 100){
         dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
         pError = eValue;
             if(pSignal > 0){/**right*/
-                set_motor(1, (45 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2,-1 * 45);
+                set_motor(1, (40 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2,-1 * 40);
                 Sleep(0, 100000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
-                set_motor(1, 45);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2,-1 * (45 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(1, 40);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(2,-1 * (40 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
             }
             z++;
