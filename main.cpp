@@ -32,7 +32,7 @@ int pError = 0;
 while(1==1){
     take_picture();
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            sum = get_pixel(120,i,3);
+            sum = get_pixel(i, 120, 3);
                 if(sum > white_threshold){  
                     w = 1;
                     num++;
