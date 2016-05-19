@@ -15,8 +15,8 @@ int z = 0;
 int q = 0;
     while(z< 100){
     
-                set_motor(1, 40);
-                set_motor(2, -41);
+                set_motor(1, 35);
+                set_motor(2, -35.5);
                 Sleep(0, 500000);
                 z++;
                 }
