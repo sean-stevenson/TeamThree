@@ -30,10 +30,11 @@ int eValue = 0;
 int pError = 0;
 
 
-while(z < 100){
+while(z < 10){
     take_picture();
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            sum = get_pixel(i, 120, 3);
+            sum = get_pixel(i, 1, 3);
+            printf("sum %d", sum);
                 if(sum > white_threshold){  
                     w = 1;
                     num++;
@@ -42,6 +43,7 @@ while(z < 100){
                     w = 0;
                 }
             totalSum = totalSum + ((i - 160) * w);
+            
         }
         
             eValue = totalSum/num;
@@ -54,12 +56,12 @@ while(z < 100){
         //pError = eValue;
             if(pSignal > 0){/**right*/
                 set_motor(1, (40 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2,-1 * 40);
+                set_motor(2, -40);
                 Sleep(0, 100000);
             }
             if(pSignal < 0){/**Prioritises left turns first*/
                 set_motor(1, 40);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2,-1 * (40 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -(40 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
             }
             z++;
