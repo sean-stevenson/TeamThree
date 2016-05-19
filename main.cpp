@@ -82,7 +82,7 @@ while(1==1){
  * Left motor = 35
  * Right motor = -78.38
  * 
- * /
+ * */
     return 0;
 }
 
