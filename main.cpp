@@ -24,6 +24,7 @@ int pSignal = 0;
 //int pastError = 0;
 //int currentError = 0;
 int eValue = 0;
+int pError = 0;
 //float kD = 5.0;
 
 while(1==1){
