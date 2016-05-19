@@ -47,9 +47,9 @@ while(z < 200){
         /**
         if(num < 18){
                 set_motor(1, -35);/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2, 35.5);
-                Sleep(0, 500000);
-                continue;
+               //set_motor(2, 35.5);
+                //Sleep(0, 500000);
+                //continue;
         //}*/
         //else if(num != 0){
             eValue = totalSum/num;
