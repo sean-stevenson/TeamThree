@@ -18,7 +18,7 @@ int white_threshold = 100;
 int w = 0;
 int totalSum = 0; 
 int num = 0;
-float kP = 0.6;
+float kP = 0.2;
 int pSignal = 0;
 int z = 0;
 /**P in PID
