@@ -59,9 +59,6 @@ while(1==1){
                 Sleep(0, 100000);
             }
 }
-    return 0;
-}
-
 /**Test case formatting
  * 
  * Test case 1:
@@ -86,3 +83,7 @@ while(1==1){
  * Right motor = -78.38
  * 
  * /
+    return 0;
+}
+
+
