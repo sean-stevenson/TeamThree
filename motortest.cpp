@@ -12,6 +12,7 @@ extern "C" int update_screen();
 int main (){
 init();
 int z = 0;
+int q = 0;
     while(z< 100){
     
                 set_motor(1, 40);
