@@ -1,9 +1,9 @@
 # include <stdio.h>
 # include <time.h>
-//these load specific methods from the ENGR101 library
+/**these load specific methods from the ENGR101 library*/
 extern "C" int init();
 extern "C" int Sleep( int sec , int usec );
-extern "C" int set_motor( int motor , int speed ); //NOW FIXED
+extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
 extern "C" int open_screen_stream();
@@ -13,46 +13,48 @@ int main (){
 init();
 
 int sum = 0;      
-int white_threshold = 100; //Value pixels need to be over to be considered "white"
+int white_threshold = 100; 
+/**Value pixels need to be over to be considered "white"*/
 int w = 0;
 int totalSum = 0; 
 int num = 0;
-//P in PID
 float kP = 0.3;
 int pSignal = 0;
-//D in PID
-//int pastError = 0;
-//int currentError = 0;
+/**P in PID
+float kD = 5.0;
+D in PID
+int pastError = 0;
+int currentError = 0;*/
 int eValue = 0;
 int pError = 0;
-//float kD = 5.0;
+
 
 while(1==1){
     take_picture();
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(120,i,3);
                 if(sum > white_threshold){  
-                    w = 1;//white value
+                    w = 1;
                     num++;
                 }
                 else{
-                    w = 0;//white value
+                    w = 0;
                 }
             totalSum = totalSum + ((i - 160) * w);
         }
         eValue = totalSum/num;
         pSignal = eValue*kP;
-        //currentError = abs(eValue);
-        //https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
-        //dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X
+        /**currentError = abs(eValue);
+        https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
+        dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
         pError = eValue;
-            if(pSignal < 0){//Prioritises left turns first
-                set_motor(1, 35);//From a few calculations 40 seems roughly right, max value is 70ish
-                set_motor(2,-1 * (35 - pSignal));//Minuses values if signal is minus it is double negative therefore positive
+            if(pSignal < 0){/**Prioritises left turns first*/
+                set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(2,-1 * (35 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
             }
-            else if(pSignal > 0){//right
-                set_motor(1, (35 + pSignal));//Minuses values if signal is minus it is double negative therefore positive
+            else if(pSignal > 0){/**right*/
+                set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2,-1 * 35);
                 Sleep(0, 100000);
             }
