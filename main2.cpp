@@ -13,7 +13,7 @@ int main (){
 init();
 
 int sum = 0;      
-int white_threshold = 70; 
+int white_threshold = 60; 
 /**Value pixels need to be over to be considered "white"*/
 int w = 0;
 int totalSum = 0; 
@@ -54,11 +54,13 @@ while(z < 200){
         dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
         //pError = eValue;
             if(pSignal > 0){/**right*/
+            printf("right %d\n", pSignal);
                 set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2, -35.5);
                 Sleep(0, 100000);
             }
             if(pSignal < 0){/**Prioritises left turns first*/
+            printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 100000);
