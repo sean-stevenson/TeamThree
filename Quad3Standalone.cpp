@@ -6,6 +6,9 @@ extern "C" int Sleep(int sec, int usec);
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
+extern "C" int open_screen_stream();
+extern "C" int update_screen();
+extern "C" int close_screen_stream();
 
 int sTime = 500000;
 int dTime = 500000;
@@ -37,6 +40,7 @@ int dEnd(){ //Turn 180 degrees clockwise
 
 int main(){
   init(0);
+  open_screen_stream();
   set_motor(1, 0);  //Stop motors
   set_motor(2, 0);
   Sleep(0, 200000); //Rest briefly
@@ -44,6 +48,7 @@ int main(){
   char contChar[100] = "y";
   
   while(contChar == "y"){
+  int update_screen();
   printf("Do you wish to continue? (y/n)\n");
   scanf("%s", contChar);
   
@@ -116,5 +121,6 @@ int main(){
     return 0;
   }
 }
+close_screen_stream();
 }
 
