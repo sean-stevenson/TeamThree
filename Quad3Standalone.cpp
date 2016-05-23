@@ -13,14 +13,14 @@ int speed = 50;
 int uTurn = 30;
 
 int lTurn(){  //Turn left 90 degrees
-  set_motor(2, -30);
+  set_motor(2, -speed);
   Sleep(0, sTime);
   set_motor(2, 0);
   return 0;
 }
 
 int rTurn(){  //Turn right 90 degrees
-  set_motor(1, 30);
+  set_motor(1, speed);
   Sleep(0, sTime);
   set_motor(1, 0);
   return 0;
@@ -39,7 +39,8 @@ int main(){
   init(0);
   set_motor(1, 0);  //Stop motors
   set_motor(2, 0);
-  Sleep(0, 200000); //Rest briefly
+  while(1){
+  Sleep(0, 500000); //Rest briefly
   take_picture();   //Update picture
     int left = 0;       //True if line is left
     int right = 0;      //True if line is right
@@ -77,37 +78,37 @@ int main(){
     if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
       lTurn();
       printf("T intersection\n");
-      return 1;
+      //return 1;
     }else if(left == 0 && right == 1 && top == 0){ //Right side turn
       rTurn();
       printf("Right turn\n");
-      return 1;
+      //return 1;
     }else if(left == 1 && right == 0 && top == 0){ //Left side turn
       lTurn();
       printf("Left turn\n");
-      return 1;
+      //return 1;
     }else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
       dEnd();
       printf("Dead end\n");
-      return 1;
+      //return 1;
     }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose left path)
       lTurn();
       printf("4-way\n");
-      return 1;
+      //return 1;
     }else if(left == 1 && right == 0 && top == 1){ //Right not available (choose left path)
       lTurn();
       printf("No right\n");
-      return 1;
+      //return 1;
     }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
       printf("No left\n");
-      return 1;
+      //return 1;
     }else if(left == 0 && right == 0 && top == 1){ //Straight line
       printf("Straight  Line\n");
-      return 1;
+      //return 1;
     }else{
       printf("Incorrect if statement found.\n");
       return 0;
     }
-  
+  }
 }
   
