@@ -10,7 +10,7 @@ extern "C" int open_screen_stream();
 extern "C" int update_screen();
 
 int main (){
-init(0);
+init();
 
 int sum = 0;      
 int white_threshold = 100; 
@@ -36,7 +36,7 @@ while(1){
     int pSignal = 0;
     int num = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            sum = get_pixel(i, 1, 3);
+            sum = get_pixel(i, 120, 3);
                 if(sum > white_threshold){  
                     w = 1;
                     num++;
