@@ -46,7 +46,9 @@ int main(){
   Sleep(0, 200000); //Rest briefly
   take_picture();   //Update picture
   char contChar[100] = "y";
-  
+  if(contChar == "y"){
+    printf("contChar == y\n");
+  }
   while(contChar == "y"){
   int update_screen();
   printf("Do you wish to continue? (y/n)\n");
