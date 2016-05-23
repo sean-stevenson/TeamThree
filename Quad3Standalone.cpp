@@ -47,79 +47,80 @@ int main(){
   take_picture();   //Update picture
   char contChar = 'y';
   while(contChar == 'y'){
-  int update_screen();
-  printf("Do you wish to continue? (y/n)\n");
-  scanf("%s", contChar);
-  
-  int left = 0;       //True if line is left
-  int right = 0;      //True if line is right
-  int top = 0;        //True if line is forward
-  int leftSum = 0;    //Totals amount of left mid pixels which are white
-  int rightSum = 0;   //Totals amount of right mid pixels which are white
-  int topSum = 0;     //Totals amount of top mid pixels which are white
+    int update_screen();
+    int left = 0;       //True if line is left
+    int right = 0;      //True if line is right
+    int top = 0;        //True if line is forward
+    int leftSum = 0;    //Totals amount of left mid pixels which are white
+    int rightSum = 0;   //Totals amount of right mid pixels which are white
+    int topSum = 0;     //Totals amount of top mid pixels which are white
   
   
-  for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
-    int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
-    int rightSide = get_pixel(319, 125 + i, 3); //Saves the value of the right-mid pixels
-    int topSide = get_pixel(155 + i, 0, 3);     //Saves the value of the top-mid pixels
-  
-    //If statements test whiteness of each pixel in array
-    if(leftSide > 100){
-      leftSum++;
+    for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
+      int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
+      int rightSide = get_pixel(319, 125 + i, 3); //Saves the value of the right-mid pixels
+      int topSide = get_pixel(155 + i, 0, 3);     //Saves the value of the top-mid pixels
+    
+      //If statements test whiteness of each pixel in array
+      if(leftSide > 100){
+        leftSum++;
+      }
+      if(rightSide > 100){
+        rightSum++;
+      }
+      if(topSide > 100){
+        topSum++;
+      }
     }
-    if(rightSide > 100){
-      rightSum++;
+    if(leftSum > 5){
+      left = 1;
     }
-    if(topSide > 100){
-      topSum++;
+    if(rightSum > 5){
+      right = 1;
     }
+    if(topSum > 5){
+      top = 1;
+    }
+    
+    if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
+      lTurn();
+      printf("T intersection\n");
+      return 1;
+    }else if(left == 0 && right == 1 && top == 0){ //Right side turn
+      rTurn();
+      printf("Right turn\n");
+      return 1;
+    }else if(left == 1 && right == 0 && top == 0){ //Left side turn
+      lTurn();
+      printf("Left turn\n");
+      return 1;
+    }else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
+      dEnd();
+      printf("Dead end\n");
+      return 1;
+    }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose left path)
+      lTurn();
+      printf("4-way\n");
+      return 1;
+    }else if(left == 1 && right == 0 && top == 1){ //Right not available (choose left path)
+      lTurn();
+      printf("No right\n");
+      return 1;
+    }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
+      printf("No left\n");
+      return 1;
+    }else if(left == 0 && right == 0 && top == 1){ //Straight line
+      printf("Straight  Line\n");
+      return 1;
+    }else{
+      printf("Incorrect if statement found.\n");
+      return 0;
+    }
+    
+    printf("Do you wish to continue? (y/n)\n");
+    scanf("%s", contChar);
   }
-  if(leftSum > 5){
-    left = 1;
-  }
-  if(rightSum > 5){
-    right = 1;
-  }
-  if(topSum > 5){
-    top = 1;
-  }
+  close_screen_stream();
   
-  if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
-    lTurn();
-    printf("T intersection\n");
-    return 1;
-  }else if(left == 0 && right == 1 && top == 0){ //Right side turn
-    rTurn();
-    printf("Right turn\n");
-    return 1;
-  }else if(left == 1 && right == 0 && top == 0){ //Left side turn
-    lTurn();
-    printf("Left turn\n");
-    return 1;
-  }else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
-    dEnd();
-    printf("Dead end\n");
-    return 1;
-  }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose left path)
-    lTurn();
-    printf("4-way\n");
-    return 1;
-  }else if(left == 1 && right == 0 && top == 1){ //Right not available (choose left path)
-    lTurn();
-    printf("No right\n");
-    return 1;
-  }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
-    printf("No left\n");
-    return 1;
-  }else if(left == 0 && right == 0 && top == 1){ //Straight line
-    printf("Straight  Line\n");
-    return 1;
-  }else{
-    printf("Incorrect if statement found.\n");
-    return 0;
-  }
 }
-close_screen_stream();
-}
-
+  
