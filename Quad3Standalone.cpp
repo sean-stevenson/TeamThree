@@ -1,7 +1,7 @@
 # include <stdio.h>
 # include <time.h>
 /**these load specific methods from the ENGR101 library*/
-extern "C" int init();
+extern "C" int init(int dl);
 extern "C" int Sleep(int sec, int usec);
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
@@ -13,10 +13,16 @@ int speed = 20;
 int uTurn = 15;
 
 int main(){
+  init(0);
   set_motor(1, 0);  //Stop motors
   set_motor(2, 0);
   Sleep(0, 200000); //Rest briefly
   take_picture();   //Update picture
+  char contChar = "y";
+  
+  while(contChar == "y"){
+  println("Do you wish to continue? (y/n)")
+  scanf("%c", contChar);
   
   int left = 0;       //True if line is left
   int right = 0;      //True if line is right
@@ -54,30 +60,39 @@ int main(){
   
   if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
     lTurn();
+    println("T intersection");
     return 1;
   }else if(left == 0 && right == 1 && top == 0){ //Right side turn
     rTurn();
+    println("Right turn");
     return 1;
   }else if(left == 1 && right == 0 && top == 0){ //Left side turn
     lTurn();
+    println("Left turn");
     return 1;
   }else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
     dEnd();
+    println("Dead end");
     return 1;
   }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose left path)
     lTurn();
+    println("4-way");
     return 1;
   }else if(left == 1 && right == 0 && top == 1){ //Right not available (choose left path)
     lTurn();
+    println("No right");
     return 1;
   }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
+    println("No left");
     return 1;
   }else if(left == 0 && right == 0 && top == 1){ //Straight line
+    println("Straight  Line")
     return 1;
   }else{
     println("Incorrect if statement found.");
     return 0;
   }
+}
 }
 
 int lTurn(){  //Turn left 90 degrees
