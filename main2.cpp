@@ -17,7 +17,7 @@ int white_threshold = 100;
 /**Value pixels need to be over to be considered "white"*/
 int w = 0;
 int num = 0;
-double kP = 0.3;
+double kP = 0.35;
 int pSignal = 0;
 int z = 0;
 /**P in PID
