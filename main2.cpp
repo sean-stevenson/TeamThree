@@ -54,6 +54,8 @@ while(z < 200){
         }
         else if(num != 0){
             eValue = totalSum/num;
+            printf("num %d\n", num);
+            printf("eValue %d\n", eValue);
             pSignal = eValue*kP;
         printf("pSignal %d\n", pSignal);
         /**currentError = abs(eValue);
