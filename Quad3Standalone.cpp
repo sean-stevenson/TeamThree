@@ -1,9 +1,9 @@
 # include <stdio.h>
 # include <time.h>
 /**these load specific methods from the ENGR101 library*/
-extern "C" int init(int dl);
-extern "C" int Sleep(int sec, int usec);
-extern "C" int set_motor( int motor , int speed );
+extern "C" int init (int dl);
+extern "C" int Sleep (int sec, int usec);
+extern "C" int set_motor ( int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
 
@@ -13,14 +13,14 @@ int speed = 50;
 int uTurn = 30;
 
 int lTurn(){  //Turn left 90 degrees
-  set_motor(2, -speed);
+  set_motor(2, -30);
   Sleep(0, sTime);
   set_motor(2, 0);
   return 0;
 }
 
 int rTurn(){  //Turn right 90 degrees
-  set_motor(1, speed);
+  set_motor(1, 30);
   Sleep(0, sTime);
   set_motor(1, 0);
   return 0;
