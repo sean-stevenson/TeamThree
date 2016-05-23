@@ -12,6 +12,29 @@ int dTime = 500000;
 int speed = 20;
 int uTurn = 15;
 
+int lTurn(){  //Turn left 90 degrees
+  set_motor(2, -speed);
+  Sleep(0, sTime);
+  set_motor(2, 0);
+  return 0;
+}
+
+int rTurn(){  //Turn right 90 degrees
+  set_motor(1, speed);
+  Sleep(0, sTime);
+  set_motor(1, 0);
+  return 0;
+}
+
+int dEnd(){ //Turn 180 degrees clockwise
+  set_motor(1, uTurn);
+  set_motor(2, uTurn);
+  Sleep(0, dTime);
+  set_motor(1, 0);
+  set_motor(2, 0);
+  return 0;
+} 
+
 int main(){
   init(0);
   set_motor(1, 0);  //Stop motors
@@ -86,7 +109,7 @@ int main(){
     println("No left");
     return 1;
   }else if(left == 0 && right == 0 && top == 1){ //Straight line
-    println("Straight  Line")
+    println("Straight  Line");
     return 1;
   }else{
     println("Incorrect if statement found.");
@@ -95,25 +118,3 @@ int main(){
 }
 }
 
-int lTurn(){  //Turn left 90 degrees
-  set_motor(2, -speed);
-  Sleep(0, sTime);
-  set_motor(2, 0);
-  return 0;
-}
-
-int rTurn(){  //Turn right 90 degrees
-  set_motor(1, speed);
-  Sleep(0, sTime);
-  set_motor(1, 0);
-  return 0;
-}
-
-int dEnd(){ //Turn 180 degrees clockwise
-  set_motor(1, uTurn);
-  set_motor(2, uTurn);
-  Sleep(0, dTime);
-  set_motor(1, 0);
-  set_motor(2, 0);
-  return 0;
-} 
