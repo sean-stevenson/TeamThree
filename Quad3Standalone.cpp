@@ -48,6 +48,7 @@ int main(){
   char contChar[100] = "y";
   if(contChar != "y"){
     printf("contChar != y\n");
+    printf("contChar == %s\n", contChar);
   }
   while(contChar == "y"){
   int update_screen();
