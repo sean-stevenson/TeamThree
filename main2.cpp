@@ -46,13 +46,14 @@ while(z < 200){
             totalSum = totalSum + ((i - 160) * w);
             
         }
-        if(num < 18){
+        if(num < 25){
                 set_motor(1, -35);/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2, 35.5);
                 Sleep(0, 500000);
                 continue;
         }
         else if(num != 0){
+            printf("totalSum %d\n", totalSum);
             eValue = totalSum/num;
             printf("num %d\n", num);
             printf("eValue %d\n", eValue);
