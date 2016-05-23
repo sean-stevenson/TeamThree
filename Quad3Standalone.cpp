@@ -44,8 +44,8 @@ int main(){
   char contChar = "y";
   
   while(contChar == "y"){
-  printf("Do you wish to continue? (y/n)\n")
-  scanf("%c", contChar);
+  printf("Do you wish to continue? (y/n)\n");
+  scanf("%s", contChar);
   
   int left = 0;       //True if line is left
   int right = 0;      //True if line is right
