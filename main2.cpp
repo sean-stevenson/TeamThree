@@ -34,6 +34,7 @@ while(z < 200){
     int totalSum = 0;
     int sum = 0;
     int pSignal = 0;
+    int num = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
                 if(sum > white_threshold){  
