@@ -47,7 +47,7 @@ while(1){
             totalSum = totalSum + ((i - 160) * w);
             
         }
-        if(num < 21){
+        if(num < 20){
                 set_motor(1, -32);/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2, 32.5);
                 Sleep(0, 500000);
