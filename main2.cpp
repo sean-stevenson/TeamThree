@@ -17,7 +17,7 @@ int white_threshold = 100;
 /**Value pixels need to be over to be considered "white"*/
 int w = 0;
 int num = 0;
-double kP = 0.35;
+double kP = 0.23;
 int pSignal = 0;
 int z = 0;
 /**P in PID
@@ -47,9 +47,9 @@ while(z < 200){
             totalSum = totalSum + ((i - 160) * w);
             
         }
-        if(num < 25){
-                set_motor(1, -35);/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2, 35.5);
+        if(num < 22){
+                set_motor(1, -40);/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, 40.5);
                 Sleep(0, 500000);
                 continue;
         }
