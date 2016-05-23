@@ -10,7 +10,7 @@ extern "C" int open_screen_stream();
 extern "C" int update_screen();
 
 int main (){
-init();
+init(0);
 
 int sum = 0;      
 int white_threshold = 100; 
@@ -29,7 +29,7 @@ int eValue = 0;
 int pError = 0;
 //change speed to make it go through gate, then use that as baseline
 
-while(z < 200){
+while(1){
     take_picture();
     int totalSum = 0;
     int sum = 0;
