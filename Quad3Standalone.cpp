@@ -6,14 +6,11 @@ extern "C" int Sleep(int sec, int usec);
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
-extern "C" int open_screen_stream();
-extern "C" int update_screen();
-extern "C" int close_screen_stream();
 
 int sTime = 500000;
 int dTime = 500000;
-int speed = 20;
-int uTurn = 15;
+int speed = 50;
+int uTurn = 30;
 
 int lTurn(){  //Turn left 90 degrees
   set_motor(2, -speed);
@@ -40,21 +37,16 @@ int dEnd(){ //Turn 180 degrees clockwise
 
 int main(){
   init(0);
-  open_screen_stream();
   set_motor(1, 0);  //Stop motors
   set_motor(2, 0);
   Sleep(0, 200000); //Rest briefly
   take_picture();   //Update picture
-  char contChar = 'y';
-  while(contChar == 'y'){
-    int update_screen();
     int left = 0;       //True if line is left
     int right = 0;      //True if line is right
     int top = 0;        //True if line is forward
     int leftSum = 0;    //Totals amount of left mid pixels which are white
     int rightSum = 0;   //Totals amount of right mid pixels which are white
     int topSum = 0;     //Totals amount of top mid pixels which are white
-  
   
     for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
       int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
@@ -116,11 +108,6 @@ int main(){
       printf("Incorrect if statement found.\n");
       return 0;
     }
-    
-    printf("Do you wish to continue? (y/n)\n");
-    scanf("%s", contChar);
-  }
-  close_screen_stream();
   
 }
   
