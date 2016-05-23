@@ -44,7 +44,7 @@ int main(){
   char contChar = "y";
   
   while(contChar == "y"){
-  println("Do you wish to continue? (y/n)")
+  printf("Do you wish to continue? (y/n)\n")
   scanf("%c", contChar);
   
   int left = 0;       //True if line is left
@@ -83,36 +83,36 @@ int main(){
   
   if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
     lTurn();
-    println("T intersection");
+    printf("T intersection\n");
     return 1;
   }else if(left == 0 && right == 1 && top == 0){ //Right side turn
     rTurn();
-    println("Right turn");
+    printf("Right turn\n");
     return 1;
   }else if(left == 1 && right == 0 && top == 0){ //Left side turn
     lTurn();
-    println("Left turn");
+    printf("Left turn\n");
     return 1;
   }else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
     dEnd();
-    println("Dead end");
+    printf("Dead end\n");
     return 1;
   }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose left path)
     lTurn();
-    println("4-way");
+    printf("4-way\n");
     return 1;
   }else if(left == 1 && right == 0 && top == 1){ //Right not available (choose left path)
     lTurn();
-    println("No right");
+    printf("No right\n");
     return 1;
   }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
-    println("No left");
+    printf("No left\n");
     return 1;
   }else if(left == 0 && right == 0 && top == 1){ //Straight line
-    println("Straight  Line");
+    printf("Straight  Line\n");
     return 1;
   }else{
-    println("Incorrect if statement found.");
+    printf("Incorrect if statement found.\n");
     return 0;
   }
 }
