@@ -13,10 +13,9 @@ int main (){
 init();
 
 int sum = 0;      
-int white_threshold = 127; 
+int white_threshold = 100; 
 /**Value pixels need to be over to be considered "white"*/
 int w = 0;
-int totalSum = 0; 
 int num = 0;
 float kP = 0.8;
 int pSignal = 0;
@@ -32,6 +31,7 @@ int pError = 0;
 
 while(z < 200){
     take_picture();
+    int totalSum = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
                 if(sum > white_threshold){  
@@ -44,7 +44,7 @@ while(z < 200){
             totalSum = totalSum + ((i - 160) * w);
             
         }
-        if(num < 20){
+        if(num < 18){
                 set_motor(1, -35);/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2, 35.5);
                 Sleep(0, 500000);
