@@ -17,7 +17,7 @@ int white_threshold = 100;
 /**Value pixels need to be over to be considered "white"*/
 int w = 0;
 int num = 0;
-double kP = 0.35;
+float kP = 0.33;
 int pSignal = 0;
 int z = 0;
 /**P in PID
@@ -36,7 +36,7 @@ while(1){
     int pSignal = 0;
     int num = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            sum = get_pixel(i, 120, 3);
+            sum = get_pixel(i, 1, 3);
                 if(sum > white_threshold){  
                     w = 1;
                     num++;
@@ -48,14 +48,15 @@ while(1){
             
         }
         if(num < 20){
-                set_motor(1, -32);/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2, 32.5);
-                Sleep(0, 500000);
+                set_motor(1, -38);/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, 38.5);
+                Sleep(1, 0);
                 continue;
         }
         else if(num != 0){
             printf("totalSum %d\n", totalSum);
             eValue = totalSum/num;
+            pError = pSignal/2;
             printf("num %d\n", num);
             printf("eValue %d\n", eValue);
             pSignal = eValue*kP;
