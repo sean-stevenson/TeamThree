@@ -45,7 +45,7 @@ int main(){
   set_motor(2, 0);
   Sleep(0, 200000); //Rest briefly
   take_picture();   //Update picture
-  char contChar[1] = 'y';
+  char contChar = 'y';
   while(contChar == 'y'){
   int update_screen();
   printf("Do you wish to continue? (y/n)\n");
