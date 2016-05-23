@@ -6,29 +6,31 @@ extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
-extern "C" int open_screen_stream();
-extern "C" int update_screen();
+extern "C" int init(int d_lev);
+extern "C" int connect_to_server(char server_addr[15],int port);
+extern "C" int send_to_server(char message[24]);
+extern "C" int receive_from_server(char message[24]);
 
 int main (){
-init();
+init(0);
 
 int sum = 0;      
-int white_threshold = 100; 
-/**Value pixels need to be over to be considered "white"*/
+int white_threshold = 110; 
 int w = 0;
 int num = 0;
-float kP = 0.33;
+float kP = 0.8;
 int pSignal = 0;
-int z = 0;
-/**P in PID
 float kD = 5.0;
-D in PID
 int pastError = 0;
-int currentError = 0;*/
+int currentError = 0;
 int eValue = 0;
-int pError = 0;
-//change speed to make it go through gate, then use that as baseline
 
+        connect_to_server("130.195.6.196", 1024) == 0){
+        send_to_server("Please");
+        char message[24];
+        receive_from_server(message);
+        send_to_server(message);
+        
 while(1){
     take_picture();
     int totalSum = 0;
@@ -45,39 +47,32 @@ while(1){
                     w = 0;
                 }
             totalSum = totalSum + ((i - 160) * w);
-            
         }
         if(num < 20){
-                set_motor(1, -38);/**Minuses values if signal is minus it is double negative therefore positive*/
-                set_motor(2, 38.5);
-                Sleep(1, 0);
+                set_motor(1, -40);
+                set_motor(2, 40.5);
+                Sleep(0, 500000);
                 continue;
         }
         else if(num != 0){
-            printf("totalSum %d\n", totalSum);
             eValue = totalSum/num;
-            pError = pSignal/2;
-            printf("num %d\n", num);
-            printf("eValue %d\n", eValue);
+            //pError = pSignal/4;
             pSignal = eValue*kP;
-        printf("pSignal %d\n", pSignal);
-        /**currentError = abs(eValue);
-        https://github.com/kaiwhata/ENGR101-2016/wiki/PID-(Proportional-Integral-Derivative)-Control
-        dSignal = (currentError-pastError/x)*kD; <-- need to work out value for X*/
-        //pError = eValue;
+            currentError = abs(eValue);
+            dSignal = (currentError-pastError)*kD;
+            pastError = eValue;
             if(pSignal > 0){/**right*/
-            printf("right %d\n", pSignal);
-                set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                printf("right %d\n", pSignal);
+                set_motor(1, (35 + pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2, -35.5);
-                Sleep(0, 100000);
+                Sleep(0, 500000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
-            printf("left %d\n", pSignal);
+                printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                Sleep(0, 100000);
+                set_motor(2, -35.5 - pSignal - dSignal);/**Minuses values if signal is minus it is double negative therefore positive*/
+                Sleep(0, 500000);
             }
-            z++;
         }
 
 }
