@@ -39,6 +39,10 @@ int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
 
 //int doorOpen = openDoor();
+move();
+    return 0;
+}
+int move(){
 Sleep(2,0);
 while(1){
     int totalSum = 0;
@@ -94,6 +98,8 @@ while(1){
         }
 
 }
+return 0;
+}
 /**Test case formatting
  * 
  * Test case 1:
@@ -120,9 +126,5 @@ while(1){
             //dSignal = (currentError -pastError)*kD;
             //pastError = eValue;
  * */
- set_motor(1, 0);
- set_motor(2, 0);
-    return 0;
-}
-
+ 
 
