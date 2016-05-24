@@ -28,21 +28,18 @@ int main (){
 init();
 
 int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
-int white_threshold = 100;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
+int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
 int w = 0;
 int num = 0;
 int exSignal = 0;
-float kP = 0.10;//Prop constant which scales with error signal
-float kD = 0.01;
+float kP = 0.133;//Prop constant which scales with error signal
+float kD = 0.001;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
 
-int doorOpen = openDoor();
-while(doorOpen != 0){
-        doorOpen = openDoor();
-}
-Sleep(3,0);
+//int doorOpen = openDoor();
+Sleep(2,0);
 while(1){
     int totalSum = 0;
     int pSignal = 0;
@@ -64,8 +61,8 @@ while(1){
                 totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         if(num < 20){ //If not enough pixels are found, reverse and reset
-                set_motor(1, -40);
-                set_motor(2, 40.5);
+                set_motor(1, -40.5);
+                set_motor(2, 40);
                 Sleep(0, 100000);
                 continue;
         }
