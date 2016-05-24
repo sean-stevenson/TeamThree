@@ -31,7 +31,7 @@ int sum = 0;
 int white_threshold = 80; 
 int w = 0;
 int num = 0;
-float kP = 0.6;
+float kP = 0.5;
 //float kD = 1.2;
 int pastError = 0;
 int currentError = 0;
@@ -81,7 +81,7 @@ while(1){
                 set_motor(2, -35.5);
                 //+ pSignal
                 // + dSignal
-                //Sleep(0, 500000);
+                Sleep(0, 100000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
@@ -90,7 +90,7 @@ while(1){
                  //+ dSignal
                 set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
-                //Sleep(0, 100000);
+                Sleep(0, 100000);
             }
         }
 
