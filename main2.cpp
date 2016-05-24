@@ -64,7 +64,7 @@ while(1){
         }
         if(num < 20){ //Low amount of white pixels found turn left?
                 set_motor(1, -40);
-                set_motor(2, 40.5);
+                set_motor(2, 40);
                 Sleep(0, 100000);
                 continue;
         }
@@ -78,13 +78,13 @@ while(1){
                 printf("right %d\n", pSignal);
                 set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 // + dSignal
-                set_motor(2, -35.5);
+                set_motor(2, -35);
                 Sleep(0, 5000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -(35 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
                 Sleep(0, 5000);
             }
