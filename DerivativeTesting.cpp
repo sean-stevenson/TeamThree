@@ -80,6 +80,7 @@ while(1){
             pSignal = eValue*kP;
             //currentError = abs(eValue);
             dSignal = ((currentError - pastError/2)*kD);
+            printf("dSignal %d\n", dSignal);
             pastError = currentError;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
