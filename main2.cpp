@@ -31,7 +31,7 @@ int sum = 0;
 int white_threshold = 110; 
 int w = 0;
 int num = 0;
-float kP = 0.3;
+double kP = 0.4;
 //float kD = 1.2;
 int pastError = 0;
 int currentError = 0;
@@ -62,8 +62,8 @@ while(1){
             totalSum = totalSum + ((i - 160) * w);
         }
         if(num < 20){ //Low amount of white pixels found turn left?
-                set_motor(1, -40);
-                set_motor(2, 40.5);
+                set_motor(1, -35);
+                set_motor(2, 35.5);
                 Sleep(0, 500000);
                 continue;
         }
@@ -88,7 +88,7 @@ while(1){
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 //+ pSignal
                  //+ dSignal
-                set_motor(2, -35.5 - pSignal);/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -35.5 + pSignal);/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
                 Sleep(0, 500000);
             }
