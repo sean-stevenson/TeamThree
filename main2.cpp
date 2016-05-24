@@ -73,8 +73,8 @@ while(1){
             //pError = pSignal/4;
             pSignal = eValue*kP;
             currentError = abs(eValue);
-            dSignal = (currentError-pastError)*kD;
-            pastError = eValue;
+            dSignal = (currentError /*-pastError*/)*kD;
+            //pastError = eValue;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
                 set_motor(1, (35 + pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
