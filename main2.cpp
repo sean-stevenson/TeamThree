@@ -31,7 +31,7 @@ int sum = 0;
 int white_threshold = 100; 
 int w = 0;
 int num = 0;
-float kP = 0.12;
+float kP = 0.15;
 //float kD = 5;
 int pastError = 0;
 int currentError = 0;
@@ -62,7 +62,7 @@ while(1){
                 }
             totalSum = totalSum + ((i - 160) * w);
         }
-        if(num < 20){ //Low amount of white pixels found turn left?
+        if(num < 21){ //Low amount of white pixels found turn left?
                 set_motor(1, -40);
                 set_motor(2, 40);
                 Sleep(0, 100000);
