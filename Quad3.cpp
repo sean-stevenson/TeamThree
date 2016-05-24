@@ -54,18 +54,28 @@ int intersection(){
     int topSide = get_pixel(155 + i, 0, 3);     //Saves the value of the top-mid pixels
   
     //If statements test whiteness of each pixel in array 100. Will be set to white_threshold when added to main
-    if(leftSide > 100){
-      leftSum++;
+    if(leftSide/20 > 130){
+      left = 1;
     }
-    if(rightSide > 100){
-      rightSum++;
+    else{
+      left = 0;
     }
-    if(topSide > 100){
-      topSum++;
+    if(rightSide > 130){
+      right = 1;
+    }
+    else{
+      right = 0;
+    }
+    if(topSide > 130){
+      top = 1;
+    }
+    else{
+      top = 0;
+    }
     }
   }
   //If statements set left/right/top to 1 if the majority of their pixels are white
-  if(leftSum > 5){
+/* if(leftSum > 5){
     left = 1;
   }
   if(rightSum > 5){
@@ -73,7 +83,7 @@ int intersection(){
   }
   if(topSum > 5){
     top = 1;
-  }
+  }*/
   
   //Main conditionals, returns 1 to the main function if sucessful
   if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
