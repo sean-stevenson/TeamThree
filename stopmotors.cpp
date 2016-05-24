@@ -1,7 +1,7 @@
 # include <stdio.h>
 
-extern "C" init(int dl);
-extern "C" set_motor(int motor, int speed);
+extern "C" int init(int dl);
+extern "C" int set_motor(int motor, int speed);
 
 int main(){
 init(0);
