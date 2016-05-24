@@ -31,8 +31,9 @@ int sum = 0;//get pixel value which returns values from 0 to 255 depending on th
 int white_threshold = 100;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
 int w = 0;
 int num = 0;
+int exSignal = 0;
 float kP = 0.13;//Prop constant which scales with error signal
-//float kD = 5;
+//float kD = 0.1;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
@@ -72,9 +73,12 @@ while(1){
         else if(num != 0){
             eValue = totalSum/num;//Finds average of a point sat -130 or 50
             pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
-            //currentError = abs(eValue);
-            //dSignal = abs((currentError - pastError)*kD);
-            //pastError = eValue;
+            currentError = abs(eValue);
+            printf("cError %d\n", currentError);
+            exSignal = abs((currentError - pastError)*kD);
+            dSignal = abs((currentError - pastError)/0.005)*kD);
+            printf("dSignal %d\n", dSignal);
+            pastError = currentError;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
                 set_motor(1, (35 + pSignal));
