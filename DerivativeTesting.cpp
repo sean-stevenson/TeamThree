@@ -33,11 +33,13 @@ int w = 0;
 int num = 0;
 float kP = 0.13;
 
+//Derivative
 int pastError = 0;
 int currentError = 0;
 float kD = 5;
-
 int eValue = 0;
+
+
 /*
 int doorOpen = openDoor();
 while(doorOpen != 0){
@@ -55,7 +57,9 @@ while(1){
     int eValue = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
+            printf("Sum %d\n", sum);
                 if(sum > white_threshold){  
+                    
                     w = 1;
                     num++; //num increases when a white pixel is found
                 }
@@ -75,7 +79,7 @@ while(1){
             eValue = totalSum/num;
             pSignal = eValue*kP;
             //currentError = abs(eValue);
-            dSignal = ((currentError - pastError/0.1)*kD);
+            dSignal = ((currentError - pastError/2)*kD);
             pastError = currentError;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
