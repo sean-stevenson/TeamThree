@@ -31,8 +31,8 @@ int sum = 0;
 int white_threshold = 100; 
 int w = 0;
 int num = 0;
-float kP = 0.8;
-//float kD = 1.2;
+float kP = 0.12;
+//float kD = 5;
 int pastError = 0;
 int currentError = 0;
 int eValue = 0;
@@ -63,31 +63,30 @@ while(1){
             totalSum = totalSum + ((i - 160) * w);
         }
         if(num < 20){ //Low amount of white pixels found turn left?
-                set_motor(1, -35);
-                set_motor(2, 35.5);
-                Sleep(0, 500000);
+                set_motor(1, -40);
+                set_motor(2, 40.5);
+                Sleep(0, 100000);
                 continue;
         }
         else if(num != 0){
             eValue = totalSum/num;
             pSignal = eValue*kP;
+            //currentError = abs(eValue);
+            //dSignal = abs((currentError - pastError)*kD);
+            //pastError = eValue;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
                 set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                // - dSignal
-                set_motor(2, -35.5);
-                //+ pSignal
                 // + dSignal
-                Sleep(0, 100000);
+                set_motor(2, -35.5);
+                Sleep(0, 5000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                //+ pSignal
-                 //+ dSignal
                 set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
-                Sleep(0, 100000);
+                Sleep(0, 5000);
             }
             
         }
