@@ -84,11 +84,11 @@ while(1){
                 // + dSignal
                 Sleep(0, 300000);
             }
-            else if(pSignal > 120){
+            else if(pSignal > 120){ //faster right turn, the opposite wheel is slowerd down to make the turn much tighter when needed
             printf("tighter right %d\n", pSignal);
                 set_motor(1, (30 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 // - dSignal
-                set_motor(2, -15);
+                set_motor(2, -(30.5 - pSignal));
                 //+ pSignal
                 // + dSignal
                 Sleep(0, 300000);
@@ -104,7 +104,7 @@ while(1){
             }
             else if(pSignal < -120){
                 printf("tighterleft %d\n", pSignal);
-                set_motor(1, 15);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(1, 30 + pSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 //+ pSignal
                  //+ dSignal
                 set_motor(2, -(30.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
