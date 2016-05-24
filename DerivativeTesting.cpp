@@ -32,9 +32,11 @@ int white_threshold = 100;
 int w = 0;
 int num = 0;
 float kP = 0.13;
-//float kD = 5;
+
 int pastError = 0;
 int currentError = 0;
+float kD = 5;
+
 int eValue = 0;
 /*
 int doorOpen = openDoor();
@@ -61,6 +63,7 @@ while(1){
                     w = 0;
                 }
             totalSum = totalSum + ((i - 160) * w);
+            currentError = currentError + sum;
         }
         if(num < 20){ //Low amount of white pixels found turn left?
                 set_motor(1, -40);
@@ -72,11 +75,11 @@ while(1){
             eValue = totalSum/num;
             pSignal = eValue*kP;
             //currentError = abs(eValue);
-            //dSignal = abs((currentError - pastError)*kD);
-            //pastError = eValue;
+            dSignal = ((currentError - pastError/0.1)*kD);
+            pastError = currentError;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
-                set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(1, (35 + (pSignal + dSignal)));/**Minuses values if signal is minus it is double negative therefore positive*/
                 // + dSignal
                 set_motor(2, -35.5);
                 Sleep(0, 5000);
@@ -84,7 +87,7 @@ while(1){
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -(35.5 - (pSignal - dSignal)));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
                 Sleep(0, 5000);
             }
