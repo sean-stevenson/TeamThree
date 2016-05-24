@@ -28,7 +28,7 @@ int main (){
 init(0);
 
 int sum = 0;      
-int white_threshold = 110; 
+int white_threshold = 100; 
 int w = 0;
 int num = 0;
 double kP = 0.4;
@@ -51,7 +51,9 @@ while(1){
     int dSignal = 0;
     int num = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
+            
             sum = get_pixel(i, 1, 3);
+            printf("sum %d", sum);
                 if(sum > white_threshold){  
                     w = 1;
                     num++; //num increases when a white pixel is found
