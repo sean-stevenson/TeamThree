@@ -34,7 +34,7 @@ int num = 0;
 float kP = 0.8;
 int pSignal = 0;
 int dSignal = 0;
-float kD = 5.0;
+float kD = 2.0;
 int pastError = 0;
 int currentError = 0;
 int eValue = 0;
@@ -43,7 +43,7 @@ int doorOpen = openDoor();
 while(doorOpen != 0){
         doorOpen = openDoor();
 }
-Sleep(4,0);
+Sleep(3,0);
 
 while(1){
     take_picture();
@@ -73,18 +73,18 @@ while(1){
             //pError = pSignal/4;
             pSignal = eValue*kP;
             currentError = abs(eValue);
-            //dSignal = (currentError-pastError)*kD;
-            //pastError = eValue;
+            dSignal = (currentError-pastError)*kD;
+            pastError = eValue;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
-                set_motor(1, (35 + pSignal /*+ dSignal*/));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(1, (35 + pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 set_motor(2, -35.5);
                 Sleep(0, 500000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2, -35.5 - pSignal /*- dSignal*/);/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -35.5 - pSignal - dSignal);/**Minuses values if signal is minus it is double negative therefore positive*/
                 Sleep(0, 500000);
             }
         }
