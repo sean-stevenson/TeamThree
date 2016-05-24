@@ -75,7 +75,7 @@ while(1){
             //currentError = abs(eValue);
             //dSignal = (currentError /*-pastError*/)*kD;
             //pastError = eValue;
-            if(pSignal > 0 && pSignal <100){/**right*/
+            if(pSignal > 0 && pSignal <120){/**right*/
                 printf("right %d\n", pSignal);
                 set_motor(1, (30 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 // - dSignal
@@ -84,18 +84,16 @@ while(1){
                 // + dSignal
                 Sleep(0, 300000);
             }
-            else if(pSignal > 100){
-                 printf("right %d\n", pSignal);
-                set_motor(1, 15;/**Minuses values if signal is minus it is double negative therefore positive*/
+            else if(pSignal > 120){
+            printf("tighter right %d\n", pSignal);
+                set_motor(1, (30 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 // - dSignal
-                set_motor(2, -(30.5-pSignal));
+                set_motor(2, -15);
                 //+ pSignal
                 // + dSignal
                 Sleep(0, 300000);
-                
-                
             }
-            else if(pSignal < 0 && pSignal > -100){/**Prioritises left turns first*/
+            else if(pSignal < 0 && pSignal > -120){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
                 set_motor(1, 30);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 //+ pSignal
@@ -104,14 +102,14 @@ while(1){
                 //- dSignal
                 Sleep(0, 300000);
             }
-            else if(pSignal < -100){
+            else if(pSignal < -120){
+                printf("tighterleft %d\n", pSignal);
                 set_motor(1, 15);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 //+ pSignal
                  //+ dSignal
                 set_motor(2, -(30.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
                 Sleep(0, 300000);
-                
             }
         }
 
