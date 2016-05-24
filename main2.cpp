@@ -7,7 +7,7 @@ extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
-extern "C" int init(int d_lev);
+extern "C" int init();
 extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
@@ -25,13 +25,13 @@ int openDoor(){
 }
 
 int main (){
-init(0);
+init();
 
 int sum = 0;      
 int white_threshold = 100; 
 int w = 0;
 int num = 0;
-float kP = 0.6;
+float kP = 0.8;
 //float kD = 1.2;
 int pastError = 0;
 int currentError = 0;
@@ -50,6 +50,7 @@ while(1){
     int pSignal = 0;
     int dSignal = 0;
     int num = 0;
+    int eValue = 0;git 
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
                 if(sum > white_threshold){  
@@ -61,7 +62,7 @@ while(1){
                 }
             totalSum = totalSum + ((i - 160) * w);
         }
-        if(num < 22){ //Low amount of white pixels found turn left?
+        if(num < 20){ //Low amount of white pixels found turn left?
                 set_motor(1, -35);
                 set_motor(2, 35.5);
                 Sleep(0, 500000);
@@ -69,11 +70,7 @@ while(1){
         }
         else if(num != 0){
             eValue = totalSum/num;
-            //pError = pSignal/4;
             pSignal = eValue*kP;
-            //currentError = abs(eValue);
-            //dSignal = (currentError /*-pastError*/)*kD;
-            //pastError = eValue;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
                 set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
@@ -81,7 +78,7 @@ while(1){
                 set_motor(2, -35.5);
                 //+ pSignal
                 // + dSignal
-                Sleep(0, 300000);
+                Sleep(0, 100000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
@@ -90,8 +87,9 @@ while(1){
                  //+ dSignal
                 set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
-                Sleep(0, 300000);
+                Sleep(0, 100000);
             }
+            
         }
 
 }
@@ -117,7 +115,9 @@ while(1){
  * pSignal is negative so turn left
  * Left motor = 35
  * Right motor = -78.38
- * 
+ *  //currentError = abs(eValue);
+            //dSignal = (currentError -pastError)*kD;
+            //pastError = eValue;
  * */
  set_motor(1, 0);
  set_motor(2, 0);
