@@ -32,8 +32,6 @@ int white_threshold = 110;
 int w = 0;
 int num = 0;
 float kP = 0.8;
-int pSignal = 0;
-int dSignal = 0;
 float kD = 2.0;
 int pastError = 0;
 int currentError = 0;
@@ -50,6 +48,7 @@ while(1){
     int totalSum = 0;
     int sum = 0;
     int pSignal = 0;
+    int Signal = 0;
     int num = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
