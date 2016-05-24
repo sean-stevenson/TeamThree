@@ -43,6 +43,7 @@ int doorOpen = openDoor();
 while(doorOpen != 0){
         doorOpen = openDoor();
 }
+Sleep(4,0);
 
 while(1){
     take_picture();
