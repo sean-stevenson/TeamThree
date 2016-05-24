@@ -32,7 +32,7 @@ int white_threshold = 100;//Threshold of white, i.e. from the 0 to 255 only valu
 int w = 0;
 int num = 0;
 int exSignal = 0;
-float kP = 0.13;//Prop constant which scales with error signal
+float kP = 0.10;//Prop constant which scales with error signal
 float kD = 0.01;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
@@ -89,7 +89,7 @@ while(1){
                 printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-                //- dSignal
+                //+ dSignal
                 Sleep(0, 5000);
             }
             
