@@ -1,7 +1,7 @@
 # include <stdio.h>
 # include <time.h>
 /**these load specific methods from the ENGR101 library*/
-extern "C" int init();
+
 extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
@@ -10,6 +10,18 @@ extern "C" int init(int d_lev);
 extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
+
+int openDoor(){
+    if(connect_to_server("130.195.6.196", 1024) == 0){
+        send_to_server("Please");
+        char message[24];
+        receive_from_server(message);
+        send_to_server(message);
+        return 0;
+    }else{
+        return 1;
+    }
+}
 
 int main (){
 init(0);
@@ -25,12 +37,11 @@ int pastError = 0;
 int currentError = 0;
 int eValue = 0;
 
-        connect_to_server("130.195.6.196", 1024) == 0){
-        send_to_server("Please");
-        char message[24];
-        receive_from_server(message);
-        send_to_server(message);
-        
+int doorOpen = openDoor();
+while(doorOpen != 0){
+        doorOpen = openDoor();
+}
+
 while(1){
     take_picture();
     int totalSum = 0;
