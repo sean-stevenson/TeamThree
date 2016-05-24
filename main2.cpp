@@ -27,7 +27,7 @@ int openDoor(){
 int main (){
 init();
 int doorOpen = openDoor();
-move();
+int moveBot = move();
     return 0;
 }
 
