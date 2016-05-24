@@ -28,7 +28,7 @@ int main (){
 init(0);
 
 int sum = 0;      
-int white_threshold = 100; 
+int white_threshold = 80; 
 int w = 0;
 int num = 0;
 double kP = 0.4;
@@ -51,9 +51,7 @@ while(1){
     int dSignal = 0;
     int num = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            
             sum = get_pixel(i, 1, 3);
-            printf("sum %d", sum);
                 if(sum > white_threshold){  
                     w = 1;
                     num++; //num increases when a white pixel is found
@@ -63,7 +61,7 @@ while(1){
                 }
             totalSum = totalSum + ((i - 160) * w);
         }
-        if(num < 20){ //Low amount of white pixels found turn left?
+        if(num < 22){ //Low amount of white pixels found turn left?
                 set_motor(1, -35);
                 set_motor(2, 35.5);
                 Sleep(0, 500000);
@@ -78,19 +76,19 @@ while(1){
             //pastError = eValue;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
-                set_motor(1, (35 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(1, (30 + pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 // - dSignal
-                set_motor(2, -35.5);
+                set_motor(2, -30.5);
                 //+ pSignal
                 // + dSignal
                 Sleep(0, 500000);
             }
             else if(pSignal < 0){/**Prioritises left turns first*/
                 printf("left %d\n", pSignal);
-                set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(1, 30);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                 //+ pSignal
                  //+ dSignal
-                set_motor(2, -35.5 + pSignal);/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -(30.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                 //- dSignal
                 Sleep(0, 500000);
             }
