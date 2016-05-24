@@ -32,18 +32,17 @@ int white_threshold = 100;//Threshold of white, i.e. from the 0 to 255 only valu
 int w = 0;
 int num = 0;
 int exSignal = 0;
-float kP = 0.1;//Prop constant which scales with error signal
-float kD = 0.07;
+float kP = 0.13;//Prop constant which scales with error signal
+float kD = 0.01;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
-/*
+
 int doorOpen = openDoor();
 while(doorOpen != 0){
         doorOpen = openDoor();
 }
 Sleep(3,0);
-*/
 while(1){
     int totalSum = 0;
     int pSignal = 0;
@@ -81,14 +80,16 @@ while(1){
             pastError = currentError;
             if(pSignal > 0){/**right*/
                 printf("right %d\n", pSignal);
-                set_motor(1, (35 + pSignal + dSignal));
+                set_motor(1, (35 + pSignal));
+                // + dSignal
                 set_motor(2, -35.5);
                 Sleep(0, 5000);
             }
             else if(pSignal < 0){/**left*/
                 printf("left %d\n", pSignal);
                 set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                set_motor(2, -(35.5 - pSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                //- dSignal
                 Sleep(0, 5000);
             }
             
