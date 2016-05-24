@@ -33,7 +33,7 @@ int w = 0;
 int num = 0;
 int exSignal = 0;
 float kP = 0.13;//Prop constant which scales with error signal
-//float kD = 0.1;
+float kD = 0.1;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
@@ -76,7 +76,7 @@ while(1){
             currentError = abs(eValue);
             printf("cError %d\n", currentError);
             exSignal = abs((currentError - pastError)*kD);
-            dSignal = abs((currentError - pastError)/0.005)*kD);
+            dSignal = abs(((currentError - pastError)/0.005)*kD);
             printf("dSignal %d\n", dSignal);
             pastError = currentError;
             if(pSignal > 0){/**right*/
