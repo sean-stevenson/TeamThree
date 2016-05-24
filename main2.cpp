@@ -50,7 +50,7 @@ while(1){
     int pSignal = 0;
     int dSignal = 0;
     int num = 0;
-    int eValue = 0;git 
+    int eValue = 0;
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);
                 if(sum > white_threshold){  
