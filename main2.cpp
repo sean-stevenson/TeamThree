@@ -1,4 +1,5 @@
 # include <stdio.h>
+#include <stdlib.h>
 # include <time.h>
 /**these load specific methods from the ENGR101 library*/
 
@@ -32,6 +33,7 @@ int w = 0;
 int num = 0;
 float kP = 0.8;
 int pSignal = 0;
+int dSignal = 0;
 float kD = 5.0;
 int pastError = 0;
 int currentError = 0;
