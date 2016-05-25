@@ -16,7 +16,7 @@ extern "C" int receive_from_server(char message[24]);
 //int dTime = 1000000; //Sleep time for dead end
 //int speed = 20;     //left/right turn speed
 //int uTurn = 15;     //Dead end turn speed
-
+/*
 int lTurn(){  //Turn left 90 degrees
   set_motor(1, 0);
   set_motor(2, -70);
@@ -33,7 +33,7 @@ int rTurn(){  //Turn right 90 degrees
   set_motor(2,0);
   set_motor(1, 0);
   return 0;
-}
+}*/
 
 /*int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
@@ -50,7 +50,7 @@ int rTurn(){  //Turn right 90 degrees
 */
 
 int move(){
-    int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
+int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
 int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
 int w = 0;
 int num = 0;
@@ -60,8 +60,12 @@ float kD = 0.001;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
+
 Sleep(2,0);
 while(1){
+    int leftNum = 0;
+    int rightNum = 0;
+    int topNum = 0;
     int totalSum = 0;
     int pSignal = 0;
     int dSignal = 0;
@@ -87,7 +91,7 @@ while(1){
                 Sleep(0, 100000);
                 continue;
         }
-        else if(num > 250){
+        else if(num > 300){
             set_motor(1, 0);  //Stop motors
             set_motor(2, 0);
             Sleep(0, 100000); //Rest briefly
@@ -101,26 +105,29 @@ while(1){
             int topSum = 0;     //Totals amount of top mid pixels which are white
  
   
-            for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
-                int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
+            for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness
+                int leftSide = get_pixel(1, 100 + i, 3);    //Saves the value of the left-mid pixels
                 if(leftSide > 130){
                   leftSum = leftSum + 1;
+                  leftNum++;
                 }
                 else{
                   leftSum = leftSum + 0;
                 }
                 
-                int rightSide = get_pixel(319, 125 + i, 3); //Saves the value of the right-mid pixels
+                int rightSide = get_pixel(319, 100 + i, 3); //Saves the value of the right-mid pixels
                 if(rightSide > 130){
                   rightSum = rightSum + 1;
+                  rightNum++;
                 }
                 else{
                   rightSum = rightSum + 0;
                 }
                 
-                int topSide = get_pixel(155 + i, 0, 3);     //Saves the value of the top-mid pixels
+                int topSide = get_pixel(106 + i, 1, 3);     //Saves the value of the top-mid pixels
                 if(topSide > 130){
                   topSum = topSum + 1;
+                  topNum++;
                 }
                 else{
                   topSum = topSum + 0;
@@ -146,20 +153,20 @@ while(1){
      * IMPORTANT!
      * Because we are averaging values, we may need to lower the threshold needed as in the average it may include lesser values that 130 so the overall will be less than.
      * */
-            if(leftSide/20 > 20){
+            if(leftSide/leftNum > 20){
                 left = 1;
             }
             else{
                 left = 0;
             }
             
-            if(rightSide/20 > 20){
+            if(rightSide/rightNum > 20){
                 right = 1;
             }
             else{
                 right = 0;
             }
-            if(topSide/20 > 20){
+            if(topSide/topNum > 20){
                 top = 1;
             }
             else{
@@ -171,27 +178,30 @@ while(1){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 set_motor(1, 0);
                 set_motor(2, -70);
-                Sleep(2, 500000);
+                Sleep(1, 500000);
                 set_motor(1,0);
                 set_motor(2, 0);  
             }
             else if(left == 0 && right == 1 && top == 0){ //Right side turn
                 set_motor(2,0);
                 set_motor(1, 70);
-                Sleep(2, 500000);
+                Sleep(1, 500000);
                 set_motor(2,0);
                 set_motor(1, 0);
             }
             else if(left == 1 && right == 0 && top == 0){ //Left side turn
                 set_motor(1, 0);
                 set_motor(2, -70);
-                Sleep(2, 500000);
+                Sleep(1, 500000);
                 set_motor(1,0);
                 set_motor(2, 0);
 
             }
             else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
                 printf("4 way intersection");
+                set_motor(1, 40);
+                set_motor(2, 40);
+                Sleep(0, 50000);
             }
         }
 
@@ -200,8 +210,6 @@ while(1){
             eValue = totalSum/num;//Finds average of a point sat -130 or 50
             pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
             currentError = abs(eValue);
-            //printf("cError %d\n", currentError);
-            exSignal = abs((currentError - pastError)*kD);
             dSignal = abs(((currentError - pastError)/0.005)*kD);
             //printf("dSignal %d\n", dSignal);
             pastError = currentError;
