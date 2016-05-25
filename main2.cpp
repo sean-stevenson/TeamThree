@@ -19,8 +19,8 @@ extern "C" int receive_from_server(char message[24]);
 
 int lTurn(){  //Turn left 90 degrees
   set_motor(1, 0);
-  set_motor(2, -40);
-  Sleep(0, 500000);
+  set_motor(2, -70);
+  Sleep(2, 500000);
   set_motor(1,0);
   set_motor(2, 0);
   return 1;
@@ -28,8 +28,8 @@ int lTurn(){  //Turn left 90 degrees
 
 int rTurn(){  //Turn right 90 degrees
   set_motor(2,0);
-  set_motor(1, 40);
-  Sleep(0, 500000);
+  set_motor(1, 70);
+  Sleep(2, 500000);
   set_motor(2,0);
   set_motor(1, 0);
   return 0;
