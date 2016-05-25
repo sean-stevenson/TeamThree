@@ -93,6 +93,7 @@ int intersection(){
   //Main conditionals, returns 1 to the main function if sucessful
   if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
     lTurn();
+    printf("T intersection");
     return 1;
   }else if(left == 0 && right == 1 && top == 0){ //Right side turn
     rTurn();
@@ -104,7 +105,9 @@ int intersection(){
     dEnd();
     return 1;
   }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
+    printf("4 way intersection");
     return 1;
+    
   }else if(left == 1 && right == 0 && top == 1){ //Right not available (choose forwards path)
     return 1;
   }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
