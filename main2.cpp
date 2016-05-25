@@ -23,14 +23,6 @@ int openDoor(){
         return 1;
     }
 }
-
-int main (){
-init();
-int doorOpen = openDoor();
-int moveBot = move();
-    return 0;
-}
-
 int move(){
     int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
 int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
@@ -99,6 +91,15 @@ while(1){
 }
 return 0;
 }
+
+int main (){
+init();
+int doorOpen = openDoor();
+move();
+    return 0;
+}
+
+
 /**Test case formatting
  * 
  * Test case 1:
