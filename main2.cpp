@@ -58,10 +58,10 @@ while(1){
         }
         if(num > 300){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
         //i.e. a T or 4 way intersection
-            set_motor(1, 0);  //Stop motors
-            set_motor(2, 0);
-            Sleep(0, 50000); //Rest briefly
-            take_picture();   //Update picture
+            //set_motor(1, 0);  //Stop motors
+            //set_motor(2, 0);
+            //Sleep(0, 50000); //Rest briefly
+            //take_picture();   //Update picture
   
             int left = 0;       //True if line is left
             int right = 0;      //True if line is right
@@ -74,7 +74,7 @@ while(1){
             for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
-                int leftSide = get_pixel(1, 100 + i, 3);//Saves the value of the left-mid pixels if above threshold
+                int leftSide = get_pixel(1, 120 + i, 3);//Saves the value of the left-mid pixels if above threshold
                 if(leftSide > 130){
                   leftSum = leftSum + 1;//Adds to a total count of pixels that are white
                 }
@@ -82,7 +82,7 @@ while(1){
                   leftSum = leftSum + 0;
                 }
                 
-                int rightSide = get_pixel(319, 100 + i, 3);//Saves the value of the right-mid pixels if above threshold
+                int rightSide = get_pixel(319, 120 + i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
                   rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }
