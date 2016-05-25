@@ -43,35 +43,14 @@ while(1){
     int sum = 0;
     int num = 0;
     int eValue = 0;
-    take_picture();//Takes picture and sets all the variables to 0
-        for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
-                if(sum > white_threshold){  //If value greater than threshold make it 1 and add to num
-                    w = 1;
-                    num++; //num increases when a white pixel is found
-                    
-                }
-                else{
-                    w = 0;
-                }
-                totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
-        }
-        if(num > 300){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
-        //i.e. a T or 4 way intersection
-            //set_motor(1, 0);  //Stop motors
-            //set_motor(2, 0);
-            //Sleep(0, 50000); //Rest briefly
-            //take_picture();   //Update picture
-  
-            int left = 0;       //True if line is left
-            int right = 0;      //True if line is right
-            int top = 0;        //True if line is forward
-            int leftSum = 0;    //Totals amount of left mid pixels which are white
-            int rightSum = 0;   //Totals amount of right mid pixels which are white
-            int topSum = 0;     //Totals amount of top mid pixels which are white
- 
-  
-            for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
+    int left = 0;       //True if line is left
+    int right = 0;      //True if line is right
+    int top = 0;        //True if line is forward
+    int leftSum = 0;    //Totals amount of left mid pixels which are white
+    int rightSum = 0;   //Totals amount of right mid pixels which are white
+    int topSum = 0;     //Totals amount of top mid pixels which are white
+    take_picture();
+    for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
                 int leftSide = get_pixel(1, 120 + i, 3);//Saves the value of the left-mid pixels if above threshold
@@ -98,19 +77,31 @@ while(1){
                   topSum = topSum + 0;
                 }
             }
-            //If the values collected are enough to signify there is a white line there, set the constants to true
-            //If not, set to false
-            printf("TopSum %d\n", topSum);
-            printf("RightSum %d\n", rightSum);
-            printf("LeftSum %d\n", leftSum);
             if(leftSum > 20){left = 1;}
             else{left = 0;}
             if(rightSum > 20){right = 1;}
             else{right = 0;}
             if(topSum > 20){top = 1;}
             else{top = 0;}
-    
-            //Main conditionals, returns 1 to the main function if sucessful
+    //Takes picture and sets all the variables to 0
+        for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
+            
+            sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
+                if(sum > white_threshold){  //If value greater than threshold make it 1 and add to num
+                    w = 1;
+                    num++; //num increases when a white pixel is found
+                    
+                }
+                else{
+                    w = 0;
+                }
+                totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
+        }
+
+            printf("TopSum %d\n", topSum);
+            printf("RightSum %d\n", rightSum);
+            printf("LeftSum %d\n", leftSum);
+
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 set_motor(1, 0);
                 set_motor(2, -70);
@@ -139,7 +130,7 @@ while(1){
                 set_motor(2, 40.5);
                 Sleep(1, 0);
             }
-        }
+        
         else if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
