@@ -18,27 +18,31 @@ extern "C" int receive_from_server(char message[24]);
 //int uTurn = 15;     //Dead end turn speed
 
 int lTurn(){  //Turn left 90 degrees
+  set_motor(1, 0);
   set_motor(2, -40);
   Sleep(0, 500000);
+  set_motor(1,0);
   set_motor(2, 0);
   return 1;
 }
 
 int rTurn(){  //Turn right 90 degrees
+  set_motor(2,0);
   set_motor(1, 40);
   Sleep(0, 500000);
+  set_motor(2,0);
   set_motor(1, 0);
   return 0;
 }
 
-int dEnd(){ //Turn 180 degrees clockwise
+/*int dEnd(){ //Turn 180 degrees clockwise
   set_motor(1, 40);
   set_motor(2, 40);
   Sleep(1, 0);
   set_motor(1, 0);
   set_motor(2, 0);
   return 0;
-} 
+}*/ 
 
 int intersection(){
   set_motor(1, 0);  //Stop motors
