@@ -12,29 +12,29 @@ extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
 
-int sTime = 500000; //Sleep time for left/right turn
-int dTime = 1000000; //Sleep time for dead end
-int speed = 20;     //left/right turn speed
-int uTurn = 15;     //Dead end turn speed
+//int sTime = 500000; //Sleep time for left/right turn
+//int dTime = 1000000; //Sleep time for dead end
+//int speed = 20;     //left/right turn speed
+//int uTurn = 15;     //Dead end turn speed
 
 int lTurn(){  //Turn left 90 degrees
-  set_motor(2, -50);
+  set_motor(2, -40);
   Sleep(0, 500000);
   set_motor(2, 0);
   return 1;
 }
 
 int rTurn(){  //Turn right 90 degrees
-  set_motor(1, speed);
-  Sleep(0, sTime);
+  set_motor(1, 40);
+  Sleep(0, 500000);
   set_motor(1, 0);
   return 0;
 }
 
 int dEnd(){ //Turn 180 degrees clockwise
-  set_motor(1, uTurn);
-  set_motor(2, uTurn);
-  Sleep(0, dTime);
+  set_motor(1, 40);
+  set_motor(2, 40);
+  Sleep(1, 0);
   set_motor(1, 0);
   set_motor(2, 0);
   return 0;
@@ -43,7 +43,7 @@ int dEnd(){ //Turn 180 degrees clockwise
 int intersection(){
   set_motor(1, 0);  //Stop motors
   set_motor(2, 0);
-  Sleep(0, 200000); //Rest briefly
+  Sleep(0, 100000); //Rest briefly
   take_picture();   //Update picture
   
   int left = 0;       //True if line is left
