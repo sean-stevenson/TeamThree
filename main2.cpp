@@ -56,13 +56,7 @@ while(1){
                 }
                 totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
-        if(num < 20){ //If not enough pixels are found, reverse and reset
-                set_motor(1, -40.5);
-                set_motor(2, 40);
-                Sleep(0, 100000);
-                continue;
-        }
-        else if(num > 300){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
+        if(num > 300){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
         //i.e. a T or 4 way intersection
             set_motor(1, 0);  //Stop motors
             set_motor(2, 0);
@@ -106,6 +100,9 @@ while(1){
             }
             //If the values collected are enough to signify there is a white line there, set the constants to true
             //If not, set to false
+            printf("TopSum %d\n", topSum);
+            printf("RightSum %d\n", rightSum);
+            printf("LeftSum %d\n", leftSum);
             if(leftSum > 20){left = 1;}
             else{left = 0;}
             if(rightSum > 20){right = 1;}
@@ -124,14 +121,14 @@ while(1){
             else if(left == 0 && right == 1 && top == 0){ //Right side turn
                 set_motor(2,0);
                 set_motor(1, 70);
-                Sleep(1, 500000);
+                Sleep(1, 0);
                 set_motor(2,0);
                 set_motor(1, 0);
             }
             else if(left == 1 && right == 0 && top == 0){ //Left side turn
                 set_motor(1, 0);
                 set_motor(2, -70);
-                Sleep(1, 500000);
+                Sleep(1, 0);
                 set_motor(1,0);
                 set_motor(2, 0);
 
@@ -139,11 +136,16 @@ while(1){
             else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
                 printf("4 way intersection");
                 set_motor(1, 40);
-                set_motor(2, 40);
-                Sleep(0, 500000);
+                set_motor(2, 40.5);
+                Sleep(1, 0);
             }
         }
-
+        else if(num < 20){ //If not enough pixels are found, reverse and reset
+                set_motor(1, -40.5);
+                set_motor(2, 40);
+                Sleep(0, 100000);
+                continue;
+        }
         else if(num != 0){
             //printf("Num at T %d \n", num);
             eValue = totalSum/num;//Finds average of a point at
