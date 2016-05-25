@@ -79,7 +79,6 @@ int intersection(){
       top = 0;
     }
     }
-}  
   //If statements set left/right/top to 1 if the majority of their pixels are white
 /* if(leftSum > 5){
     left = 1;
