@@ -89,80 +89,45 @@ while(1){
         }
         else if(num > 250){
             set_motor(1, 0);  //Stop motors
-  set_motor(2, 0);
-  Sleep(0, 100000); //Rest briefly
-  take_picture();   //Update picture
+            set_motor(2, 0);
+            Sleep(0, 100000); //Rest briefly
+            take_picture();   //Update picture
   
-  int left = 0;       //True if line is left
-  int right = 0;      //True if line is right
-  int top = 0;        //True if line is forward
-  int leftSum = 0;    //Totals amount of left mid pixels which are white
-  int rightSum = 0;   //Totals amount of right mid pixels which are white
-  int topSum = 0;     //Totals amount of top mid pixels which are white
+            int left = 0;       //True if line is left
+            int right = 0;      //True if line is right
+            int top = 0;        //True if line is forward
+            int leftSum = 0;    //Totals amount of left mid pixels which are white
+            int rightSum = 0;   //Totals amount of right mid pixels which are white
+            int topSum = 0;     //Totals amount of top mid pixels which are white
  
   
-  for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
-    int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
-    int rightSide = get_pixel(319, 125 + i, 3); //Saves the value of the right-mid pixels
-    int topSide = get_pixel(155 + i, 0, 3);     //Saves the value of the top-mid pixels
-  
+            for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
+                int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
+                if(leftSide > 130){
+                  leftSum = leftSum + 1;
+                }
+                else{
+                  leftSum = leftSum + 0;
+                }
+                
+                int rightSide = get_pixel(319, 125 + i, 3); //Saves the value of the right-mid pixels
+                if(rightSide > 130){
+                  rightSum = rightSum + 1;
+                }
+                else{
+                  rightSum = rightSum + 0;
+                }
+                
+                int topSide = get_pixel(155 + i, 0, 3);     //Saves the value of the top-mid pixels
+                if(topSide > 130){
+                  topSum = topSum + 1;
+                }
+                else{
+                  topSum = topSum + 0;
+                }
+            }
     //If statements test whiteness of each pixel in array 100. Will be set to white_threshold when added to main
-    if(leftSide/20 > 130){
-      left = 1;
-    }
-    else{
-      left = 0;
-    }
-    if(rightSide > 130){
-      right = 1;
-    }
-    else{
-      right = 0;
-    }
-    if(topSide > 130){
-      top = 1;
-    }
-    else{
-      top = 0;
-    }
-    }
-  //If statements set left/right/top to 1 if the majority of their pixels are white
-/* if(leftSum > 5){
-    left = 1;
-  }
-  if(rightSum > 5){
-    right = 1;
-  }
-  if(topSum > 5){
-    top = 1;
-  }*/
-  
-  //Main conditionals, returns 1 to the main function if sucessful
-  if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
-    lTurn();
-    printf("T intersection");
-    
-  }else if(left == 0 && right == 1 && top == 0){ //Right side turn
-    set_motor(2,0);
-  set_motor(1, 70);
-  Sleep(2, 500000);
-  set_motor(2,0);
-  set_motor(1, 0);
-    
-  }else if(left == 1 && right == 0 && top == 0){ //Left side turn
-    set_motor(1, 0);
-  set_motor(2, -70);
-  Sleep(2, 500000);
-  set_motor(1,0);
-  set_motor(2, 0);
-  /*}else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
-    dEnd();
-    return 1;*/
-  }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
-    printf("4 way intersection");
-    
-  }
-  /*else if(left == 1 && right == 0 && top == 1){ //Right not available (choose forwards path)
+    /*else if(left == 1 && right == 0 && top == 1){ //Right not available (choose forwards path)
     return 1;
   }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
     return 1;
@@ -171,11 +136,65 @@ while(1){
   }else{
     printf("Incorrect if statement found."); //This should never be called and means an if statement is coded incorrectly 
     return 0;
-  }*/
-}
+  }
+  /*}else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
+    dEnd();
+    return 1;*/
+    /***
+     * 
+     * IMPORTANT!
+     * IMPORTANT!
+     * Because we are averaging values, we may need to lower the threshold needed as in the average it may include lesser values that 130 so the overall will be less than.
+     * */
+            if(leftSide/20 > 20){
+                left = 1;
+            }
+            else{
+                left = 0;
+            }
+            
+            if(rightSide/20 > 20){
+                right = 1;
+            }
+            else{
+                right = 0;
+            }
+            if(topSide/20 > 20){
+                top = 1;
+            }
+            else{
+                top = 0;
+            }
+    
 
-          
-        
+  //Main conditionals, returns 1 to the main function if sucessful
+            if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
+                set_motor(1, 0);
+                set_motor(2, -70);
+                Sleep(2, 500000);
+                set_motor(1,0);
+                set_motor(2, 0);  
+            }
+            else if(left == 0 && right == 1 && top == 0){ //Right side turn
+                set_motor(2,0);
+                set_motor(1, 70);
+                Sleep(2, 500000);
+                set_motor(2,0);
+                set_motor(1, 0);
+            }
+            else if(left == 1 && right == 0 && top == 0){ //Left side turn
+                set_motor(1, 0);
+                set_motor(2, -70);
+                Sleep(2, 500000);
+                set_motor(1,0);
+                set_motor(2, 0);
+
+            }
+            else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
+                printf("4 way intersection");
+            }
+        }
+
         else if(num != 0){
             //printf("Num at T %d \n", num);
             eValue = totalSum/num;//Finds average of a point sat -130 or 50
@@ -240,6 +259,18 @@ move();
  *  //currentError = abs(eValue);
             //dSignal = (currentError -pastError)*kD;
             //pastError = eValue;
+            
+              //If statements set left/right/top to 1 if the majority of their pixels are white
+/* if(leftSum > 5){
+    left = 1;
+  }
+  if(rightSum > 5){
+    right = 1;
+  }
+  if(topSum > 5){
+    top = 1;
+  }*/
+  
  * */
  
 
