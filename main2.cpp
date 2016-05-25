@@ -102,15 +102,16 @@ while(1){
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
         if(top != 1){
-            if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
-                printf("T intersect");
+            if(left == 1 && right == 1){ //T intersection (choose left)
+                // && top == 0
                 set_motor(1, 0);
                 set_motor(2, -40);
-                Sleep(1, 500000);
+                Sleep(1, 0);
                 set_motor(1,0);
                 set_motor(2, 0);  
             }
-            else if(left == 0 && right == 1 && top == 0){ //Right side turn
+            else if(left == 0 && right == 1){ //Right side turn
+             //&& top == 0
                 printf("Right");
                 set_motor(2,0);
                 set_motor(1, 40);
@@ -118,7 +119,8 @@ while(1){
                 set_motor(2,0);
                 set_motor(1, 0);
             }
-            else if(left == 1 && right == 0 && top == 0){ //Left side turn
+            else if(left == 1 && right == 0){ //Left side turn
+            // && top == 0
                 printf("Left");
                 set_motor(1, 0);
                 set_motor(2, -40);
