@@ -52,7 +52,7 @@ int intersection(){
   int leftSum = 0;    //Totals amount of left mid pixels which are white
   int rightSum = 0;   //Totals amount of right mid pixels which are white
   int topSum = 0;     //Totals amount of top mid pixels which are white
-  
+ 
   
   for(int i = 0; i < 10; i++){  //For loop to save pixels to arrays and test whiteness
     int leftSide = get_pixel(0, 115 + i, 3);    //Saves the value of the left-mid pixels
@@ -79,7 +79,7 @@ int intersection(){
       top = 0;
     }
     }
-  
+}  
   //If statements set left/right/top to 1 if the majority of their pixels are white
 /* if(leftSum > 5){
     left = 1;
@@ -113,12 +113,12 @@ int intersection(){
   }else if(left == 0 && right == 0 && top == 1){ //Straight line
     return 1;
   }else{
-    println("Incorrect if statement found."); //This should never be called and means an if statement is coded incorrectly 
+    printf("Incorrect if statement found."); //This should never be called and means an if statement is coded incorrectly 
     return 0;
   }
 }
 
-int openDoor(){
+/*int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
         send_to_server("Please");
         char message[24];
@@ -128,7 +128,10 @@ int openDoor(){
     }else{
         return 1;
     }
+
 }
+*/
+
 int move(){
     int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
 int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
