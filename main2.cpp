@@ -12,42 +12,16 @@ extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
 
-//int sTime = 500000; //Sleep time for left/right turn
-//int dTime = 1000000; //Sleep time for dead end
-//int speed = 20;     //left/right turn speed
-//int uTurn = 15;     //Dead end turn speed
-/*
-int lTurn(){  //Turn left 90 degrees
-  set_motor(1, 0);
-  set_motor(2, -70);
-  Sleep(2, 500000);
-  set_motor(1,0);
-  set_motor(2, 0);
-  return 1;
-}
-
-int rTurn(){  //Turn right 90 degrees
-  set_motor(2,0);
-  set_motor(1, 70);
-  Sleep(2, 500000);
-  set_motor(2,0);
-  set_motor(1, 0);
-  return 0;
-}*/
-
-/*int openDoor(){
+int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
         send_to_server("Please");
         char message[24];
         receive_from_server(message);
         send_to_server(message);
         return 0;
-    }else{
-        return 1;
-    }
-
+    }else{return 1;}
 }
-*/
+
 
 int move(){
 int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
@@ -63,9 +37,6 @@ int eValue = 0;//Average value of error either side
 
 Sleep(2,0);
 while(1){
-    int leftNum = 0;
-    int rightNum = 0;
-    int topNum = 0;
     int totalSum = 0;
     int pSignal = 0;
     int dSignal = 0;
@@ -91,10 +62,11 @@ while(1){
                 Sleep(0, 100000);
                 continue;
         }
-        else if(num > 300){
+        else if(num > 300){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
+        //i.e. a T or 4 way intersection
             set_motor(1, 0);  //Stop motors
             set_motor(2, 0);
-            Sleep(0, 100000); //Rest briefly
+            Sleep(0, 50000); //Rest briefly
             take_picture();   //Update picture
   
             int left = 0;       //True if line is left
@@ -105,76 +77,43 @@ while(1){
             int topSum = 0;     //Totals amount of top mid pixels which are white
  
   
-            for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness
-                int leftSide = get_pixel(1, 100 + i, 3);    //Saves the value of the left-mid pixels
+            for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
+            //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
+            //For top this is from 
+                int leftSide = get_pixel(1, 100 + i, 3);//Saves the value of the left-mid pixels if above threshold
                 if(leftSide > 130){
-                  leftSum = leftSum + 1;
-                  leftNum++;
+                  leftSum = leftSum + 1;//Adds to a total count of pixels that are white
                 }
-                else{
+                else{//If not valid pixel skip
                   leftSum = leftSum + 0;
                 }
                 
-                int rightSide = get_pixel(319, 100 + i, 3); //Saves the value of the right-mid pixels
+                int rightSide = get_pixel(319, 100 + i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
-                  rightSum = rightSum + 1;
-                  rightNum++;
+                  rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }
-                else{
+                else{//If not valid pixel skip
                   rightSum = rightSum + 0;
                 }
                 
-                int topSide = get_pixel(106 + i, 1, 3);     //Saves the value of the top-mid pixels
+                int topSide = get_pixel(106 + i, 1, 3);//Saves the value of the top-mid pixels if above threshold
                 if(topSide > 130){
-                  topSum = topSum + 1;
-                  topNum++;
+                  topSum = topSum + 1;//Adds to a total count of pixels that are white
                 }
-                else{
+                else{//If not valid pixel skip
                   topSum = topSum + 0;
                 }
             }
-    //If statements test whiteness of each pixel in array 100. Will be set to white_threshold when added to main
-    /*else if(left == 1 && right == 0 && top == 1){ //Right not available (choose forwards path)
-    return 1;
-  }else if(left == 0 && right == 1 && top == 1){ //Left not available (choose forward)
-    return 1;
-  }else if(left == 0 && right == 0 && top == 1){ //Straight line
-    return 1;
-  }else{
-    printf("Incorrect if statement found."); //This should never be called and means an if statement is coded incorrectly 
-    return 0;
-  }
-  /*}else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
-    dEnd();
-    return 1;*/
-    /***
-     * 
-     * IMPORTANT!
-     * IMPORTANT!
-     * Because we are averaging values, we may need to lower the threshold needed as in the average it may include lesser values that 130 so the overall will be less than.
-     * */
-            if(leftSide/leftNum > 20){
-                left = 1;
-            }
-            else{
-                left = 0;
-            }
-            
-            if(rightSide/rightNum > 20){
-                right = 1;
-            }
-            else{
-                right = 0;
-            }
-            if(topSide/topNum > 20){
-                top = 1;
-            }
-            else{
-                top = 0;
-            }
+            //If the values collected are enough to signify there is a white line there, set the constants to true
+            //If not, set to false
+            if(leftSum > 20){left = 1;}
+            else{left = 0;}
+            if(rightSum > 20){right = 1;}
+            else{right = 0;}
+            if(topSum > 20){top = 1;}
+            else{top = 0;}
     
-
-  //Main conditionals, returns 1 to the main function if sucessful
+            //Main conditionals, returns 1 to the main function if sucessful
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 set_motor(1, 0);
                 set_motor(2, -70);
@@ -201,13 +140,13 @@ while(1){
                 printf("4 way intersection");
                 set_motor(1, 40);
                 set_motor(2, 40);
-                Sleep(0, 50000);
+                Sleep(0, 500000);
             }
         }
 
         else if(num != 0){
             //printf("Num at T %d \n", num);
-            eValue = totalSum/num;//Finds average of a point sat -130 or 50
+            eValue = totalSum/num;//Finds average of a point at
             pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
             currentError = abs(eValue);
             dSignal = abs(((currentError - pastError)/0.005)*kD);
@@ -267,18 +206,6 @@ move();
  *  //currentError = abs(eValue);
             //dSignal = (currentError -pastError)*kD;
             //pastError = eValue;
-            
-              //If statements set left/right/top to 1 if the majority of their pixels are white
-/* if(leftSum > 5){
-    left = 1;
-  }
-  if(rightSum > 5){
-    right = 1;
-  }
-  if(topSum > 5){
-    top = 1;
-  }*/
-  
- * */
+*/
  
 
