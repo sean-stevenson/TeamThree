@@ -35,7 +35,7 @@ int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
 
-Sleep(2,0);
+//Sleep(2,0);
 while(1){
     int totalSum = 0;
     int pSignal = 0;
@@ -50,10 +50,10 @@ while(1){
     int rightSum = 0;   //Totals amount of right mid pixels which are white
     int topSum = 0;     //Totals amount of top mid pixels which are white
     take_picture();
-    for(int i = 0; i < 115; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
+    for(int i = 0; i < 200; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
-                int leftSide = get_pixel(1, 120 + i, 3);//Saves the value of the left-mid pixels if above threshold
+                int leftSide = get_pixel(1, 39+ i, 3);//Saves the value of the left-mid pixels if above threshold
                 if(leftSide > 130){
                   leftSum = leftSum + 1;//Adds to a total count of pixels that are white
                 }
@@ -61,7 +61,7 @@ while(1){
                   leftSum = leftSum + 0;
                 }
                 
-                int rightSide = get_pixel(319, 120 + i, 3);//Saves the value of the right-mid pixels if above threshold
+                int rightSide = get_pixel(319, 39 + i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
                   rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }
@@ -101,7 +101,7 @@ while(1){
             printf("TopSum %d\n", topSum);
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
-
+        if(top != 1){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 printf("T intersect");
                 set_motor(1, 0);
@@ -127,13 +127,7 @@ while(1){
                 set_motor(2, 0);
 
             }
-            else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
-                printf("4 way intersection");
-                set_motor(1, 40);
-                set_motor(2, 40.5);
-                Sleep(1, 0);
-            }
-        
+        }
         else if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
