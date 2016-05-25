@@ -18,10 +18,10 @@ int speed = 20;     //left/right turn speed
 int uTurn = 15;     //Dead end turn speed
 
 int lTurn(){  //Turn left 90 degrees
-  set_motor(2, -speed);
-  Sleep(0, sTime);
+  set_motor(2, -50);
+  Sleep(0, 500000);
   set_motor(2, 0);
-  return 0;
+  return 1;
 }
 
 int rTurn(){  //Turn right 90 degrees
@@ -169,7 +169,7 @@ while(1){
                 Sleep(0, 100000);
                 continue;
         }
-        else if(num > 280){
+        else if(num > 250){
             intersection();
             continue;
         }
