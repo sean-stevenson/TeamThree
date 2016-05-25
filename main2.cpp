@@ -105,9 +105,9 @@ int intersection(){
   }else if(left == 1 && right == 0 && top == 0){ //Left side turn
     lTurn();
     return 1;
-  }else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
+  /*}else if(left == 0 && right == 0 && top == 0){ //Dead end (turn 180)
     dEnd();
-    return 1;
+    return 1;*/
   }else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
     printf("4 way intersection");
     return 1;
