@@ -105,7 +105,7 @@ while(1){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 printf("T intersect");
                 set_motor(1, 0);
-                set_motor(2, -70);
+                set_motor(2, -50);
                 Sleep(1, 500000);
                 set_motor(1,0);
                 set_motor(2, 0);  
@@ -113,7 +113,7 @@ while(1){
             else if(left == 0 && right == 1 && top == 0){ //Right side turn
                 printf("Right");
                 set_motor(2,0);
-                set_motor(1, 70);
+                set_motor(1, 50);
                 Sleep(1, 0);
                 set_motor(2,0);
                 set_motor(1, 0);
@@ -121,11 +121,10 @@ while(1){
             else if(left == 1 && right == 0 && top == 0){ //Left side turn
                 printf("Left");
                 set_motor(1, 0);
-                set_motor(2, -70);
+                set_motor(2, -50);
                 Sleep(1, 0);
                 set_motor(1,0);
                 set_motor(2, 0);
-
             }
         }
         else if(num < 20){ //If not enough pixels are found, reverse and reset
