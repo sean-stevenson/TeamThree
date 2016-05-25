@@ -169,7 +169,7 @@ while(1){
                 Sleep(0, 100000);
                 continue;
         }
-        else if(num > 310){
+        else if(num > 280){
             intersection();
             continue;
         }
