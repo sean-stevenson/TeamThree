@@ -76,19 +76,19 @@ while(1){
                   topSum = topSum + 0;
                 }
             }
-            if(leftSum > 20){
+            if(leftSum > 80){
                 left = 1;
             }else{
                 left = 0;
             }
             
-            if(rightSum > 20){
+            if(rightSum > 80){
                 right = 1;
             }else{
                 right = 0;
             }
             
-            if(topSum > 20){
+            if(topSum > 80){
                 top = 1;
             }else{
                 top = 0;
