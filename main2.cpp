@@ -74,7 +74,7 @@ while(1){
             for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             
             sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
-                if(sum > white_threshold){  //If value greater than threshold make it 1 and add to num
+                if(sum > 80){  //If value greater than threshold make it 1 and add to num
                     w = 1;
                     num++; //num increases when a white pixel is found
                     topSum = topSum + 1;
@@ -112,7 +112,7 @@ while(1){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
                 set_motor(1, 0);
-                set_motor(2, -40);
+                set_motor(2, -30);
                 Sleep(1, 0);
                 set_motor(1,0);
                 set_motor(2, 0);  
@@ -120,18 +120,18 @@ while(1){
              //&& top == 0
                 printf("Right");
                 set_motor(2,0);
-                set_motor(1, 40);
+                set_motor(1, 30);
                 Sleep(1, 0);
-                set_motor(2,0);
-                set_motor(1, 0);
+                //set_motor(2,0);
+                //set_motor(1, 0);
             }else if(left == 1 && right == 0 && top == 0){ //Left side turn
             // && top == 0
                 printf("Left");
                 set_motor(1, 0);
-                set_motor(2, -40);
+                set_motor(2, -30);
                 Sleep(1, 0);
-                set_motor(1,0);
-                set_motor(2, 0);
+                //set_motor(1,0);
+                //set_motor(2, 0);
             } else if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
