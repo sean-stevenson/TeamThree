@@ -76,19 +76,19 @@ while(1){
                   topSum = topSum + 0;
                 }
             }
-            if(leftSum > 80){
+            if(leftSum > 190){
                 left = 1;
             }else{
                 left = 0;
             }
             
-            if(rightSum > 80){
+            if(rightSum > 190){
                 right = 1;
             }else{
                 right = 0;
             }
             
-            if(topSum > 80){
+            if(topSum > 190){
                 top = 1;
             }else{
                 top = 0;
@@ -110,7 +110,7 @@ while(1){
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
         
-        if(top != 1){
+        /*if(top != 1){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
                 set_motor(1, 0);
@@ -133,8 +133,9 @@ while(1){
                 set_motor(2, -40);
                 Sleep(1, 0);
                 set_motor(1,0);
-                set_motor(2, 0);
-            } else if(num != 0){
+                set_motor(2, 0);*/
+            //} else 
+            if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
