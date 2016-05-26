@@ -144,6 +144,7 @@ int move(){
                         
 
                     if(num < 20){ //If not enough pixels are found, reverse and reset
+                    printf("reverse");
                         set_motor(1, -40.5);
                         set_motor(2, 40);
                         Sleep(0, 500000);
@@ -185,13 +186,13 @@ int move(){
                     pastError = currentError;
 
                 if(pSignal > 0){/**right*/
-                    printf("right %d\n", pSignal);
+                    //printf("right %d\n", pSignal);
                     set_motor(1, (35 + pSignal+dSignal));
                     // + dSignal
                     set_motor(2, -35.5);
                     Sleep(0, 5000);
                 }else if(pSignal < 0){/**left*/
-                    printf("left %d\n", pSignal);
+                    //printf("left %d\n", pSignal);
                     set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                     set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                     //+ dSignal
