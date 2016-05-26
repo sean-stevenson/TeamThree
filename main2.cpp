@@ -22,23 +22,9 @@ int openDoor(){
     }else{return 1;}
 }
 
-
-int move(){
-int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
-int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
-int w = 0;
-int num = 0;
-int exSignal = 0;
-float kP = 0.12;//Prop constant which scales with error signal
-float kD = 0.0007;
-int pastError = 0;//Past error to work out kD
-int currentError = 0;//Absolute of error signal - will need to check that works
-int eValue = 0;//Average value of error either side
-
-//Sleep(2,0);
-while(1){
-    
-    int totalSum = 0;
+int cameraCheck(void){
+    take_picture();
+     int totalSum = 0;
     int pSignal = 0;
     int dSignal = 0;
     int sum = 0;
@@ -50,8 +36,6 @@ while(1){
     int leftSum = 0;    //Totals amount of left mid pixels which are white
     int rightSum = 0;   //Totals amount of right mid pixels which are white
     int topSum = 0;     //Totals amount of top mid pixels which are white
-    
-    take_picture();
     for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
@@ -107,32 +91,99 @@ while(1){
             printf("TopSum %d\n", topSum);
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
-        
+    
+}
+
+int move(){
+int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
+int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
+int w = 0;
+int num = 0;
+int exSignal = 0;
+float kP = 0.12;//Prop constant which scales with error signal
+float kD = 0.0007;
+int pastError = 0;//Past error to work out kD
+int currentError = 0;//Absolute of error signal - will need to check that works
+int eValue = 0;//Average value of error either side
+
+//Sleep(2,0);
+while(1){
+    
+    int totalSum = 0;
+    int pSignal = 0;
+    int dSignal = 0;
+    int sum = 0;
+    int num = 0;
+    int eValue = 0;
+    int left = 0;       //True if line is left
+    int right = 0;      //True if line is right
+    int top = 0;        //True if line is forward
+    int leftSum = 0;    //Totals amount of left mid pixels which are white
+    int rightSum = 0;   //Totals amount of right mid pixels which are white
+    int topSum = 0;     //Totals amount of top mid pixels which are white
+    cameraCheck();
         if(left == 1 && right == 1 && top == 0){
+        int Redsum = get_pixel(i, 1, 0); 
+          while(Redsum < 150){ 
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
                 set_motor(1, 0);
-                set_motor(2, -30);
-                Sleep(1, 0);
-                set_motor(1,0);
-                set_motor(2, 0);  
+                set_motor(2, -40);
+                Sleep(0, 500000);
+                set_motor(1,20);
+                set_motor(2, -20);  
             }else if(left == 0 && right == 1 && top == 0){ //Right side turn
              //&& top == 0
                 printf("Right");
                 set_motor(2,0);
-                set_motor(1, 30);
-                Sleep(1, 0);
+                set_motor(1, 40);
+                Sleep(0, 500000);
                 //set_motor(2,0);
                 //set_motor(1, 0);
             }else if(left == 1 && right == 0 && top == 0){ //Left side turn
             // && top == 0
                 printf("Left");
                 set_motor(1, 0);
-                set_motor(2, -30);
-                Sleep(1, 0);
+                set_motor(2, -40);
+                Sleep(0, 500000);
                 set_motor(1,20);
                 set_motor(2, -20);
             }
+            else if(top == 1){ //Left side turn
+            // && top == 0
+                printf("Forward");
+                cameraCheck();
+                if(num < 20){ //If not enough pixels are found, reverse and reset
+                set_motor(1, -40.5);
+                set_motor(2, 40);
+                Sleep(0, 50000);
+                continue;
+                }
+                else{
+                //printf("Num at T %d \n", num);
+                eValue = totalSum/num;//Finds average of a point at
+                pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
+                currentError = abs(eValue);
+                dSignal = abs(((currentError - pastError)/0.005)*kD);
+                //printf("dSignal %d\n", dSignal);
+                pastError = currentError;
+            
+            if(pSignal > 0){/**right*/
+                //printf("right %d\n", pSignal);
+                set_motor(1, (35 + pSignal+dSignal));
+                // + dSignal
+                set_motor(2, -35.5);
+                Sleep(0, 5000);
+            }else if(pSignal < 0){/**left*/
+                //printf("left %d\n", pSignal);
+                set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                //+ dSignal
+                Sleep(0, 5000);
+            }
+            }
+          }
+          }
         }
         else if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
@@ -165,7 +216,7 @@ while(1){
             }
     }
 }
-}
+
     return 0;
 }
     
