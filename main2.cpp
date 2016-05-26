@@ -142,7 +142,10 @@ int move(){
                             }else{
                                 w = 0;
                             }
+                            totalSum = totalSum + ((i - 160) * w);
                     }
+                        
+
                     if(num < 20){ //If not enough pixels are found, reverse and reset
                         set_motor(1, -40.5);
                         set_motor(2, 40);
@@ -150,14 +153,11 @@ int move(){
                         continue;
                     }
                     else{
-
-                        totalSum = totalSum + ((i - 160) * w);
                         eValue = totalSum/num;//Finds average of a point at
                         pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
                         currentError = abs(eValue);
                         dSignal = abs(((currentError - pastError)/0.005)*kD);
                         pastError = currentError;
-
                         if(pSignal > 0){/**right*/
                             set_motor(1, (35 + pSignal+dSignal));
                             set_motor(2, -35.5);
