@@ -93,13 +93,16 @@ int move(){
                     right = 0;
                 }
 
-                if(topSum > 10){
+                if(topSum > 40){
                     top = 1;
                 }else{
                     top = 0;
                 }
 
         int Redsum = get_pixel(160, 1, 0);
+        printf("right %d\n", right);
+        printf("left %d\n", left);
+        printf("top %d\n", top);
             if(left == 1 && right == 1 && top == 0){
               while(Redsum < 150){
               int Redsum = get_pixel(160, 1, 0);
@@ -141,7 +144,7 @@ int move(){
                             }
                             totalSum = totalSum + ((i - 160) * w);
                     }
-                        
+                    printf("check2 %d\n", num);    
 
                     if(num < 20){ //If not enough pixels are found, reverse and reset
                     printf("reverse");
@@ -171,6 +174,7 @@ int move(){
               }
 
             else if(num != 0){
+                printf("check1 %d\n", num);
                     if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
                     set_motor(2, 40);
