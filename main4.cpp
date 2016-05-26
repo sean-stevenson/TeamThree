@@ -82,7 +82,7 @@ int move(){
         if(topSum > 40){top = 1;}
         else{top = 0;}
         int Redsum = get_pixel(160, 1, 0);
-            if(num != 0 && right !=0 && top !=0 && left != 0){
+            if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                     printf("reverse %d\n", num);
                     set_motor(1, -40.5);
@@ -111,11 +111,11 @@ int move(){
                 }
         
             }
-            else{
+            else if(right !=0 && top !=0 && left != 0){
                         printf("u turn %d\n", num);
                         set_motor(1, -50);
-                        set_motor(2, 50.5);
-                        Sleep(0, 500000);
+                        set_motor(2, 0);
+                        Sleep(0, 5000);
             }
             
             }
