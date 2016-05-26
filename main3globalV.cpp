@@ -23,15 +23,14 @@ int pSignal = 0;
 int dSignal = 0;
 int sum = 0;
 int num = 0;
-int eValue = 0;
 int w = 0;
 int left = 0;       //True if line is left
 int right = 0;      //True if line is right
 int top = 0;        //True if line is forward
 int leftSum = 0;    //Totals amount of left mid pixels which are white
 int rightSum = 0;   //Totals amount of right mid pixels which are white
-int totalSum = 0;
-    
+int topSum = 0;
+
 int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
         send_to_server("Please");
@@ -95,7 +94,7 @@ int move(){
                             Sleep(0, 500000);
                             set_motor(1, 0);
                             set_motor(2, 0);
-                        }       
+                        }
                         else if(left == 0 && right == 1 && top == 0){ //Right side turn
                             printf("Right");
                             set_motor(2,0);
@@ -126,8 +125,8 @@ int move(){
                                 else{
                                     w = 0;
                                     topSum = topSum + 0;
-                                    
-                                } 
+
+                                }
                                 totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
                             }
                                 if(num < 20){ //If not enough pixels are found, reverse and reset
@@ -146,13 +145,13 @@ int move(){
                                         set_motor(1, (35 + pSignal+dSignal));
                                         set_motor(2, -35.5);
                                         Sleep(0, 5000);
-                                    }       
+                                    }
                                     else if(pSignal < 0){/**left*/
                                         set_motor(1, 35);
                                         set_motor(2, -(35.5 - pSignal + dSignal));
                                         Sleep(0, 5000);
                                     }
-                                } 
+                                }
                             }
                                //Totals amount of top mid pixels which are white
                             take_picture();
@@ -164,7 +163,7 @@ int move(){
                                 else{//If not valid pixel skip
                                     leftSum = leftSum + 0;
                                 }
-            
+
                                 int rightSide = get_pixel(319, i, 3);//Saves the value of the right-mid pixels if above threshold
                                 if(rightSide > 130){
                                     rightSum = rightSum + 1;//Adds to a total count of pixels that are white
@@ -235,10 +234,10 @@ int move(){
                         Sleep(0, 5000);
                     }
                 }
-        
+
             }
 
-        
+
     }
 return 0;
 }
