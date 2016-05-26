@@ -29,8 +29,8 @@ int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only valu
 int w = 0;
 int num = 0;
 int exSignal = 0;
-float kP = 0.123;//Prop constant which scales with error signal
-float kD = 0.0008;
+float kP = 0.116;//Prop constant which scales with error signal
+float kD = 0.0006;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
@@ -74,7 +74,7 @@ while(1){
             for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             
             sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
-                if(sum > 80){  //If value greater than threshold make it 1 and add to num
+                if(sum > 130){  //If value greater than threshold make it 1 and add to num
                     w = 1;
                     num++; //num increases when a white pixel is found
                     topSum = topSum + 1;
@@ -96,7 +96,7 @@ while(1){
                 right = 0;
             }
             
-            if(topSum > 190){
+            if(topSum > 10){
                 top = 1;
             }else{
                 top = 0;
