@@ -23,11 +23,9 @@ int openDoor(){
 }
 
 int move(){
-    int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
-    int w = 0;
-    int num = 0;
-    int exSignal = 0;
+
+
     float kP = 0.13;//Prop constant which scales with error signal
     float kD = 0.0007;
     int pastError = 0;//Past error to work out kD
