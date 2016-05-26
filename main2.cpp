@@ -111,14 +111,14 @@ while(1){
             printf("LeftSum %d\n", leftSum);
         
         if(top != 1){
-            if(left == 1 && right == 1){ //T intersection (choose left)
+            if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
                 set_motor(1, 0);
                 set_motor(2, -40);
                 Sleep(1, 0);
                 set_motor(1,0);
                 set_motor(2, 0);  
-            }else if(left == 0 && right == 1){ //Right side turn
+            }else if(left == 0 && right == 1 && top == 0){ //Right side turn
              //&& top == 0
                 printf("Right");
                 set_motor(2,0);
@@ -126,7 +126,7 @@ while(1){
                 Sleep(1, 0);
                 set_motor(2,0);
                 set_motor(1, 0);
-            }else if(left == 1 && right == 0){ //Left side turn
+            }else if(left == 1 && right == 0 && top == 0){ //Left side turn
             // && top == 0
                 printf("Left");
                 set_motor(1, 0);
@@ -134,12 +134,13 @@ while(1){
                 Sleep(1, 0);
                 set_motor(1,0);
                 set_motor(2, 0);
-            }else if(num < 20){ //If not enough pixels are found, reverse and reset
+            } else if(num != 0){
+                if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
                 Sleep(0, 50000);
                 continue;
-            } else if(num != 0){
+                }else{
                 //printf("Num at T %d \n", num);
                 eValue = totalSum/num;//Finds average of a point at
                 pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
@@ -161,8 +162,10 @@ while(1){
                 //+ dSignal
                 Sleep(0, 5000);
             }
+            }
         }
     }
+
     return 0;
 }
 }
