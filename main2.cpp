@@ -52,17 +52,17 @@ while(1){
     int topSum = 0;     //Totals amount of top mid pixels which are white
     
     take_picture();
-    for(int i = 0; i < 200; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
+    for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
-                int leftSide = get_pixel(1, 39+ i, 3);//Saves the value of the left-mid pixels if above threshold
+                int leftSide = get_pixel(1, i, 3);//Saves the value of the left-mid pixels if above threshold
                 if(leftSide > 130){
                   leftSum = leftSum + 1;//Adds to a total count of pixels that are white
                 }else{//If not valid pixel skip
                   leftSum = leftSum + 0;
                 }
                 
-                int rightSide = get_pixel(319, 39 + i, 3);//Saves the value of the right-mid pixels if above threshold
+                int rightSide = get_pixel(319, i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
                   rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }else{//If not valid pixel skip
@@ -108,7 +108,7 @@ while(1){
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
         
-        if(top != 1){
+        if(left == 1 && right == 1 && top == 0){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
                 set_motor(1, 0);
@@ -130,15 +130,18 @@ while(1){
                 set_motor(1, 0);
                 set_motor(2, -30);
                 Sleep(1, 0);
-                //set_motor(1,0);
-                //set_motor(2, 0);
-            } else if(num != 0){
+                set_motor(1,20);
+                set_motor(2, -20);
+            }
+        }
+        else if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
                 Sleep(0, 50000);
                 continue;
-                }else{
+                }
+                else{
                 //printf("Num at T %d \n", num);
                 eValue = totalSum/num;//Finds average of a point at
                 pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
@@ -160,12 +163,13 @@ while(1){
                 //+ dSignal
                 Sleep(0, 5000);
             }
-            }
-        }
     }
+}
 }
     return 0;
 }
+    
+
 
 int main (){
 init();
