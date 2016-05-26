@@ -69,13 +69,21 @@ while(1){
                   rightSum = rightSum + 0;
                 }
                 
-                int topSide = get_pixel(106 + i, 1, 3);//Saves the value of the top-mid pixels if above threshold
-                if(topSide > 130){
-                  topSum = topSum + 1;//Adds to a total count of pixels that are white
-                }else{//If not valid pixel skip
-                  topSum = topSum + 0;
-                }
+                
             }
+            for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
+            
+            sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
+                if(sum > white_threshold){  //If value greater than threshold make it 1 and add to num
+                    w = 1;
+                    num++; //num increases when a white pixel is found
+                    topSum = topSum + 1;
+                }else{
+                    w = 0;
+                    topSum = topSum + 0;
+                }
+                totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
+        }
             if(leftSum > 190){
                 left = 1;
             }else{
@@ -95,17 +103,7 @@ while(1){
             }
             
     //Takes picture and sets all the variables to 0
-        for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-            
-            sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
-                if(sum > white_threshold){  //If value greater than threshold make it 1 and add to num
-                    w = 1;
-                    num++; //num increases when a white pixel is found
-                }else{
-                    w = 0;
-                }
-                totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
-        }
+        
             printf("TopSum %d\n", topSum);
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
