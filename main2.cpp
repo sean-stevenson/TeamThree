@@ -26,7 +26,7 @@ int move(){
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
 
 
-    float kP = 0.13;//Prop constant which scales with error signal
+    float kP = 0.2;//Prop constant which scales with error signal
     float kD = 0.0007;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
@@ -147,7 +147,7 @@ int move(){
                     if(num < 20){ //If not enough pixels are found, reverse and reset
                         set_motor(1, -40.5);
                         set_motor(2, 40);
-                        Sleep(3, 00000);
+                        Sleep(0, 500000);
                         continue;
                     }
                     else{
