@@ -131,7 +131,16 @@ while(1){
             else if(top == 1){ //Left side turn
             // && top == 0
                 printf("Forward");
-                cameraCheck();
+                take_picture();
+                for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
+            
+            sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
+                if(sum > 130){  //If value greater than threshold make it 1 and add to num
+                    w = 1;
+                    num++; //num increases when a white pixel is found
+                }else{
+                    w = 0;
+                }
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
@@ -139,6 +148,8 @@ while(1){
                 continue;
                 }
                 else{
+                    
+                totalSum = totalSum + ((i - 160) * w);
                 //printf("Num at T %d \n", num);
                 eValue = totalSum/num;//Finds average of a point at
                 pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
