@@ -95,7 +95,7 @@ int move(){
                             set_motor(2, 0);
                         }       
                         else if(left == 0 && right == 1 && top == 0){ //Right side turn
-                            printf("Right");
+                            printf("Right %d\n", right);
                             set_motor(2,0);
                             set_motor(1, 60);
                             Sleep(0, 500000);
@@ -103,7 +103,7 @@ int move(){
                             set_motor(1, 0);
                         }
                         else if(left == 1 && right == 0 && top == 0){ //Left side turn
-                            printf("Left");
+                            printf("Left %d\n", left);
                             set_motor(1, 0);
                             set_motor(2, -60);
                             Sleep(0, 500000);
