@@ -112,7 +112,8 @@ int move(){
                             set_motor(1, 0);
                             set_motor(2, 0);
                         }
-                        else if(top == 1){ //Left side turn
+                        //else if(top == 1){ //Left side turn
+                        else{
                             //printf("Forward");
                             take_picture();
                             for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
@@ -134,8 +135,8 @@ int move(){
                                     set_motor(2, 40);
                                     Sleep(0, 500000);
                                     continue;
-                            }
-                            else{
+                                }
+                                else{
                                     eValue = totalSum/num;//Finds average of a point at
                                     pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
                                     currentError = abs(eValue);
@@ -145,14 +146,14 @@ int move(){
                                         set_motor(1, (35 + pSignal+dSignal));
                                         set_motor(2, -35.5);
                                         Sleep(0, 5000);
-                                }       
+                                    }       
                                     else if(pSignal < 0){/**left*/
                                         set_motor(1, 35);
                                         set_motor(2, -(35.5 - pSignal + dSignal));
                                         Sleep(0, 5000);
-                                }
-                            } 
-                        }
+                                    }
+                                } 
+                            }
                                //Totals amount of top mid pixels which are white
                             take_picture();
                             for(int i = 0; i < 240; i++){
