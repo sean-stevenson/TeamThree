@@ -147,7 +147,7 @@ int move(){
                     if(num < 20){ //If not enough pixels are found, reverse and reset
                         set_motor(1, -40.5);
                         set_motor(2, 40);
-                        Sleep(0, 50000);
+                        Sleep(3, 00000);
                         continue;
                     }
                     else{
