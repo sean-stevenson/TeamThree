@@ -81,13 +81,13 @@ int move(){
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
             }
-                if(leftSum > 190){
+                if(leftSum > 170){
                     left = 1;
                 }else{
                     left = 0;
                 }
 
-                if(rightSum > 190){
+                if(rightSum > 170){
                     right = 1;
                 }else{
                     right = 0;
@@ -131,7 +131,7 @@ int move(){
                     set_motor(2, -20);
                 }
                 else if(top == 1){ //Left side turn
-                    printf("Forward");
+                    //printf("Forward");
                     take_picture();
                     for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
 
@@ -144,10 +144,9 @@ int move(){
                             }
                             totalSum = totalSum + ((i - 160) * w);
                     }
-                    printf("check2 %d\n", num);    
-
+                    //printf("check2 %d\n", num);    
                     if(num < 20){ //If not enough pixels are found, reverse and reset
-                    printf("reverse");
+                    //printf("reverse");
                         set_motor(1, -40.5);
                         set_motor(2, 40);
                         Sleep(0, 500000);
@@ -174,8 +173,9 @@ int move(){
               }
 
             else if(num != 0){
-                printf("check1 %d\n", num);
+                
                     if(num < 20){ //If not enough pixels are found, reverse and reset
+                    printf("reverse %d\n", num);
                     set_motor(1, -40.5);
                     set_motor(2, 40);
                     Sleep(0, 50000);
