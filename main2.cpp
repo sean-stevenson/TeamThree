@@ -170,21 +170,22 @@ int move(){
                         }
                     } 
               }
-                int totalSum = 0;
-        int pSignal = 0;
-        int dSignal = 0;
-        int sum = 0;
-        int num = 0;
-        int eValue = 0;
-        int w = 0;
-        int left = 0;       //True if line is left
-        int right = 0;      //True if line is right
-        int top = 0;        //True if line is forward
-        int leftSum = 0;    //Totals amount of left mid pixels which are white
-        int rightSum = 0;   //Totals amount of right mid pixels which are white
-        int topSum = 0;     //Totals amount of top mid pixels which are white
-        take_picture();
-        for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
+            int totalSum = 0;
+            int pSignal = 0;
+            int dSignal = 0;
+            int sum = 0;
+            int num = 0;
+            int eValue = 0;
+            int w = 0;
+            int left = 0;       //True if line is left
+            int right = 0;      //True if line is right
+            int top = 0;        //True if line is forward
+            int leftSum = 0;    //Totals amount of left mid pixels which are white
+            int rightSum = 0;   //Totals amount of right mid pixels which are white
+            int topSum = 0;     //Totals amount of top mid pixels which are white
+            
+            take_picture();
+            for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
                 //For left and right, this is from row 100 to row 215, column 1 and 319 respectively
                 //For top this is from
                     int leftSide = get_pixel(1, i, 3);//Saves the value of the left-mid pixels if above threshold
@@ -266,10 +267,10 @@ int move(){
                     set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                     //+ dSignal
                     Sleep(0, 5000);
-                }
-        }
+                    }
+         }
         
-    }
+        }
 
         
     }
