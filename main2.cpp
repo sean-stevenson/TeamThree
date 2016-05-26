@@ -22,7 +22,27 @@ int openDoor(){
     }else{return 1;}
 }
 
-int cameraCheck(void){
+int move(){
+int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
+int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
+int w = 0;
+int num = 0;
+int exSignal = 0;
+float kP = 0.12;//Prop constant which scales with error signal
+float kD = 0.0007;
+int pastError = 0;//Past error to work out kD
+int currentError = 0;//Absolute of error signal - will need to check that works
+int eValue = 0;//Average value of error either side
+
+//Sleep(2,0);
+while(1){
+    
+    int totalSum = 0;
+    int pSignal = 0;
+    int dSignal = 0;
+    int sum = 0;
+    int num = 0;
+    int eValue = 0;
     take_picture();
     int sum = 0;
     int num = 0;
@@ -35,7 +55,7 @@ int cameraCheck(void){
     int leftSum = 0;    //Totals amount of left mid pixels which are white
     int rightSum = 0;   //Totals amount of right mid pixels which are white
     int topSum = 0;     //Totals amount of top mid pixels which are white
-    int Redsum = get_pixel(i, 1, 0); 
+    
     for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
@@ -86,36 +106,7 @@ int cameraCheck(void){
                 top = 0;
             }
             
-    //Takes picture and sets all the variables to 0
-        
-            printf("TopSum %d\n", topSum);
-            printf("RightSum %d\n", rightSum);
-            printf("LeftSum %d\n", leftSum);
-    
-}
-
-int move(){
-int sum = 0;//get pixel value which returns values from 0 to 255 depending on the whiteness      
-int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected 
-int w = 0;
-int num = 0;
-int exSignal = 0;
-float kP = 0.12;//Prop constant which scales with error signal
-float kD = 0.0007;
-int pastError = 0;//Past error to work out kD
-int currentError = 0;//Absolute of error signal - will need to check that works
-int eValue = 0;//Average value of error either side
-
-//Sleep(2,0);
-while(1){
-    
-    int totalSum = 0;
-    int pSignal = 0;
-    int dSignal = 0;
-    int sum = 0;
-    int num = 0;
-    int eValue = 0;
-    cameraCheck();
+    int Redsum = get_pixel(160, 1, 0); 
         if(left == 1 && right == 1 && top == 0){
           while(Redsum < 150){ 
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
