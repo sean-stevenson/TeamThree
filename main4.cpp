@@ -24,8 +24,8 @@ int openDoor(){
 
 int move(){
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
-    float kP = 0.14;//Prop constant which scales with error signal
-    float kD = 0.0007;
+    float kP = 0.2;//Prop constant which scales with error signal
+    float kD = 0.00005;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
     int eValue = 0;//Average value of error either side
