@@ -128,7 +128,6 @@ int move(){
                     set_motor(2, -20);
                 }
                 else if(top == 1){ //Left side turn
-                // && top == 0
                     printf("Forward");
                     take_picture();
                     for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
@@ -178,7 +177,6 @@ int move(){
                     continue;
                     }
                     else{
-                    //printf("Num at T %d \n", num);
                     eValue = totalSum/num;//Finds average of a point at
                     pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
                     currentError = abs(eValue);
@@ -187,13 +185,13 @@ int move(){
                     pastError = currentError;
 
                 if(pSignal > 0){/**right*/
-                    //printf("right %d\n", pSignal);
+                    printf("right %d\n", pSignal);
                     set_motor(1, (35 + pSignal+dSignal));
                     // + dSignal
                     set_motor(2, -35.5);
                     Sleep(0, 5000);
                 }else if(pSignal < 0){/**left*/
-                    //printf("left %d\n", pSignal);
+                    printf("left %d\n", pSignal);
                     set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                     set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                     //+ dSignal
