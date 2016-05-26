@@ -24,18 +24,18 @@ int openDoor(){
 
 int cameraCheck(void){
     take_picture();
-     int totalSum = 0;
-    int pSignal = 0;
-    int dSignal = 0;
     int sum = 0;
     int num = 0;
     int eValue = 0;
+    int w = 0;
     int left = 0;       //True if line is left
     int right = 0;      //True if line is right
     int top = 0;        //True if line is forward
+    int totalSum = 0;
     int leftSum = 0;    //Totals amount of left mid pixels which are white
     int rightSum = 0;   //Totals amount of right mid pixels which are white
     int topSum = 0;     //Totals amount of top mid pixels which are white
+    int Redsum = get_pixel(i, 1, 0); 
     for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
@@ -115,15 +115,8 @@ while(1){
     int sum = 0;
     int num = 0;
     int eValue = 0;
-    int left = 0;       //True if line is left
-    int right = 0;      //True if line is right
-    int top = 0;        //True if line is forward
-    int leftSum = 0;    //Totals amount of left mid pixels which are white
-    int rightSum = 0;   //Totals amount of right mid pixels which are white
-    int topSum = 0;     //Totals amount of top mid pixels which are white
     cameraCheck();
         if(left == 1 && right == 1 && top == 0){
-        int Redsum = get_pixel(i, 1, 0); 
           while(Redsum < 150){ 
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
@@ -219,13 +212,14 @@ while(1){
 
     return 0;
 }
+}
     
 
 
 int main (){
-init();
-//openDoor();
-move();
+    init();
+        //openDoor();
+        move();
     return 0;
 }
 
