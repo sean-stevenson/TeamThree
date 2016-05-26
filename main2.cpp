@@ -28,8 +28,8 @@ int move(){
     int w = 0;
     int num = 0;
     int exSignal = 0;
-    float kP = 0.12;//Prop constant which scales with error signal
-    float kD = 0.0007;
+    float kP = 0.13;//Prop constant which scales with error signal
+    float kD = 0.001;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
     int eValue = 0;//Average value of error either side
