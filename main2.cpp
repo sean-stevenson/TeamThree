@@ -29,8 +29,8 @@ int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only valu
 int w = 0;
 int num = 0;
 int exSignal = 0;
-float kP = 0.133;//Prop constant which scales with error signal
-float kD = 0.001;
+float kP = 0.123;//Prop constant which scales with error signal
+float kD = 0.0008;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
@@ -110,7 +110,7 @@ while(1){
             printf("RightSum %d\n", rightSum);
             printf("LeftSum %d\n", leftSum);
         
-        /*if(top != 1){
+        if(top != 1){
             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                 // && top == 0
                 set_motor(1, 0);
@@ -133,9 +133,8 @@ while(1){
                 set_motor(2, -40);
                 Sleep(1, 0);
                 set_motor(1,0);
-                set_motor(2, 0);*/
-            //} else 
-            if(num != 0){
+                set_motor(2, 0);
+            } else if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                 set_motor(1, -40.5);
                 set_motor(2, 40);
