@@ -99,13 +99,13 @@ int move(){
 
                     if(pSignal > 0){/**right*/
                         //printf("right %d\n", pSignal);
-                        set_motor(1, (25 + pSignal+dSignal));
-                        set_motor(2, -25.5);
+                        set_motor(1, (30 + pSignal+dSignal));
+                        set_motor(2, -30.5);
                         Sleep(0, 5000);
                     }else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
-                        set_motor(1, 25);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                        set_motor(2, -(25.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                        set_motor(1, 30);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                        set_motor(2, -(30.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                         Sleep(0, 5000);
                     }
                 }
