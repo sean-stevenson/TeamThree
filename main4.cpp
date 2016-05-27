@@ -100,7 +100,7 @@ int move(){
                     if(pSignal > 0){/**right*/
                         //printf("right %d\n", pSignal);
                         set_motor(1, 45);
-                        set_motor(2, -45.5 - pSignal - dSignal);
+                        set_motor(2, -45.5 + pSignal + dSignal);
                         Sleep(0, 5000);
                     }else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
