@@ -101,7 +101,7 @@ int move(){
                         //printf("right %d\n", pSignal);
                         set_motor(1, 45);
                         if(-45.5 + pSignal + dSignal <= 0){
-                        set_motor(2, -45.5 + pSignal + dSignal);
+                        set_motor(2, -45.5 + pSignal - dSignal);
                         }else{
                             set_motor(2, 0);
                         }
@@ -109,7 +109,7 @@ int move(){
                     }else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
                         if(45 + pSignal + dSignal >= 0){
-                        set_motor(1, 45 + pSignal + dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                        set_motor(1, 45 + pSignal - dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                         }else{
                             set_motor(1, 0);
                         }
