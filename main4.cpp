@@ -25,7 +25,7 @@ int openDoor(){
 int move(){
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
     float kP = 0.2;//Prop constant which scales with error signal
-    float kD = 0.00009;
+    float kD = 0.00005;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
     int eValue = 0;//Average value of error either side
@@ -99,13 +99,13 @@ int move(){
 
                     if(pSignal > 0){/**right*/
                         //printf("right %d\n", pSignal);
-                        set_motor(1, (35 + pSignal+dSignal));
-                        set_motor(2, -35.5);
+                        set_motor(1, (20 + pSignal+dSignal));
+                        set_motor(2, -20.5);
                         Sleep(0, 5000);
                     }else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
-                        set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                        set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+                        set_motor(1, 20);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                        set_motor(2, -(20.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
                         Sleep(0, 5000);
                     }
                 }
