@@ -12,6 +12,16 @@ extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
 
+int openDoor();
+int move();
+
+int main (){
+    init();
+    //openDoor();
+    move();
+    return 0;
+}
+
 int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
         send_to_server("Please");
@@ -258,11 +268,4 @@ int move(){
         
     }
 return 0;
-}
-
-int main (){
-    init();
-    //openDoor();
-    move();
-    return 0;
 }
