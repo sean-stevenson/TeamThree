@@ -140,13 +140,13 @@ int move(){
                                     dSignal = abs(((currentError - pastError)/0.005)*kD);
                                     pastError = currentError;
                                     if(pSignal > 0){/**right*/
-                                        set_motor(1, (35 + pSignal+dSignal));
-                                        set_motor(2, -35.5);
+                                        set_motor(1, (30 + pSignal+dSignal));
+                                        set_motor(2, -30.5);
                                         Sleep(0, 5000);
                                 }       
                                     else if(pSignal < 0){/**left*/
-                                        set_motor(1, 35);
-                                        set_motor(2, -(35.5 - pSignal + dSignal));
+                                        set_motor(1, 30);
+                                        set_motor(2, -(30.5 - pSignal + dSignal));
                                         Sleep(0, 5000);
                                 }
                             } 
@@ -234,21 +234,21 @@ int move(){
 
                     if(pSignal > 0){/**right*/
                         //printf("right %d\n", pSignal);
-                        set_motor(1, 45);
-                        if(-45.5 + pSignal + dSignal <= 0){
-                        set_motor(2, -45.5 + pSignal - dSignal);
+                        set_motor(1, 30);
+                        if(-30.5 + pSignal + dSignal <= 0){
+                        set_motor(2, -30.5 + pSignal + dSignal);
                         }else{
                             set_motor(2, 0);
                         }
                         Sleep(0, 5000);
                     }else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
-                        if(45 + pSignal + dSignal >= 0){
-                        set_motor(1, 45 + pSignal - dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                        if(30 + pSignal + dSignal >= 0){
+                        set_motor(1, 30 + pSignal + dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                         }else{
                             set_motor(1, 0);
                         }
-                        set_motor(2, -45.5);/**Minuses values if signal is minus it is double negative therefore positive*/
+                        set_motor(2, -30.5);/**Minuses values if signal is minus it is double negative therefore positive*/
                         Sleep(0, 5000);
                     }
                 }
