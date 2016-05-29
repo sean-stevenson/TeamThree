@@ -93,7 +93,7 @@ int move(){
         else{top = 0;}
         int Redsum = get_pixel(160, 1, 0);
             if(left == 1 && right == 1 && top == 0){
-              while(Redsum < 150){
+              while(1){
                   printf("Redsum, %d", Redsum);
                         if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             printf("T intersect, %d", left);
