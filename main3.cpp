@@ -160,6 +160,7 @@ int move(){
                                 }
                             } 
                         }
+                         printf("First Left %d\n", left);
                             int totalSum = 0;
                             int pSignal = 0;
                             int dSignal = 0;
@@ -173,6 +174,7 @@ int move(){
                             int leftSum = 0;    //Totals amount of left mid pixels which are white
                             int rightSum = 0;   //Totals amount of right mid pixels which are white
                             int topSum = 0;     //Totals amount of top mid pixels which are white
+                            printf("Second Left %d\n", left);
                             take_picture();
                             for(int i = 0; i < 240; i++){
                                 int leftSide = get_pixel(1, i, 3);//Saves the value of the left-mid pixels if above threshold
@@ -212,6 +214,7 @@ int move(){
                             if(topSum > 40){top = 1;}
                             else{top = 0;}
                             int Redsum = get_pixel(160, 1, 0);
+                            printf("Third Left %d\n", left);
                         }
                     }
 
