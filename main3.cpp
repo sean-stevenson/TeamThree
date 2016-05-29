@@ -85,9 +85,9 @@ int move(){
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
-        if(leftSum > 170){left = 1;}
+        if(leftSum > 160){left = 1;}
         else{left = 0;}
-        if(rightSum > 170){right = 1;}
+        if(rightSum > 160){right = 1;}
         else{right = 0;}
         if(topSum > 40){top = 1;}
         else{top = 0;}
@@ -206,24 +206,12 @@ int move(){
                                 }
                                 totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
                             }
-                            if(leftSum > 170){
-                                left = 1;
-                            }
-                            else{
-                                left = 0;
-                            }
-                            if(rightSum > 170){
-                                right = 1;
-                            }
-                            else{
-                                right = 0;
-                            }
-                            if(topSum > 40){
-                                top = 1;
-                            }
-                            else{
-                                top = 0;
-                            }
+                            if(leftSum > 160){left = 1;}
+                            else{left = 0;}
+                            if(rightSum > 160){right = 1;}
+                            else{right = 0;}
+                            if(topSum > 40){top = 1;}
+                            else{top = 0;}
                         }
                     }
 
