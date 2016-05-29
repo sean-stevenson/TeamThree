@@ -95,7 +95,6 @@ int move(){
             if(left == 1 && right == 1 && top == 0){
               while(Redsum < 150){
                   printf("Redsum, %d", Redsum);
-                    int Redsum = get_pixel(160, 1, 0);
                         if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             printf("T intersect, %d", left);
                             set_motor(1, 0);
@@ -212,6 +211,7 @@ int move(){
                             else{right = 0;}
                             if(topSum > 40){top = 1;}
                             else{top = 0;}
+                            int Redsum = get_pixel(160, 1, 0);
                         }
                     }
 
