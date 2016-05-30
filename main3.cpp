@@ -112,6 +112,7 @@ int move(){
                             Sleep(0, 500000);
                             set_motor(1, 0);
                             set_motor(2, 0);
+                            continue;
                         }       
                         else if(left == 0 && right == 1 && top == 0){ //Right side turn
                             printf("Right %d\n", right);
@@ -217,9 +218,9 @@ int move(){
                                 }
                                 totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
                             }
-                            if(leftSum > 160){left = 1;}
+                            if(leftSum > 140){left = 1;}
                             else{left = 0;}
-                            if(rightSum > 160){right = 1;}
+                            if(rightSum > 140){right = 1;}
                             else{right = 0;}
                             if(topSum > 40){top = 1;}
                             else{top = 0;}
