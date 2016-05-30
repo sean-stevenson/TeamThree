@@ -97,6 +97,14 @@ while(1){
                                         else{right = 0;}
                                         if(topSum > 20){top = 1;}
                                         else{top = 0;}
+                                        int mtrSp = 50;
+                                        int check = 0;
+                                        int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
+                                        float kP = 0.2;//Prop constant which scales with error signal
+                                        float kD = 0.00015;
+                                        int pastError = 0;//Past error to work out kD
+                                        int currentError = 0;//Absolute of error signal - will need to check that works
+                                        int eValue = 0;//Average value of error either side
                                         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
                                         sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
                                             if(sum > 130){  //If value greater than threshold make it 1 and add to num
