@@ -85,22 +85,21 @@ int move(){
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
-        if(leftSum > 180){
+        if(leftSum > 200){
             left = 1;
         }else{
             left = 0;
         }
-        if(rightSum > 180){
+        if(rightSum > 200){
             right = 1;
         }else{
             right = 0;
         }
-        if(topSum > 20){
+        if(topSum > ){
             top = 1;
         }else{
             top = 0;
         }
-            if(top != 1){
                         if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             printf("T intersect, %d", left);
                             set_motor(1, 0);
@@ -128,7 +127,7 @@ int move(){
                             set_motor(2, 0);
                             //break;
                         }
-            }
+            
             else if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                     printf("reverse %d\n", num);
