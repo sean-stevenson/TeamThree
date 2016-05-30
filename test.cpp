@@ -62,17 +62,67 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num > 319){
-                        
+            if(num >= 320){
+                for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
+                //For left and right, this is from row 100 to row 215, column 1 and 319 respectively
+                //For top this is from
+                int leftSide = get_pixel(1, i, 3);//Saves the value of the left-mid pixels if above threshold
+                if(leftSide > 130){
+                    leftSum = leftSum + 1;//Adds to a total count of pixels that are white
+                }
+                else{//If not valid pixel skip
+                    leftSum = leftSum + 0;
+                }
+                int rightSide = get_pixel(319, i, 3);//Saves the value of the right-mid pixels if above threshold
+                if(rightSide > 130){
+                     rightSum = rightSum + 1;//Adds to a total count of pixels that are white
+                }
+                else{//If not valid pixel skip
+                    rightSum = rightSum + 0;
+                }
+        }
+        if(leftSum > 235){
+            left = 1;
+        }else{
+            left = 0;
+        }
+        if(rightSum > 235){
+            right = 1;
+        }else{
+            right = 0;
+        }
+        if(topSum > 30){
+            top = 1;
+        }else{
+            top = 0;
+        }
                         int check = check + 1;
-                        if(check > 1){ //T intersection (choose left)
+                        if(check > 1){
+                        if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             set_motor(1, 0);
-                            set_motor(2, -40);
+                            set_motor(2, -45);
                             Sleep(0, 500000);
                             set_motor(1, 0);
                             set_motor(2, 0);
-                        }       
-               }
+                        }
+                        else if(left == 0 && right == 1 && top == 0){ //Right side turn
+                            printf("Right %d\n", right);
+                            set_motor(2,0);
+                            set_motor(1, 50);
+                            Sleep(0, 500000);
+                            set_motor(2,0);
+                            set_motor(1, 0);
+                        }
+                        else if(left == 1 && right == 0 && top == 0){ //Left side turn
+                            printf("Left %d\n", left);
+                            set_motor(1, 0);
+                            set_motor(2, -50);
+                            Sleep(0, 500000);
+                            set_motor(1, 0);
+                            set_motor(2, 0);
+                        }
+                        }
+            }
             else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
                     set_motor(2, 40);
