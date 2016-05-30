@@ -30,3 +30,12 @@ int maze(){
 int main(){
   maze();
 }
+
+/*Possible code*/
+
+error = left - right;
+
+pSignal = error * kP;
+pSignal = (pSignal/600)*100;
+set_motor(1, 45 + pSignal);
+set_motor(2, -45.5 - pSignal);
