@@ -69,7 +69,7 @@ int move(){
                 int top = 0;        //True if line is forward
                 int leftSum = 0;    //Totals amount of left mid pixels which are white
                 int rightSum = 0;   //Totals amount of right mid pixels which are white
-                cint topSum = 0;     //Totals amount of top mid pixels which are white
+                int topSum = 0;     //Totals amount of top mid pixels which are white
                 for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
                 //For left and right, this is from row 100 to row 215, column 1 and 319 respectively
                 //For top this is from
