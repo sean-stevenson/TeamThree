@@ -103,7 +103,8 @@ int move(){
         }else{
             top = 0;
         }
-                        int check++;
+                        int check = check + 1;
+                        printf("Check %d\n", check);
                         mtrSp = 35;
                         if(check > 10){
                             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
