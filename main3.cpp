@@ -85,26 +85,22 @@ int move(){
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
-        if(leftSum > 120){
+        if(leftSum > 80){
             left = 1;
         }else{
             left = 0;
         }
-        if(rightSum > 120){
+        if(rightSum > 80){
             right = 1;
         }else{
             right = 0;
         }
-        if(topSum > 60){
+        if(topSum > 100){
             top = 1;
         }else{
             top = 0;
         }
-        
-        int Redsum = get_pixel(160, 1, 0);
-            if(left == 1 && right == 1 && top == 0){
-              while(1){
-                  printf("Redsum, %d", Redsum);
+            if(top != 1){
                         if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             printf("T intersect, %d", left);
                             set_motor(1, 0);
@@ -112,7 +108,7 @@ int move(){
                             Sleep(0, 500000);
                             set_motor(1, 0);
                             set_motor(2, 0);
-                            continue;
+                            break;
                         }       
                         else if(left == 0 && right == 1 && top == 0){ //Right side turn
                             printf("Right %d\n", right);
@@ -121,6 +117,7 @@ int move(){
                             Sleep(0, 500000);
                             set_motor(2,0);
                             set_motor(1, 0);
+                            break;
                         }
                         else if(left == 1 && right == 0 && top == 0){ //Left side turn
                             printf("Left %d\n", left);
@@ -129,106 +126,9 @@ int move(){
                             Sleep(0, 500000);
                             set_motor(1, 0);
                             set_motor(2, 0);
+                            break;
                         }
-                        else if(top == 1){ //Left side turn
-                            //printf("Forward");
-                            take_picture();
-                            for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-                                sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
-                                if(sum > 130){  //If value greater than threshold make it 1 and add to num
-                                    w = 1;
-                                    num++; //num increases when a white pixel is found
-                                    topSum = topSum + 1;
-                                }
-                                else{
-                                    w = 0;
-                                    topSum = topSum + 0;
-                                    
-                                } 
-                                totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
-                            }
-                                if(num < 20){ //If not enough pixels are found, reverse and reset
-                                    set_motor(1, -40.5);
-                                    set_motor(2, 40);
-                                    Sleep(0, 500000);
-                                    continue;
-                            }
-                            else{
-                                    eValue = totalSum/num;//Finds average of a point at
-                                    pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
-                                    currentError = abs(eValue);
-                                    dSignal = abs(((currentError - pastError)/0.005)*kD);
-                                    pastError = currentError;
-                                    if(pSignal > 0){/**right*/
-                                        set_motor(1, (40 + pSignal+dSignal));
-                                        set_motor(2, -40.5);
-                                        Sleep(0, 5000);
-                                }       
-                                    else if(pSignal < 0){/**left*/
-                                        set_motor(1, 40);
-                                        set_motor(2, -(40.5 - pSignal + dSignal));
-                                        Sleep(0, 5000);
-                                }
-                            } 
-                        }
-                         printf("First Left %d\n", left);
-                            int totalSum = 0;
-                            int pSignal = 0;
-                            int dSignal = 0;
-                            int sum = 0;
-                            int num = 0;
-                            int eValue = 0;
-                            int w = 0;
-                            int left = 0;       //True if line is left
-                            int right = 0;      //True if line is right
-                            int top = 0;        //True if line is forward
-                            int leftSum = 0;    //Totals amount of left mid pixels which are white
-                            int rightSum = 0;   //Totals amount of right mid pixels which are white
-                            int topSum = 0;     //Totals amount of top mid pixels which are white
-                            printf("Second Left %d\n", left);
-                            take_picture();
-                            for(int i = 0; i < 240; i++){
-                                int leftSide = get_pixel(1, i, 3);//Saves the value of the left-mid pixels if above threshold
-                                if(leftSide > 130){
-                                    leftSum = leftSum + 1;//Adds to a total count of pixels that are white
-                                }
-                                else{//If not valid pixel skip
-                                    leftSum = leftSum + 0;
-                                }
-            
-                                int rightSide = get_pixel(319, i, 3);//Saves the value of the right-mid pixels if above threshold
-                                if(rightSide > 130){
-                                    rightSum = rightSum + 1;//Adds to a total count of pixels that are white
-                                }
-                                else{//If not valid pixel skip
-                                    rightSum = rightSum + 0;
-                                }
-                            }
-                        
-                            for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
-                                sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
-                                if(sum > 130){  //If value greater than threshold make it 1 and add to num
-                                    w = 1;
-                                    num++; //num increases when a white pixel is found
-                                    topSum = topSum + 1;
-                                }
-                                else{
-                                    w = 0;
-                                    topSum = topSum + 0;
-                                }
-                                totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
-                            }
-                            if(leftSum > 140){left = 1;}
-                            else{left = 0;}
-                            if(rightSum > 140){right = 1;}
-                            else{right = 0;}
-                            if(topSum > 40){top = 1;}
-                            else{top = 0;}
-                            int Redsum = get_pixel(160, 1, 0);
-                            printf("Third Left %d\n", left);
-                        }
-                    }
-
+            }
             else if(num != 0){
                 if(num < 20){ //If not enough pixels are found, reverse and reset
                     printf("reverse %d\n", num);
