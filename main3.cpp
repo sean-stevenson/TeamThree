@@ -95,7 +95,7 @@ int move(){
         }else{
             right = 0;
         }
-        if(topSum > ){
+        if(topSum > 20){
             top = 1;
         }else{
             top = 0;
