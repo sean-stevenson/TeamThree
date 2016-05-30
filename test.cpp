@@ -33,6 +33,7 @@ int openDoor(){
 }
 
 int move(){
+    int mtrSp = 50;
     int check = 0;
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
     float kP = 0.2;//Prop constant which scales with error signal
@@ -62,7 +63,7 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num >= 320){
+            if(num > 317){
                 for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
                 //For left and right, this is from row 100 to row 215, column 1 and 319 respectively
                 //For top this is from
@@ -81,12 +82,12 @@ int move(){
                     rightSum = rightSum + 0;
                 }
         }
-        if(leftSum > 230){
+        if(leftSum > 220){
             left = 1;
         }else{
             left = 0;
         }
-        if(rightSum > 235){
+        if(rightSum > 220){
             right = 1;
         }else{
             right = 0;
@@ -97,6 +98,7 @@ int move(){
             top = 0;
         }
                         int check = check + 1;
+                        mtrSp = 35;
                         if(check > 1){
                         if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             set_motor(1, 0);
@@ -138,21 +140,21 @@ int move(){
 
                     if(pSignal > 0){/**right*/
                         //printf("right %d\n", pSignal);
-                        set_motor(1, 50);
-                        if(-50.5 + pSignal + dSignal <= 0){
-                        set_motor(2, -50.5 + pSignal + dSignal);
+                        set_motor(1, mtrSp);
+                        if(-(mtrSp + 0.5) + pSignal + dSignal <= 0){
+                        set_motor(2, -(mtrSp + 0.5) + pSignal + dSignal);
                         }else{
                             set_motor(2, 0);
                         }
                         Sleep(0, 5000);
                     }else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
-                        if(50 + pSignal + dSignal >= 0){
-                        set_motor(1, 50 + pSignal + dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+                        if(mtrSp + pSignal + dSignal >= 0){
+                        set_motor(1, mtrSp + pSignal + dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
                         }else{
                             set_motor(1, 0);
                         }
-                        set_motor(2, -50.5);/**Minuses values if signal is minus it is double negative therefore positive*/
+                        set_motor(2, -(mtrSp + 0.5));/**Minuses values if signal is minus it is double negative therefore positive*/
                         Sleep(0, 5000);
                     }
                 }
