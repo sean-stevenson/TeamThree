@@ -105,7 +105,7 @@ int move(){
         }
                         int check = check + 1;
                         mtrSp = 35;
-                        if(check > 3){
+                        if(check > 7){
                         if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                             set_motor(1, 0);
                             set_motor(2, -45);
