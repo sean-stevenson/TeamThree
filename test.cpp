@@ -43,6 +43,7 @@ int move(){
     int eValue = 0;//Average value of error either side
     //Sleep(2,0); //For gate
     while(1){
+        int topSum;
         int totalSum = 0;
         int pSignal = 0;
         int dSignal = 0;
@@ -57,6 +58,7 @@ int move(){
                 if(sum > 130){  //If value greater than threshold make it 1 and add to num
                     w = 1;
                     num++; //num increases when a white pixel is found
+                    topSum = topSum + 1;
                     }else{
                         w = 0;
                     }
@@ -69,7 +71,7 @@ int move(){
                 int top = 0;        //True if line is forward
                 int leftSum = 0;    //Totals amount of left mid pixels which are white
                 int rightSum = 0;   //Totals amount of right mid pixels which are white
-                int topSum = 0;     //Totals amount of top mid pixels which are white
+                //int topSum = 0;     //Totals amount of top mid pixels which are white
                 for(int i = 0; i < 240; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
                 //For left and right, this is from row 100 to row 215, column 1 and 319 respectively
                 //For top this is from
@@ -88,12 +90,12 @@ int move(){
                     rightSum = rightSum + 0;
                 }
         }
-        if(leftSum > 150){
+        if(leftSum > 100){
             left = 1;
         }else{
             left = 0;
         }
-        if(rightSum > 150){
+        if(rightSum > 100){
             right = 1;
         }else{
             right = 0;
@@ -105,8 +107,9 @@ int move(){
         }
                         int check = check + 1;
                         printf("Check %d\n", check);
-                        mtrSp = 40;
+                        //mtrSp = 40;
                         if(check > 7){
+                            if(top != 1){
                             if(left == 1 && right == 1){ //T intersection (choose left)
                                 set_motor(1, 0);
                                 set_motor(2, -55);
@@ -122,6 +125,7 @@ int move(){
                                 set_motor(2,0);
                                 set_motor(1, 0);
                             }
+                        }
                         }
             }
             else if(num < 20){ //If not enough pixels are found, reverse and reset
