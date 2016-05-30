@@ -85,17 +85,17 @@ int move(){
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
-        if(leftSum > 130){
+        if(leftSum > 180){
             left = 1;
         }else{
             left = 0;
         }
-        if(rightSum > 130){
+        if(rightSum > 180){
             right = 1;
         }else{
             right = 0;
         }
-        if(topSum > 40){
+        if(topSum > 20){
             top = 1;
         }else{
             top = 0;
