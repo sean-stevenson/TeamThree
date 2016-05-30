@@ -109,7 +109,7 @@ int move(){
                         if(check > 4){
                             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                                 set_motor(1, 0);
-                                set_motor(2, -45);
+                                set_motor(2, -50);
                                 Sleep(0, 500000);
                                 set_motor(1, 0);
                                 set_motor(2, 0);
