@@ -61,7 +61,7 @@ int move(){
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
-            if(num > 310){
+            if(num > 319){
                         int check = check + 1;
                         if(check > 1){ //T intersection (choose left)
                             set_motor(1, 0);
