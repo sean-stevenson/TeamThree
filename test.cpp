@@ -51,6 +51,12 @@ int move(){
         int num = 0;
         int eValue = 0;
         int w = 0;  
+        int left = 0;       //True if line is left
+        int right = 0;      //True if line is right
+        int top = 0;        //True if line is forward
+        int leftSum = 0;    //Totals amount of left mid pixels which are white
+        int rightSum = 0;   //Totals amount of right mid pixels which are white
+        int topSum = 0;     //Totals amount of top mid pixels which are white
         //Totals amount of top mid pixels which are white
         take_picture();
         for(int i = 0; i < 200; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
