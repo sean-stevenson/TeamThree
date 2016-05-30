@@ -63,7 +63,7 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num > 317){
+            if(num = 320){
                 int left = 0;       //True if line is left
                 int right = 0;      //True if line is right
                 int top = 0;        //True if line is forward
@@ -88,12 +88,12 @@ int move(){
                     rightSum = rightSum + 0;
                 }
         }
-        if(leftSum > 220){
+        if(leftSum > 150){
             left = 1;
         }else{
             left = 0;
         }
-        if(rightSum > 220){
+        if(rightSum > 150){
             right = 1;
         }else{
             right = 0;
@@ -103,32 +103,32 @@ int move(){
         }else{
             top = 0;
         }
-                        int check = check + 1;
+                        int check++;
                         mtrSp = 35;
-                        if(check > 7){
-                        if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
-                            set_motor(1, 0);
-                            set_motor(2, -45);
-                            Sleep(0, 500000);
-                            set_motor(1, 0);
-                            set_motor(2, 0);
-                        }
-                        //else if(left == 0 && right == 1 && top == 0){ //Right side turn
-                          //  printf("Right %d\n", right);
-                            //set_motor(2,0);
-                            //set_motor(1, 50);
-                            //Sleep(0, 500000);
-                            //set_motor(2,0);
-                            //set_motor(1, 0);
-                        //}
-                        else if(left == 1 && right == 0 && top == 0){ //Left side turn
-                            printf("Left %d\n", left);
-                            set_motor(1, 0);
-                            set_motor(2, -50);
-                            Sleep(0, 500000);
-                            set_motor(1, 0);
-                            set_motor(2, 0);
-                        }
+                        if(check > 10){
+                            if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
+                                set_motor(1, 0);
+                                set_motor(2, -45);
+                                Sleep(0, 500000);
+                                set_motor(1, 0);
+                                set_motor(2, 0);
+                            }
+                            //else if(left == 0 && right == 1 && top == 0){ //Right side turn
+                              //  printf("Right %d\n", right);
+                                //set_motor(2,0);
+                                //set_motor(1, 50);
+                                //Sleep(0, 500000);
+                                //set_motor(2,0);
+                                //set_motor(1, 0);
+                            //}
+                            else if(left == 1 && right == 0 && top == 0){ //Left side turn
+                                printf("Left %d\n", left);
+                                set_motor(1, 0);
+                                set_motor(2, -50);
+                                Sleep(0, 500000);
+                                set_motor(1, 0);
+                                set_motor(2, 0);
+                            }
                         }
             }
             else if(num < 20){ //If not enough pixels are found, reverse and reset
