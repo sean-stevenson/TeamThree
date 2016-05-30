@@ -105,8 +105,8 @@ int move(){
         }
                         int check = check + 1;
                         printf("Check %d\n", check);
-                        mtrSp = 40;
-                        if(check > 4){
+                        mtrSp = 42.5;
+                        if(check > 6){
                             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                                 set_motor(1, 0);
                                 set_motor(2, -50);
