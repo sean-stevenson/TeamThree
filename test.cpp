@@ -63,7 +63,7 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num = 320){
+            if(num > 319){
                 int left = 0;       //True if line is left
                 int right = 0;      //True if line is right
                 int top = 0;        //True if line is forward
