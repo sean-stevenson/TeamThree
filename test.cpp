@@ -56,10 +56,8 @@ int move(){
                 if(sum > 130){  //If value greater than threshold make it 1 and add to num
                     w = 1;
                     num++; //num increases when a white pixel is found
-                    topSum = topSum + 1;
                     }else{
                         w = 0;
-                        topSum = topSum + 0;
                     }
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
@@ -110,7 +108,5 @@ int move(){
         
             }
 
-        
+        return 0;
     }
-return 0;
-}
