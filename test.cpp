@@ -50,18 +50,11 @@ while(1){
                                     set_motor(2,0);
                                     set_motor(1, 0);
                                 }
-                                else if(num < 20){ //If not enough pixels are found, reverse and reset
-                                    set_motor(1, -40.5);
-                                    set_motor(2, 40);
-                                    Sleep(0, 50000);
-                                    continue;
-                                }
                                     int totalSum = 0;
                                     int pSignal = 0;
                                     int dSignal = 0;
                                     int sum = 0;
                                     int num = 0;
-                                    int eValue = 0;
                                     int w = 0;  
                                     int left = 0;       //True if line is left
                                     int right = 0;      //True if line is right
@@ -97,6 +90,8 @@ while(1){
                                         else{right = 0;}
                                         if(topSum > 20){top = 1;}
                                         else{top = 0;}
+                                        int left = 0;       //True if line is left
+                                        int right = 0;      //True if line is right
                                         int mtrSp = 50;
                                         int check = 0;
                                         int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
@@ -122,8 +117,14 @@ while(1){
                                         currentError = abs(eValue);
                                         dSignal = abs(((currentError - pastError)/0.005)*kD);
                                         pastError = currentError;
-                    
-                                        if(pSignal > 0){/**right*/
+                                        if(num < 20){ //If not enough pixels are found, reverse and reset
+                                            set_motor(1, -40.5);
+                                            set_motor(2, 40);
+                                            Sleep(0, 50000);
+                                            continue;
+                                        }
+                                        else{
+                                            if(pSignal > 0){/**right*/
                                             //printf("right %d\n", pSignal);
                                             set_motor(1, mtrSp);
                                             if(-(mtrSp + 0.5) + pSignal + dSignal <= 0){
@@ -143,6 +144,7 @@ while(1){
                                             }
                                                 set_motor(2, -(mtrSp + 0.5));/**Minuses values if signal is minus it is double negative therefore positive*/
                                                 Sleep(0, 5000);
+                                        }
                                         }
                                     
                             }
@@ -260,5 +262,7 @@ int move(){
         
             }
 
-        return 0;
+        
     }
+    return 0;
+}
