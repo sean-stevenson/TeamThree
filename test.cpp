@@ -61,7 +61,7 @@ int move(){
         for(int i = 0; i < 200; i++){  //For loop to save pixels to arrays and test whiteness, iterates through from a base value to reach a max
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
-                int leftSide = get_pixel(1, 39+ i, 3);//Saves the value of the left-mid pixels if above threshold
+                int leftSide = get_pixel(40, i, 3);//Saves the value of the left-mid pixels if above threshold
                 if(leftSide > 130){
                   leftSum = leftSum + 1;//Adds to a total count of pixels that are white
                 }
@@ -69,7 +69,7 @@ int move(){
                   leftSum = leftSum + 0;
                 }
                 
-                int rightSide = get_pixel(319, 39 + i, 3);//Saves the value of the right-mid pixels if above threshold
+                int rightSide = get_pixel(280, i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
                   rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }
@@ -77,13 +77,6 @@ int move(){
                   rightSum = rightSum + 0;
                 }
                 
-                int topSide = get_pixel(106 + i, 1, 3);//Saves the value of the top-mid pixels if above threshold
-                if(topSide > 130){
-                  topSum = topSum + 1;//Adds to a total count of pixels that are white
-                }
-                else{//If not valid pixel skip
-                  topSum = topSum + 0;
-                }
             }
             if(leftSum > 40){left = 1;}
             else{left = 0;}
@@ -107,8 +100,7 @@ int move(){
                         int check = check + 1;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
-                        if(check > 4){
-                            if(top != 1){
+                        if(check > 6){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
                                     set_motor(1, 0);
                                     set_motor(2, -55);
