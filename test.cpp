@@ -35,7 +35,7 @@ int openDoor(){
 int move(){
     int check = 0;
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
-    float kP = 0.25;//Prop constant which scales with error signal
+    float kP = 0.22;//Prop constant which scales with error signal
     float kD = 0.00015;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
@@ -65,14 +65,13 @@ int move(){
                         int check = check + 1;
                         if(check > 1){ //T intersection (choose left)
                             set_motor(1, 0);
-                            set_motor(2, -60);
+                            set_motor(2, -50);
                             Sleep(0, 500000);
                             set_motor(1, 0);
                             set_motor(2, 0);
                         }       
                }
             else if(num < 20){ //If not enough pixels are found, reverse and reset
-                    printf("reverse %d\n", num);
                     set_motor(1, -40.5);
                     set_motor(2, 40);
                     Sleep(0, 50000);
