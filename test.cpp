@@ -85,9 +85,9 @@ int move(){
                   topSum = topSum + 0;
                 }
             }
-            if(leftSum > 20){left = 1;}
+            if(leftSum > 40){left = 1;}
             else{left = 0;}
-            if(rightSum > 20){right = 1;}
+            if(rightSum > 40){right = 1;}
             else{right = 0;}
             if(topSum > 20){top = 1;}
             else{top = 0;}
@@ -107,7 +107,7 @@ int move(){
                         int check = check + 1;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
-                        if(check > 7){
+                        if(check > 4){
                             if(top != 1){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
                                     set_motor(1, 0);
