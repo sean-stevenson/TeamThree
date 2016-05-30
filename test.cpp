@@ -81,7 +81,7 @@ int move(){
                     rightSum = rightSum + 0;
                 }
         }
-        if(leftSum > 235){
+        if(leftSum > 230){
             left = 1;
         }else{
             left = 0;
@@ -105,14 +105,14 @@ int move(){
                             set_motor(1, 0);
                             set_motor(2, 0);
                         }
-                        else if(left == 0 && right == 1 && top == 0){ //Right side turn
-                            printf("Right %d\n", right);
-                            set_motor(2,0);
-                            set_motor(1, 50);
-                            Sleep(0, 500000);
-                            set_motor(2,0);
-                            set_motor(1, 0);
-                        }
+                        //else if(left == 0 && right == 1 && top == 0){ //Right side turn
+                          //  printf("Right %d\n", right);
+                            //set_motor(2,0);
+                            //set_motor(1, 50);
+                            //Sleep(0, 500000);
+                            //set_motor(2,0);
+                            //set_motor(1, 0);
+                        //}
                         else if(left == 1 && right == 0 && top == 0){ //Left side turn
                             printf("Left %d\n", left);
                             set_motor(1, 0);
