@@ -63,7 +63,7 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num > 319){
+            if(num > 310){
                 int left = 0;       //True if line is left
                 int right = 0;      //True if line is right
                 int top = 0;        //True if line is forward
@@ -106,7 +106,7 @@ int move(){
                         int check = check + 1;
                         printf("Check %d\n", check);
                         mtrSp = 35;
-                        if(check > 10){
+                        if(check > 4){
                             if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
                                 set_motor(1, 0);
                                 set_motor(2, -45);
