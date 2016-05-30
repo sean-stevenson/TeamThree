@@ -43,7 +43,6 @@ int move(){
     int eValue = 0;//Average value of error either side
     //Sleep(2,0); //For gate
     while(1){
-        int topSum;
         int totalSum = 0;
         int pSignal = 0;
         int dSignal = 0;
@@ -133,6 +132,7 @@ int move(){
                                 }
                             }
             }
+            }
             else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
                     set_motor(2, 40);
@@ -155,11 +155,13 @@ int move(){
                             set_motor(2, 0);
                         }
                         Sleep(0, 5000);
-                    }else if(pSignal < 0){/**left*/
+                    }
+                    else if(pSignal < 0){/**left*/
                         //printf("left %d\n", pSignal);
                         if(mtrSp + pSignal + dSignal >= 0){
                         set_motor(1, mtrSp + pSignal + dSignal);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-                        }else{
+                        }
+                        else{
                             set_motor(1, 0);
                         }
                         set_motor(2, -(mtrSp + 0.5));/**Minuses values if signal is minus it is double negative therefore positive*/
