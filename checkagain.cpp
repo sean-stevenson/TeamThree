@@ -33,6 +33,8 @@ int openDoor(){
 }
 
 int move(){
+    int leftCount = 0;
+    int reverse = 40;
     bool tInt = true;
     int mtrSp = 40;
     int check = 0;
@@ -90,8 +92,11 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num == 320){
-                tInt = true;
+            if(num == 320 && check > 20){
+                leftCount = leftCount + 1;
+                if(leftCount > 7){
+                    tInt = true;
+                }    
             }
     
             if(num > 315){
@@ -109,6 +114,7 @@ int move(){
                                     set_motor(1, 0);
                                     set_motor(2, 0);
                                     tInt = false;
+                                    reverse = 45;
                                 }
                                 
                             }
@@ -116,7 +122,7 @@ int move(){
             
             else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
-                    set_motor(2, 40);
+                    set_motor(2, 45);
                     Sleep(0, 50000);
                     continue;
             }
