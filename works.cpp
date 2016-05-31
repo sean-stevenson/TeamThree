@@ -36,7 +36,7 @@ int move(){
     int mtrSp = 50;
     int check = 0;
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
-    float kP = 0.195;//Prop constant which scales with error signal
+    float kP = 0.205;//Prop constant which scales with error signal
     float kD = 0.00015;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
