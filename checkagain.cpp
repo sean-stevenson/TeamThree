@@ -90,6 +90,10 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
+            if(num == 320){
+                tInt = true;
+            }
+    
             if(num > 315){
                         check = check + 1;
                         printf("Check %d\n", check);
