@@ -94,7 +94,7 @@ int move(){
         printf("num %d\n", num);
             if(num == 320 && check > 20){
                 leftCount = leftCount + 1;
-                if(leftCount > 7){
+                if(leftCount > 15){
                     tInt = true;
                 }    
             }
@@ -114,7 +114,7 @@ int move(){
                                     set_motor(1, 0);
                                     set_motor(2, 0);
                                     tInt = false;
-                                    reverse = 45;
+                                    reverse = 50;
                                 }
                                 
                             }
@@ -122,7 +122,7 @@ int move(){
             
             else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
-                    set_motor(2, 45);
+                    set_motor(2, reverse);
                     Sleep(0, 50000);
                     continue;
             }
