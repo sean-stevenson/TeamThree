@@ -33,6 +33,7 @@ int openDoor(){
 }
 
 int move(){
+    int mazeC = 310;
     int mtrSp = 50;
     int check = 0;
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
@@ -96,7 +97,7 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num > 310){
+            if(num > mazeC){
                         int check = check + 1;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
@@ -124,14 +125,14 @@ int move(){
                                 }
                             }
             }
-            else if((left == 0 && right == 1) && check > 8){ //Right side turn
-                                  printf("Right %d\n", right);
-                                    set_motor(2,0);
-                                    set_motor(1, 55);
-                                    Sleep(0, 500000);
-                                    set_motor(2,0);
-                                    set_motor(1, 0);
-                                }
+            //else if((left == 0 && right == 1) && check > 8){ //Right side turn
+                                  //printf("Right %d\n", right);
+                                    //set_motor(2,0);
+                                    //set_motor(1, 55);
+                                   // Sleep(0, 500000);
+                                   // set_motor(2,0);
+                                   // set_motor(1, 0);
+                                //}
             else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
                     set_motor(2, 40);
