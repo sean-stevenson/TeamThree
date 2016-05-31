@@ -11,9 +11,6 @@ extern "C" int init();
 extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
-extern "C" int read_analog(int ch_adc); 
-extern "C" int select_IO(int chan, int direct); 
-
 
 int openDoor();
 int move();
@@ -102,9 +99,7 @@ int move(){
                     tInt = true;
                 }    
             }
-        
-            
-            
+    
             if(num > 315){
                         check = check + 1;
                         printf("Check %d\n", check);
@@ -167,3 +162,4 @@ int move(){
 
         return 0;
     }
+
