@@ -68,10 +68,8 @@ int move(){
                 
                 int rightSide = get_pixel(280, i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
-                    printf("RightSide %d\n", rightSide);
                   rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }
-                printf("Right %d\n", rightSum);
             }
             if(leftSum > 45){left = 1;}
             else{left = 0;}
