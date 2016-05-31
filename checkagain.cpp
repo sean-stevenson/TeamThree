@@ -34,6 +34,7 @@ int openDoor(){
 
 int move(){
     int leftCount = 0;
+    int lReverse = 40.5;
     int reverse = 40;
     bool tInt = true;
     int mtrSp = 40;
@@ -115,13 +116,14 @@ int move(){
                                     set_motor(2, 0);
                                     tInt = false;
                                     reverse = 50;
+                                    lreverse = -10;
                                 }
                                 
                             }
             }
             
             else if(num < 20){ //If not enough pixels are found, reverse and reset
-                    set_motor(1, -40.5);
+                    set_motor(1, -lReverse);
                     set_motor(2, reverse);
                     Sleep(0, 50000);
                     continue;
