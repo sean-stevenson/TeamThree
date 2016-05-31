@@ -134,7 +134,7 @@ int move(){
                 }    
             }
             int redsum = get_pixel(160, 1, 0);
-            if (redsum > 130){
+            if (redsum > 200){
                 maze();
             
             }
