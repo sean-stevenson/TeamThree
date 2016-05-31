@@ -104,7 +104,7 @@ while(1){
             top = 0;
         }
         if(num > 315){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
-        //i.e. a T or 4 way intersection
+        printf("Summm %d\n", sum); //i.e. a T or 4 way intersection
         //set_motor(1, 0);  //Stop motors
         //set_motor(2, 0);
         //Sleep(0, 50000); //Rest briefly
