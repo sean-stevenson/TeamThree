@@ -59,7 +59,7 @@ while(1){
                     set_motor(2, 40);
                     Sleep(0, 50000);
                     continue;
-        }else{
+        }else if(num != 0){
             //printf("Num at T %d \n", num);
         eValue = totalSum/num;//Finds average of a point at
         pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
