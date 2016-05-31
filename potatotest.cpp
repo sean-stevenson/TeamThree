@@ -54,7 +54,33 @@ while(1){
         }
         totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
     } 
-    if(num > 315){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
+    if(num < 20){ //If not enough pixels are found, reverse and reset
+                    set_motor(1, -40.5);
+                    set_motor(2, 40);
+                    Sleep(0, 50000);
+                    continue;
+        }else{
+            //printf("Num at T %d \n", num);
+        eValue = totalSum/num;//Finds average of a point at
+        pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
+        currentError = abs(eValue);
+        dSignal = abs(((currentError - pastError)/0.005)*kD);
+        //printf("dSignal %d\n", dSignal);
+        pastError = currentError;
+        if(pSignal > 0){/**right*/
+            //printf("right %d\n", pSignal);
+            set_motor(1, (45 + pSignal+dSignal));
+            // + dSignal
+            set_motor(2, -45.5);
+            Sleep(0, 5000);
+        }else if(pSignal < 0){/**left*/
+            //printf("left %d\n", pSignal);
+            set_motor(1, 45);/**From a few calculations 40 seems roughly right, max value is 70ish*/
+            set_motor(2, -(45.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
+            //+ dSignal
+            Sleep(0, 5000);
+        }
+    }else if(num > 315){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
         //i.e. a T or 4 way intersection
         //set_motor(1, 0);  //Stop motors
         //set_motor(2, 0);
@@ -110,47 +136,23 @@ while(1){
         }
     
             //Main conditionals, returns 1 to the main function if sucessful
-        if(right == 1 && top == 0 && left == 0){ //Right side turn
+        if((right == 1) && (top == 0) && (left == 0)){ //Right side turn
             printf("Right %d\n", right);
             set_motor(1, 60);
             set_motor(2, 0);
             Sleep(3, 500000);
             set_motor(2,0);
             set_motor(1, 0);
-                                }
-                                else if(left == 1 && right == 1){ //T intersection (choose left)
-                                    printf("T intersection %d\n", left);
-                                    set_motor(1, 30);
-                                    set_motor(2, -30);
-                                    set_motor(1, 0);
-                                    set_motor(2, -60);
-                                    Sleep(0, 500000);
-                                    set_motor(1, 0);
-                                    set_motor(2, 0);
-                                    //make boolean
-                                }
-        if(num != 0){
-            //printf("Num at T %d \n", num);
-        eValue = totalSum/num;//Finds average of a point at
-        pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
-        currentError = abs(eValue);
-        dSignal = abs(((currentError - pastError)/0.005)*kD);
-        //printf("dSignal %d\n", dSignal);
-        pastError = currentError;
-        if(pSignal > 0){/**right*/
-            //printf("right %d\n", pSignal);
-            set_motor(1, (35 + pSignal+dSignal));
-            // + dSignal
-            set_motor(2, -35.5);
-            Sleep(0, 5000);
-        }else if(pSignal < 0){/**left*/
-            //printf("left %d\n", pSignal);
-            set_motor(1, 35);/**From a few calculations 40 seems roughly right, max value is 70ish*/
-            set_motor(2, -(35.5 - pSignal + dSignal));/**Minuses values if signal is minus it is double negative therefore positive*/
-            //+ dSignal
-            Sleep(0, 5000);
+        }else if(left == 1 && right == 1){ //T intersection (choose left)
+            printf("T intersection %d\n", left);
+            set_motor(1, 30);
+            set_motor(2, -30);
+            set_motor(1, 0);
+            set_motor(2, -60);
+            Sleep(0, 500000);
+            set_motor(1, 0);
+            set_motor(2, 0);                           //make boolean
         }
-    }
 }
 }
 return 0;
