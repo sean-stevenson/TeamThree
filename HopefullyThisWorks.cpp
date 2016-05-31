@@ -77,15 +77,15 @@ while(1){
         if(pSignal > 0){
             set_motor(1, 40);
             if(-40.5 + pSignal + dSignal <= 0){
-                set_motor(2,-(40.5 + pSignal + dSignal));
+                set_motor(2,-40.5 + pSignal + dSignal);
             }else{
                 set_motor(2,0);
             }
             Sleep(0, 5000);
         //Turn left
-        }else if(pSignal < 0){/**left*/
+        }else if(pSignal < 0){
             if(40 + pSignal + dSignal >= 0){
-                set_motor(1, 40 + pSignal + dSignal);
+                set_motor(1, 40 - pSignal - dSignal);
             }else{
                 set_motor(1,0);
             }
@@ -95,6 +95,7 @@ while(1){
     }
 
     if(num > 315){       //True if line is forward
+        printf("Num %d\n", num);
         int leftSum = 0;    //Totals amount of left mid pixels which are white
         int rightSum = 0;   //Totals amount of right mid pixels which are white
         int topSum = 0;     //Totals amount of top mid pixels which are white
