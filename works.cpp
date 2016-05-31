@@ -2,7 +2,7 @@
 #include <stdlib.h>
 # include <time.h>
 /**these load specific methods from the ENGR101 library*/
-
+//Works up to 68%
 extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor( int motor , int speed );
 extern "C" int take_picture();
