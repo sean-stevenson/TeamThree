@@ -112,7 +112,7 @@ int move(){
                                     set_motor(2, 0);
                                     //make boolean
                                 }
-                                else if(left == 0 && right == 1 && top == 0){ //Right side turn
+                                if(left == !1 && right == 1){ //Right side turn
                                   printf("Right %d\n", right);
                                     set_motor(1, 60);
                                     set_motor(2, 0);
