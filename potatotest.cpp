@@ -34,7 +34,7 @@ float kD = 0.00015;
 int pastError = 0;//Past error to work out kD
 int currentError = 0;//Absolute of error signal - will need to check that works
 int eValue = 0;//Average value of error either side
-
+int check = 0;
 Sleep(2,0);
 while(1){
     int totalSum = 0;
@@ -61,6 +61,7 @@ while(1){
         //set_motor(2, 0);
         //Sleep(0, 50000); //Rest briefly
         //take_picture();   //Update picture
+        check = check + 1;
         int left = 0;       //True if line is left
         int right = 0;      //True if line is right
         int top = 0;        //True if line is forward
@@ -109,7 +110,8 @@ while(1){
         }else{
             top = 0;
         }
-    
+        
+        if(check > 20){
             //Main conditionals, returns 1 to the main function if sucessful
         if((right == 1) && (top == 0) && (left == 0)){ //Right side turn
             printf("Right %d\n", right);
@@ -127,6 +129,7 @@ while(1){
             Sleep(0, 500000);
             set_motor(1, 0);
             set_motor(2, 0);                           //make boolean
+        }
         }
     }else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
