@@ -78,7 +78,7 @@ int move(){
                 }
                 
             }
-            if(leftSum > 40){left = 1;}
+            if(leftSum > 30){left = 1;}
             else{left = 0;}
             if(rightSum > 40){right = 1;}
             else{right = 0;}
