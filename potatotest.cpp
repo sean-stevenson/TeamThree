@@ -43,12 +43,7 @@ while(1){
     int sum = 0;
     int num = 0;
     int eValue = 0;
-    int left = 0;       //True if line is left
-    int right = 0;      //True if line is right
-    int top = 0;        //True if line is forward
-    int leftSum = 0;    //Totals amount of left mid pixels which are white
-    int rightSum = 0;   //Totals amount of right mid pixels which are white
-    int topSum = 0;
+    
     
     take_picture();//Takes picture and sets all the variables to 0
     for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
@@ -103,6 +98,13 @@ while(1){
         }else{
             top = 0;
         }
+        
+        int left = 0;       //True if line is left
+    int right = 0;      //True if line is right
+    int top = 0;        //True if line is forward
+    int leftSum = 0;    //Totals amount of left mid pixels which are white
+    int rightSum = 0;   //Totals amount of right mid pixels which are white
+    int topSum = 0;
         //if(num > 315){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
         printf("Summm %d\n", sum); //i.e. a T or 4 way intersection
         //set_motor(1, 0);  //Stop motors
@@ -130,7 +132,8 @@ while(1){
             set_motor(1, 0);
             set_motor(2, 0);                           //make boolean
         }
-    }else if(num < 20){ //If not enough pixels are found, reverse and reset
+    }
+    if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
                     set_motor(2, 40);
                     Sleep(0, 50000);
