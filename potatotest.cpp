@@ -155,7 +155,7 @@ while(1){
 }
 return 0;
 }
-
+}
 int main (){
 init();
 //openDoor();
