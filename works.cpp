@@ -65,22 +65,16 @@ int move(){
                 if(leftSide > 130){
                   leftSum = leftSum + 1;//Adds to a total count of pixels that are white
                 }
-                else{//If not valid pixel skip
-                  leftSum = leftSum + 0;
-                }
                 
                 int rightSide = get_pixel(280, i, 3);//Saves the value of the right-mid pixels if above threshold
                 if(rightSide > 130){
                   rightSum = rightSum + 1;//Adds to a total count of pixels that are white
                 }
-                else{//If not valid pixel skip
-                  rightSum = rightSum + 0;
-                }
                 
             }
-            if(leftSum > 30){left = 1;}
+            if(leftSum > 45){left = 1;}
             else{left = 0;}
-            if(rightSum > 30){right = 1;}
+            if(rightSum > 45){right = 1;}
             else{right = 0;}
             if(topSum > 30){top = 1;}
             else{top = 0;}
@@ -101,7 +95,7 @@ int move(){
                         printf("Check %d\n", check);
                         //mtrSp = 40;
                         if(check > 20){
-                                if(right == 1 && top == 0){ //Right side turn
+                                if(right == 1 && top == 0 && left == 0){ //Right side turn
                                   printf("Right %d\n", right);
                                     set_motor(1, 60);
                                     set_motor(2, 0);
