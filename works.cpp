@@ -97,12 +97,11 @@ int move(){
         }
         printf("num %d\n", num);
             if(num > 315){
-                        check++;
+                        int check = check + 1;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
-                        if(check > 20){
+                        if(check > 12){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
-                                    printf("T intersection left %d, right, %d", left, right);
                                     set_motor(1, 0);
                                     set_motor(2, -55);
                                     Sleep(0, 500000);
@@ -110,19 +109,13 @@ int move(){
                                     set_motor(2, 0);
                                     //make boolean
                                 }
-                                else if(right == 1 && top == 0 && left == 0){ //Right side turn
+                                else if(left == 0 && right == 1){ //Right side turn
                                   printf("Right %d\n", right);
                                     set_motor(2,0);
                                     set_motor(1, 55);
                                     Sleep(0, 500000);
                                     set_motor(2,0);
                                     set_motor(1, 0);
-                                }
-                                else if(num < 20){ //If not enough pixels are found, reverse and reset
-                                    set_motor(1, -40.5);
-                                    set_motor(2, 40);
-                                    Sleep(0, 50000);
-                                    continue;
                                 }
                             }
             }
