@@ -11,7 +11,10 @@ extern "C" int init();
 extern "C" int connect_to_server(char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
+extern "C" int read_analog(int ch_adc); 
+extern "C" int select_IO(int chan, int direct); 
 
+int maze();
 int openDoor();
 int move();
 
@@ -21,6 +24,37 @@ int main (){
     move();
     return 0;
 }
+
+int maze(){ 
+ 
+ 
+   select_IO(0, 1);  //Assuming the left IR is in analogue 0 
+   select_IO(1, 1);  //And right is in 1 
+    
+   int leftSensor = read_analog(0);  //The IR return a percentage (0 to 1) 
+        int rightSensor = read_analog(1); //Of the voltage passed through 
+   int expectedWallDistance = 0.3;    //This value is random at the moment and needs to be tested and changed 
+    
+   if(leftSensor < expectedWallDistance){ 
+    printf("Wall to left\n"); 
+   }else{ 
+     printf("No wall to left\n"); 
+   } 
+   if(rightSensor < expectedWallDistance){ 
+     printf("Wall to right\n"); 
+   }else{ 
+      set_motor(1, 30);
+                                    set_motor(2, -30);
+                                    set_motor(1, 0);
+                                    set_motor(2, -60);
+                                    Sleep(0, 500000);
+                                    set_motor(1, 0);
+                                    set_motor(2, 0);
+   } 
+   return 0; 
+    
+ } 
+
 
 int openDoor(){
     if(connect_to_server("130.195.6.196", 1024) == 0){
@@ -99,7 +133,11 @@ int move(){
                     tInt = true;
                 }    
             }
-    
+            int redsum = get_pixel(160, 1, 0);
+            if (redsum > 130){
+                maze();
+            
+            }
             if(num > 315){
                         check = check + 1;
                         printf("Check %d\n", check);
