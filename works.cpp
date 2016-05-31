@@ -100,7 +100,7 @@ int move(){
                         int check = check + 1;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
-                        if(check > 6){
+                        if(check > 12){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
                                     set_motor(1, 0);
                                     set_motor(2, -55);
