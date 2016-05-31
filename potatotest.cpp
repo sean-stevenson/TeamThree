@@ -151,10 +151,8 @@ while(1){
             Sleep(0, 5000);
         }
     }
-
 }
 return 0;
-}
 }
 int main (){
 init();
