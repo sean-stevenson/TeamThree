@@ -92,9 +92,7 @@ while(1){
             set_motor(2, -40.5);
             Sleep(0, 5000);
         }
-    }
-
-    if(num > 315){       //True if line is forward
+    } else if(num > 315){       //True if line is forward
         printf("Num %d\n", num);
         int leftSum = 0;    //Totals amount of left mid pixels which are white
         int rightSum = 0;   //Totals amount of right mid pixels which are white
