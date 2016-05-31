@@ -17,7 +17,7 @@ int move();
 
 int main (){
     init();
-    //openDoor();
+    openDoor();
     move();
     return 0;
 }
@@ -110,7 +110,7 @@ int move(){
                                     set_motor(2, 0);
                                     //make boolean
                                 }
-                                else if(right == 1 && top == 0){ //Right side turn
+                                else if(right == 1 && top == 0 && left == 0){ //Right side turn
                                   printf("Right %d\n", right);
                                     set_motor(2,0);
                                     set_motor(1, 55);
