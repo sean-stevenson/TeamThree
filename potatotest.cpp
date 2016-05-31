@@ -65,19 +65,19 @@ while(1){
             //For left and right, this is from row 100 to row 215, column 1 and 319 respectively 
             //For top this is from 
             int leftSide = get_pixel(1, 120 + i, 3);//Saves the value of the left-mid pixels if above threshold
-            if(leftSide > 130){
+            if(leftSide > 100){
                 leftSum = leftSum + 1;//Adds to a total count of pixels that are white
             }else{//If not valid pixel skip
                 leftSum = leftSum + 0;
             }
             int rightSide = get_pixel(319, 120 + i, 3);//Saves the value of the right-mid pixels if above threshold
-            if(rightSide > 130){
+            if(rightSide > 100){
                 rightSum = rightSum + 1;//Adds to a total count of pixels that are white
             }else{//If not valid pixel skip
                 rightSum = rightSum + 0;
             }
             int topSide = get_pixel(106 + i, 1, 3);//Saves the value of the top-mid pixels if above threshold
-            if(topSide > 130){
+            if(topSide > 100){
                 topSum = topSum + 1;//Adds to a total count of pixels that are white
             }else{//If not valid pixel skip
                 topSum = topSum + 0;
@@ -103,15 +103,15 @@ while(1){
         }else{
             top = 0;
         }
-        if(num > 315){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
+        //if(num > 315){//If the sensor reads more than 300 white values, it knows it has encountered a line parallel to itself
         printf("Summm %d\n", sum); //i.e. a T or 4 way intersection
         //set_motor(1, 0);  //Stop motors
         //set_motor(2, 0);
         //Sleep(0, 50000); //Rest briefly
         //take_picture();   //Update picture
-        check = check + 1;
+        //check = check + 1;
              //Totals amount of top mid pixels which are white
-        if(check > 20){
+        //if(check > 20){
             //Main conditionals, returns 1 to the main function if sucessful
         if((right == 1) && (top == 0) && (left == 0)){ //Right side turn
             printf("Right %d\n", right);
@@ -129,7 +129,6 @@ while(1){
             Sleep(0, 500000);
             set_motor(1, 0);
             set_motor(2, 0);                           //make boolean
-        }
         }
     }else if(num < 20){ //If not enough pixels are found, reverse and reset
                     set_motor(1, -40.5);
