@@ -33,7 +33,7 @@ int openDoor(){
 }
 
 int move(){
-    int mtrSp = 50;
+    int mtrSp = 40;
     int check = 0;
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
     float kP = 0.2;//Prop constant which scales with error signal
