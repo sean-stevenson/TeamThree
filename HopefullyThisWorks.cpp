@@ -81,14 +81,14 @@ while(1){
         if(sum > white_threshold){  //If value greater than threshold make it 1 and add to num
             w = 1;
             num++; //num increases when a white pixel is found
-            topSum = toSum + 1;
+            topSum = topSum + 1;
         }else{
             w = 0;
         }
         totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
     }
     
-    } else if(num > 315){       //True if line is forward
+    if(num > 315){       //True if line is forward
         printf("Num %d\n", num);
         check = check + 1;
         if (check > 20){
@@ -173,6 +173,7 @@ while(1){
             set_motor(2, -40.5);
             Sleep(0, 5000);
         }
+}
 }
 return 0;
 }
