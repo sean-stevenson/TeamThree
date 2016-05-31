@@ -110,39 +110,25 @@ while(1){
         }
     
             //Main conditionals, returns 1 to the main function if sucessful
-        if(left == 1 && right == 1 && top == 0){ //T intersection (choose left)
-            set_motor(1, 0);
-            set_motor(2, -70);
-            Sleep(1, 500000);
-            set_motor(1,0);
-            set_motor(2, 0);  
-        }else if(left == 0 && right == 1 && top == 0){ //Right side turn
-            set_motor(2,0);
-            set_motor(1, 70);
-            Sleep(1, 0);
+        if(right == 1 && top == 0 && left == 0){ //Right side turn
+            printf("Right %d\n", right);
+            set_motor(1, 60);
+            set_motor(2, 0);
+            Sleep(3, 500000);
             set_motor(2,0);
             set_motor(1, 0);
-        }else if(left == 1 && right == 0 && top == 0){ //Left side turn
-                set_motor(1, 0);
-                set_motor(2, -70);
-                Sleep(1, 0);
-                set_motor(1,0);
-                set_motor(2, 0);
-
-            }
-            else if(left == 1 && right == 1 && top == 1){ //4-way intersection (choose forwards path)
-                printf("4 way intersection");
-                set_motor(1, 40);
-                set_motor(2, 40.5);
-                Sleep(1, 0);
-            }
-        }
-        else if(num < 20){ //If not enough pixels are found, reverse and reset
-                set_motor(1, -40.5);
-                set_motor(2, 40);
-                Sleep(0, 100000);
-                continue;
-        }
+                                }
+                                else if(left == 1 && right == 1){ //T intersection (choose left)
+                                    printf("T intersection %d\n", left);
+                                    set_motor(1, 30);
+                                    set_motor(2, -30);
+                                    set_motor(1, 0);
+                                    set_motor(2, -60);
+                                    Sleep(0, 500000);
+                                    set_motor(1, 0);
+                                    set_motor(2, 0);
+                                    //make boolean
+                                }
         if(num != 0){
             //printf("Num at T %d \n", num);
         eValue = totalSum/num;//Finds average of a point at
