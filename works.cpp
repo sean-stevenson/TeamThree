@@ -102,6 +102,7 @@ int move(){
                         //mtrSp = 40;
                         if(check > 12){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
+                                    printf("T intersection left %d, right, %d", left, right);
                                     set_motor(1, 0);
                                     set_motor(2, -55);
                                     Sleep(0, 500000);
@@ -109,7 +110,7 @@ int move(){
                                     set_motor(2, 0);
                                     //make boolean
                                 }
-                                else if(left == 0 && right == 1){ //Right side turn
+                                else if(right == 1 && top == 0){ //Right side turn
                                   printf("Right %d\n", right);
                                     set_motor(2,0);
                                     set_motor(1, 55);
