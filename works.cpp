@@ -82,7 +82,7 @@ int move(){
             else{left = 0;}
             if(rightSum > 30){right = 1;}
             else{right = 0;}
-            if(topSum > 20){top = 1;}
+            if(topSum > 30){top = 1;}
             else{top = 0;}
         for(int i = 0; i < 320; i++){  /**Less than 320 as the image is 320 pixels across*/
             sum = get_pixel(i, 1, 3);//Gets pixel at row 1 as it goes from 1 to 240
@@ -112,7 +112,7 @@ int move(){
                                     set_motor(2, 0);
                                     //make boolean
                                 }
-                                if(left == !1 && right == 1){ //Right side turn
+                                else if(right == 1 && top == 0){ //Right side turn
                                   printf("Right %d\n", right);
                                     set_motor(1, 60);
                                     set_motor(2, 0);
