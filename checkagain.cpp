@@ -116,7 +116,7 @@ int move(){
                                     set_motor(2, 0);
                                     tInt = false;
                                     reverse = 50;
-                                    lreverse = -10;
+                                    lReverse = -10;
                                 }
                                 
                             }
