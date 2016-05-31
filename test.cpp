@@ -33,11 +33,11 @@ int openDoor(){
 }
 
 int move(){
-    int mazeC = 310;
+    int mazeC = 315;
     int mtrSp = 50;
     int check = 0;
     int white_threshold = 130;//Threshold of white, i.e. from the 0 to 255 only values above this are detected
-    float kP = 0.2;//Prop constant which scales with error signal
+    float kP = 0.21;//Prop constant which scales with error signal
     float kD = 0.00015;
     int pastError = 0;//Past error to work out kD
     int currentError = 0;//Absolute of error signal - will need to check that works
@@ -97,11 +97,11 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num > mazeC){
+            if(num > 315){
                         int check = check + 1;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
-                        if(check > 8){
+                        if(check > 9){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
                                     set_motor(1, 0);
                                     set_motor(2, -55);
