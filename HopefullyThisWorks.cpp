@@ -101,7 +101,7 @@ while(1){
         }
         //Skip right if theres line forward
         if ((leftSum < rightSum) && (topSum > 100)){
-            printf('Skip right');
+            printf("Skip right");
             set_motor(1, 55);
             set_motor(2,-55);
             Sleep(0, 500000);
