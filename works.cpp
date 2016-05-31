@@ -96,11 +96,11 @@ int move(){
                     totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
         }
         printf("num %d\n", num);
-            if(num > 310){
-                        int check = check + 1;
+            if(num > 315){
+                        check++;
                         printf("Check %d\n", check);
                         //mtrSp = 40;
-                        if(check > 12){
+                        if(check > 20){
                                 if(left == 1 && right == 1){ //T intersection (choose left)
                                     printf("T intersection left %d, right, %d", left, right);
                                     set_motor(1, 0);
