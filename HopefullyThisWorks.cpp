@@ -67,7 +67,7 @@ while(1){
         Sleep(0, 50000);
         continue;
     //PID
-    }else if(num != 0){
+    }else if(num < 300){
         eValue = totalSum/num;//Finds average of a point at
         pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
         currentError = abs(eValue);
@@ -131,14 +131,14 @@ while(1){
             Sleep(0, 500000);
         }
         //Skip right if theres line forward
-        if ((leftSum < rightSum) && (topSum > 100)){
+        else if ((leftSum < rightSum) && (topSum > 100)){
             printf("Skip right");
             set_motor(1, 55);
             set_motor(2,-55);
             Sleep(0, 500000);
         }
         //4 way intersect just moves forward
-        if((leftSum > 100) && (rightSum > 100) && (topSum > 100)){
+        else if((leftSum > 100) && (rightSum > 100) && (topSum > 100)){
             printf("4 way");
             set_motor(1, 55);
             set_motor(2,-55);
