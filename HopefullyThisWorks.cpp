@@ -61,6 +61,38 @@ while(1){
         }
         totalSum = totalSum + ((i - 160) * w);//Takes the position of the i and adds to a total
     }
+    if(num < 20){ 
+        set_motor(1, -40.5);
+        set_motor(2, 40);
+        Sleep(0, 50000);
+        continue;
+    //PID
+    }else if(num != 0){
+        eValue = totalSum/num;//Finds average of a point at
+        pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
+        currentError = abs(eValue);
+        dSignal = abs(((currentError - pastError)/0.005)*kD);
+        pastError = currentError;
+        //Turn right
+        if(pSignal > 0){
+            set_motor(1, 40);
+            if(-40.5 + pSignal + dSignal <= 0){
+                set_motor(2,-(40.5 + pSignal + dSignal));
+            }else{
+                set_motor(2,0);
+            }
+            Sleep(0, 5000);
+        //Turn left
+        }else if(pSignal < 0){/**left*/
+            if(40 + pSignal + dSignal >= 0){
+                set_motor(1, 40 + pSignal + dSignal);
+            }else{
+                set_motor(1,0);
+            }
+            set_motor(2, -40.5);
+            Sleep(0, 5000);
+        }
+    }
 
     if(num > 315){       //True if line is forward
         int leftSum = 0;    //Totals amount of left mid pixels which are white
@@ -114,7 +146,7 @@ while(1){
             Sleep(0, 500000);
         }
         //T-intersect
-        if((leftSum > 100) && (rightSum > 100) && (topSum < 60)){
+        else if((leftSum > 100) && (rightSum > 100) && (topSum < 60)){
             printf("T-intersect");
             set_motor(1, 0);
             set_motor(2, -55);
@@ -123,7 +155,7 @@ while(1){
             set_motor(2, 0);
         }
         //Turn right
-        if((leftSum < rightSum) && (topSum < 70)){
+        else if((leftSum < rightSum) && (topSum < 70)){
             printf("Right");
             set_motor(1, 55);
             set_motor(2, 0);
@@ -132,7 +164,7 @@ while(1){
             set_motor(2, 0);
         }
         //Turn left
-        if((leftSum > rightSum) && (topSum < 70)){
+        else if((leftSum > rightSum) && (topSum < 70)){
             printf("Left");
             set_motor(1, 0);
             set_motor(2, -55);
@@ -141,37 +173,6 @@ while(1){
             set_motor(2, 0);
         }
     //Reverses
-    }else if(num < 20){ 
-        set_motor(1, -40.5);
-        set_motor(2, 40);
-        Sleep(0, 50000);
-        continue;
-    //PID
-    }else if(num != 0){
-        eValue = totalSum/num;//Finds average of a point at
-        pSignal = eValue*kP;//Times it by kP to get a value scaled with the e sginal
-        currentError = abs(eValue);
-        dSignal = abs(((currentError - pastError)/0.005)*kD);
-        pastError = currentError;
-        //Turn right
-        if(pSignal > 0){
-            set_motor(1, 40);
-            if(-40.5 + pSignal + dSignal <= 0){
-                set_motor(2,-(40.5 + pSignal + dSignal));
-            }else{
-                set_motor(2,0);
-            }
-            Sleep(0, 5000);
-        //Turn left
-        }else if(pSignal < 0){/**left*/
-            if(40 + pSignal + dSignal >= 0){
-                set_motor(1, 40 + pSignal + dSignal);
-            }else{
-                set_motor(1,0);
-            }
-            set_motor(2, -40.5);
-            Sleep(0, 5000);
-        }
     }
 }
 return 0;
