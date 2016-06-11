@@ -76,7 +76,7 @@
 - [x] Eli: Research and develop Quadrant 1 code with PID
 * All members attended the lab
 * All members that could attended the meeting
-* Sean and Eli switched with Jaimar and Calum
+* Sean and Eli switched with Jaimar and Callum
 * We got the robot registering the line!
 
 ###Week 5 Checklist:
@@ -87,47 +87,54 @@
 - [x] Eli: Debugging and formatting code, writing to Pi
 
 ###Week 5 Review:
-- [x] Sean: 
-- [x] Tim:
-- [x] Jaimar: 
-- [x] Callum: 
-- [x] Eli:
+- [x] Sean: Wrote the 90 turns and got them working
+- [x] Tim: Succesfully modified Pi
+- [x] Jaimar: Established smoother movement
+- [x] Callum: Established smoother movement
+- [x] Eli: Helped with coding and debugging
 * All members attended the lab
 * All members that could attended the meeting
-* Sean and Eli switched with Jaimar and Calum
+* Sean and Eli switched with Jaimar and Callum
 * We got the robot registering the line!
 
 ###Week 6 Checklist:
-- [x] Sean: Update and comment code, organise next weeks meeting/Logic behind 90* turns
-- [x] Tim: Lowering camera/Changing wheels/IR sensors
+- [x] Sean: Update and comment code, organise next weeks meeting/Quadrant 3 logic
+- [x] Tim: Printing off IR sensors/Battery pack
 - [x] Jaimar: Getting Pi to turn in relation to PID
 - [x] Callum: Getting Pi to turn in relation to PID
-- [x] Eli: Debugging and formatting code, writing to Pi
+- [x] Eli: Helped with additional coding
 
-###Week 6 Review:
-- [x] Sean: 
-- [x] Tim:
-- [x] Jaimar: 
-- [x] Callum: 
-- [x] Eli:
-* All members attended the lab that could
+###Week 6 Review
+- [x] Sean: Update and comment code, organise next weeks meeting/Quadrant 3 logic
+- [x] Tim: Printing off IR sensors/Battery pack
+- [x] Jaimar: Getting Pi to turn in relation to PID
+- [x] Callum: Getting Pi to turn in relation to PID
+- [x] Eli: Helped with additional coding
+* All members attended the lab
 * All members that could attended the meeting
-* Sean and Eli switched with Jaimar and Calum
-* We got the robot registering the line
+* We made more progress on getting the Pi moving
 
 ###Week 7 Checklist:
-- [x] Sean: Update and comment code, organise next weeks meeting/Logic behind 90* turns
-- [x] Tim: Lowering camera/Changing wheels/IR sensors
-- [x] Jaimar: Getting Pi to turn in relation to PID
-- [x] Callum: Getting Pi to turn in relation to PID
-- [x] Eli: Debugging and formatting code, writing to Pi
+- [x] Sean: Starting quadrant 3 code/logic
+- [x] Tim: Battery Pack/Advise on code 
+- [x] Jaimar: Checking quads 1 and 2
+- [x] Callum: Checking quads 1 and 2
+- [x] Eli: Checking quads 1 and 2
+* All members attended the lab that could
+* All members that could attended the meeting
+* All helped on sorting out code
+* We got the robot registering up to the first T intersection
+
 
 ###Week 7 Review:
-- [] Sean: 
-- [] Tim:
-- [] Jaimar: 
-- [] Callum: 
-- [] Eli:
+- [x] Sean: Started quadrant 3 code 
+- [x] Tim: Printed battery pack
+- [x] Jaimar: We sorted out quadrant 2 and 1
+- [x] Callum: We sorted out quadrant 2 and 1
+- [x] Eli: We sorted out quadrant 2 and 1
+* All members attended the lab that could
+* All members that could attended the meeting
+
 Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2YD_fXb_G-mnzb5xK0Q/edit?usp=sharing
 ###AVC Project Table
 
@@ -154,7 +161,7 @@ Google Doc, Plan - https://docs.google.com/document/d/1B-4A15r7b_HlRaeunUikcQZN2
 - [ ] Have team members shared their draft report sections (if the team decided they wanted to do that)?
 - [ ] Are there any tasks that need to be done for progress to be made that have NOT been assigned to a team member?
 
-###Unformatted
+
 Tim - Hardware Development - Developing and building Chassis, working to integrate sensor components and testing hardware.
 Contact details: 
 Katharine Jermyn Hall
